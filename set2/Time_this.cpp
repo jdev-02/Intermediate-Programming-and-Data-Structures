@@ -32,6 +32,8 @@ void Time::setHour(int h)
   if (h>= 0 && h <= 23)
   {
     hour = h;
+    //in the example slide, the setter method was using int hour to show that you would need to use the this pointer to hour
+    //in order to differentiate between the data memeber and the parameter
   }
   else
   {

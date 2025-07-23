@@ -3,18 +3,25 @@
 using namespace std;
 
 class Time
+    //this is the class interface
 {
   public:
     Time();
+    //default constructor
     Time(int h);
+    //defined constructor
     void setHour(int h);
+    //setter method
     int getHour();
+    //getter method
 
   private:
     int hour;
 };
 
 // default constructor
+//this is the class implementation, hence why it needs the time:: prefix
+
 Time::Time()
 {
   hour = 0;

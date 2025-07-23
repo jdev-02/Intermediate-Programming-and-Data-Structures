@@ -17,6 +17,10 @@ void IntCell::write(int x) {
   storedValue = x;
 }
 
+//we could also have a predicate methods here, where we would answer a yes/no question about the data member
+//utility functions can be added like print()
+//you can also add in operators to overwrite the default behavior of operators like +, -, *, /, etc.
+
 
 int main ()
 {

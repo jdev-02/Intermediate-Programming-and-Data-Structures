@@ -5,7 +5,9 @@ class IntCell {
 
   public:
 
-    explicit IntCell(int initialValue = 0)
+    explicit IntCell(int initialValue = 0) 
+        //the initializer list appears before the constructor body, which may not be needed
+		//this gives us only one constructor that takes an int, and it is explicit
 	  : storedValue (initialValue){}
 
     int read()
