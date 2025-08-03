@@ -17,7 +17,7 @@ int main() {
     CURL* curl;
     CURLcode res;
     std::string readBuffer;
-    std::string apiKey = "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD"; // Replace with your API key
+    std::string apiKey = "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD"; // API key is good for 250 calls per day
 
     std::string symbol = "AAPL";
     std::string url = "https://site.financialmodelingprep.com/api/v3/quote/" + symbol + "?apikey=" + apiKey;
