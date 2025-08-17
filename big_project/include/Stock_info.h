@@ -150,7 +150,6 @@ std::string Stock_info::get_history(std::string symbol, std::string apiKey){
 
     //Cache and return
     cache_history.emplace(symbol, readBuffer);
-    std::cout << "HEREHRERERER\n" << readBuffer;
     return readBuffer;
     
 }

@@ -16,6 +16,22 @@ using json = nlohmann::json;
 // 
 // ------------------------------------------------------
 
+struct HistoricalBar {
+    std::string date;          
+    double open         = 0.0;
+    double high         = 0.0;
+    double low          = 0.0;
+    double close        = 0.0;
+    double adjClose     = 0.0;
+    std::uint64_t volume = 0;
+    std::uint64_t unadjustedVolume = 0;
+    double change       = 0.0;
+    double changePercent = 0.0;
+    double vwap         = 0.0;
+    std::string label;        
+    double changeOverTime = 0.0;
+};
+
 //Security Interface
 class Security {
 public:
@@ -41,7 +57,10 @@ public:
     std::string earningsAnnouncement;
     long long sharesOutstanding;
     long long timestamp;
-    std::string history;
+
+
+    // Historical time series
+    std::vector<HistoricalBar> history;
 
     void print();
 
@@ -51,7 +70,7 @@ public:
         json j = json::parse(stock_quote);
  
         if (!j.is_array() || j.empty() || !j[0].is_object()) {
-            throw std::runtime_error("Unexpected JSON shape");
+            throw std::runtime_error("Unexpected Quote JSON shape");
         }
 
         const auto& obj = j[0];
@@ -79,13 +98,55 @@ public:
         sharesOutstanding    = obj.value("sharesOutstanding", 0LL);
         timestamp            = obj.value("timestamp", 0LL);
 
-        history              =stock_history;
+        json* arr_ptr = nullptr;
+        
+        json h = json::parse(stock_history);
+        if (!h.is_object()) {
+            throw std::runtime_error("Unexpected history JSON shape");
+        }
+
+        if (h.contains("historical") && h["historical"].is_array()) {
+            arr_ptr = &h["historical"];
+        }
+
+        json& arr = *arr_ptr;
+
+        history.clear();
+        history.reserve(arr.size());
+        
+        for (const auto& item : arr) {
+            HistoricalBar b;
+            b.date             = item.value("date", std::string{});
+            b.open             = item.value("open", 0.0);
+            b.high             = item.value("high", 0.0);
+            b.low              = item.value("low", 0.0);
+            b.close            = item.value("close", 0.0);
+            b.adjClose         = item.value("adjClose", 0.0);
+            b.volume           = item.value("volume", static_cast<std::uint64_t>(0));
+            b.unadjustedVolume = item.value("unadjustedVolume", static_cast<std::uint64_t>(0));
+            b.change           = item.value("change", 0.0);
+            b.changePercent    = item.value("changePercent", 0.0);
+            b.vwap             = item.value("vwap", 0.0);
+            b.label            = item.value("label", std::string{});
+            b.changeOverTime   = item.value("changeOverTime", 0.0);
+            history.push_back(b);
+        }
     }
 };
 
 void Security::print(){
     std::cout << this->symbol << " :" << this->name << std::endl;
-    std::cout << this->history <<std::endl;
+    std::cout << "history points: " << history.size() << "\n";
+    if (!history.empty()) {
+        const auto& last = history.back(); // last bar
+        std::cout << "latest history:\n"
+                  << "  date: " << last.date << "\n"
+                  << "  open: " << last.open
+                  << "  high: " << last.high
+                  << "  low: "  << last.low
+                  << "  close: " << last.close
+                  << "  volume: " << last.volume << "\n";
+    }
 }
 
 #endif //Security.h
