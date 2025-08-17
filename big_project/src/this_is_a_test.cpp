@@ -7,5 +7,6 @@ int main() {
      Security aapl = s.getStockInfo("AAPL");
      aapl.print();
      s.printCache();
+
      return 0;
 }

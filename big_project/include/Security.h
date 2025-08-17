@@ -41,13 +41,14 @@ public:
     std::string earningsAnnouncement;
     long long sharesOutstanding;
     long long timestamp;
+    std::string history;
 
     void print();
 
     // Constructor that takes JSON
-    Security(std::string input) {
+    Security(std::string stock_quote,std::string stock_history) {
         //Parse the string into json object
-        json j = json::parse(input);
+        json j = json::parse(stock_quote);
  
         if (!j.is_array() || j.empty() || !j[0].is_object()) {
             throw std::runtime_error("Unexpected JSON shape");
@@ -77,11 +78,14 @@ public:
         earningsAnnouncement = obj.value("earningsAnnouncement", std::string{});
         sharesOutstanding    = obj.value("sharesOutstanding", 0LL);
         timestamp            = obj.value("timestamp", 0LL);
+
+        history              =stock_history;
     }
 };
 
 void Security::print(){
     std::cout << this->symbol << " :" << this->name << std::endl;
+    std::cout << this->history <<std::endl;
 }
 
 #endif //Security.h
