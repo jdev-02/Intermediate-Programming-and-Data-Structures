@@ -1,23 +1,36 @@
 cmake_minimum_required(VERSION 3.10)
-project(MyProject)
 
-set(CMAKE_CXX_STANDARD 11)
+project(BigProject)
 
-# Include directories
-include_directories(include)
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Add include directories
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+# Find libcurl
+find_package(CURL REQUIRED)
+if(CURL_FOUND)
+    include_directories(${CURL_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "libcurl not found")
+endif()
+
+# Add source files
+set(SOURCES
+    src/this_is_a_test.cpp
+)
+
+# Create executable
+add_executable(test_app ${SOURCES})
+
+# Link libcurl
+target_link_libraries(test_app ${CURL_LIBRARIES})
+
+# Enable warnings and debug info
+target_compile_options(test_app PRIVATE -Wall -g)
 
 # Add test executable
 enable_testing()
 find_package(GTest REQUIRED)
-
-add_executable(runListTests tests/listTest.cpp)
-target_link_libraries(runListTests GTest::GTest GTest::Main pthread)
-add_test(NAME ListTest COMMAND runListTests)
-
-add_executable(runStackTests tests/stackTest.cpp)
-target_link_libraries(runStackTests GTest::GTest GTest::Main pthread)
-add_test(NAME StackTest COMMAND runStackTests)
-
-add_executable(runQueueTests tests/queueTest.cpp)
-target_link_libraries(runQueueTests GTest::GTest GTest::Main pthread)
-add_test(NAME QueueTest COMMAND runQueueTests)

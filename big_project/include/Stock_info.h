@@ -1,19 +1,24 @@
+#ifndef STOCK_INFO_H   // If STOCK_INFO_H is not defined
+#define STOCK_INFO_H   // Define STOCK_INFO_H
+
 #include <iostream>
 #include <string>
 #include <curl/curl.h>
 #include <unordered_map>
+#include "Security.h"
+
 
 // ------------------------------------------------------
 // File: Stock_info.h
 //
-// Author: John Rolfe
+// Author: Jonathan Goohs, John Rolfe
 //
 // Description: Class Stock_info.h returns an instance of
 // class Security that contains relevant ingformation.
 // 
 // ------------------------------------------------------
 
-//Queue Interface
+//Stock_Info Interface
 class Stock_info
 {
 
@@ -24,7 +29,7 @@ class Stock_info
         public:
             // Returns an instance of class Security
             //** TODO After creating class Security change from returning string
-            std::string getStockInfo(std::string symbol);
+            Security getStockInfo(std::string symbol);
 
 
             // Method for printing the current cache
@@ -32,7 +37,7 @@ class Stock_info
 
         private:
             // A hashmap to act as a cache to limit API calls 
-            // keys are strings and values are integers
+            // keys are strings and values are json results from API
             std::unordered_map<std::string, std::string> cache;
 
 
@@ -52,7 +57,7 @@ size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* s) 
     return newLength;
 }
 
-std::string Stock_info::getStockInfo(std::string symbol){
+Security Stock_info::getStockInfo(std::string symbol){
 
     //chck if present in cache
     if (auto it = cache.find(symbol); it != cache.end()) {
@@ -101,7 +106,7 @@ std::string Stock_info::getStockInfo(std::string symbol){
 
     //Cache and return
     cache.emplace(symbol, readBuffer);
-    return readBuffer;
+    return Security(readBuffer);
 }
 
 void Stock_info::printCache() const {
@@ -109,3 +114,5 @@ void Stock_info::printCache() const {
         std::cout << sym << " => " << json << "\n";
     }
 }
+
+#endif // STOCK_INFO_H

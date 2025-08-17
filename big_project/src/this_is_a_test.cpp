@@ -1,9 +1,11 @@
 #include "Stock_info.h"
+#include "Security.h"
+
 
 int main() {
      Stock_info s;
-     std::string aapl = s.getStockInfo("AAPL");
-     std::cout << "AAPL: " << aapl << "\n";
+     Security aapl = s.getStockInfo("AAPL");
+     aapl.print();
      s.printCache();
      return 0;
 }
