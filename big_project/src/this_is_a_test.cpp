@@ -1,5 +1,5 @@
 #include "../big_project/include/Stock_info.h"
-#include "Security.h"
+#include "../big_project/include/Security.h"
 
 
 int main() {
