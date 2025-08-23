@@ -1,4 +1,4 @@
-#include "Stock_info.h"
+#include "../big_project/include/Stock_info.h"
 #include "Security.h"
 
 

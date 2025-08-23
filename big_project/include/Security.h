@@ -16,6 +16,7 @@ using json = nlohmann::json;
 // 
 // ------------------------------------------------------
 
+// Struct for historical price bars
 struct HistoricalBar {
     std::string date;          
     double open         = 0.0;
@@ -32,7 +33,33 @@ struct HistoricalBar {
     double changeOverTime = 0.0;
 };
 
-//Security Interface
+// Struct for analyst estimates (projections)
+struct AnalystEstimates {
+    std::string symbol;
+    std::string date;
+    double estimatedRevenueLow = 0.0;
+    double estimatedRevenueHigh = 0.0;
+    double estimatedRevenueAvg = 0.0;
+    double estimatedEbitdaLow = 0.0;
+    double estimatedEbitdaHigh = 0.0;
+    double estimatedEbitdaAvg = 0.0;
+    double estimatedEbitLow = 0.0;
+    double estimatedEbitHigh = 0.0;
+    double estimatedEbitAvg = 0.0;
+    double estimatedNetIncomeLow = 0.0;
+    double estimatedNetIncomeHigh = 0.0;
+    double estimatedNetIncomeAvg = 0.0;
+    double estimatedSgaExpenseLow = 0.0;
+    double estimatedSgaExpenseHigh = 0.0;
+    double estimatedSgaExpenseAvg = 0.0;
+    double estimatedEpsAvg = 0.0;
+    double estimatedEpsHigh = 0.0;
+    double estimatedEpsLow = 0.0;
+    int numberAnalystEstimatedRevenue = 0;
+    int numberAnalystsEstimatedEps = 0;
+};
+
+// Security Interface
 class Security {
 public:
     std::string symbol;
@@ -58,17 +85,18 @@ public:
     long long sharesOutstanding;
     long long timestamp;
 
-
     // Historical time series
     std::vector<HistoricalBar> history;
+    // Analyst estimates (projections)
+    std::vector<AnalystEstimates> analystEstimates;
 
     void print();
 
-    // Constructor that takes JSON
-    Security(std::string stock_quote,std::string stock_history) {
-        //Parse the string into json object
+    // Constructor that takes JSON for quote, history, and analyst estimates
+    Security(std::string stock_quote, std::string stock_history, std::string analyst_estimates_json = "") {
+        // Parse the string into json object
         json j = json::parse(stock_quote);
- 
+
         if (!j.is_array() || j.empty() || !j[0].is_object()) {
             throw std::runtime_error("Unexpected Quote JSON shape");
         }
@@ -99,7 +127,7 @@ public:
         timestamp            = obj.value("timestamp", 0LL);
 
         json* arr_ptr = nullptr;
-        
+
         json h = json::parse(stock_history);
         if (!h.is_object()) {
             throw std::runtime_error("Unexpected history JSON shape");
@@ -113,7 +141,7 @@ public:
 
         history.clear();
         history.reserve(arr.size());
-        
+
         for (const auto& item : arr) {
             HistoricalBar b;
             b.date             = item.value("date", std::string{});
@@ -131,10 +159,43 @@ public:
             b.changeOverTime   = item.value("changeOverTime", 0.0);
             history.push_back(b);
         }
+
+        // Parse analyst estimates if provided
+        if (!analyst_estimates_json.empty()) {
+            json ef = json::parse(analyst_estimates_json);
+            if (ef.is_array()) {
+                for (const auto& item : ef) {
+                    AnalystEstimates est;
+                    est.symbol = item.value("symbol", "");
+                    est.date = item.value("date", "");
+                    est.estimatedRevenueLow = item.value("estimatedRevenueLow", 0.0);
+                    est.estimatedRevenueHigh = item.value("estimatedRevenueHigh", 0.0);
+                    est.estimatedRevenueAvg = item.value("estimatedRevenueAvg", 0.0);
+                    est.estimatedEbitdaLow = item.value("estimatedEbitdaLow", 0.0);
+                    est.estimatedEbitdaHigh = item.value("estimatedEbitdaHigh", 0.0);
+                    est.estimatedEbitdaAvg = item.value("estimatedEbitdaAvg", 0.0);
+                    est.estimatedEbitLow = item.value("estimatedEbitLow", 0.0);
+                    est.estimatedEbitHigh = item.value("estimatedEbitHigh", 0.0);
+                    est.estimatedEbitAvg = item.value("estimatedEbitAvg", 0.0);
+                    est.estimatedNetIncomeLow = item.value("estimatedNetIncomeLow", 0.0);
+                    est.estimatedNetIncomeHigh = item.value("estimatedNetIncomeHigh", 0.0);
+                    est.estimatedNetIncomeAvg = item.value("estimatedNetIncomeAvg", 0.0);
+                    est.estimatedSgaExpenseLow = item.value("estimatedSgaExpenseLow", 0.0);
+                    est.estimatedSgaExpenseHigh = item.value("estimatedSgaExpenseHigh", 0.0);
+                    est.estimatedSgaExpenseAvg = item.value("estimatedSgaExpenseAvg", 0.0);
+                    est.estimatedEpsAvg = item.value("estimatedEpsAvg", 0.0);
+                    est.estimatedEpsHigh = item.value("estimatedEpsHigh", 0.0);
+                    est.estimatedEpsLow = item.value("estimatedEpsLow", 0.0);
+                    est.numberAnalystEstimatedRevenue = item.value("numberAnalystEstimatedRevenue", 0);
+                    est.numberAnalystsEstimatedEps = item.value("numberAnalystsEstimatedEps", 0);
+                    analystEstimates.push_back(est);
+                }
+            }
+        }
     }
 };
 
-void Security::print(){
+void Security::print() {
     std::cout << this->symbol << " :" << this->name << std::endl;
     std::cout << "history points: " << history.size() << "\n";
     if (!history.empty()) {
@@ -146,6 +207,15 @@ void Security::print(){
                   << "  low: "  << last.low
                   << "  close: " << last.close
                   << "  volume: " << last.volume << "\n";
+    }
+    if (!analystEstimates.empty()) {
+        std::cout << "Analyst Estimates:\n";
+        for (const auto& est : analystEstimates) {
+            std::cout << "  Date: " << est.date
+                      << "  EPS Avg: " << est.estimatedEpsAvg
+                      << "  Revenue Avg: " << est.estimatedRevenueAvg
+                      << "  Analysts (EPS): " << est.numberAnalystsEstimatedEps << "\n";
+        }
     }
 }
 
