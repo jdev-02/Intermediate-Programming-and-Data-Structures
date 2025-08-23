@@ -1,6 +1,6 @@
-#include "../big_project/include/Stock_info.h"
-#include "../big_project/include/Security.h"
-
+#include "../include/Stock_info.h"
+#include "../include/Security.h"
+#include "../include/Math.h"
 
 int main() {
      Stock_info s;
