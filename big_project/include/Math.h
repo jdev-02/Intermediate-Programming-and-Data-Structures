@@ -33,7 +33,7 @@ int InvestorMath::peterLynchPEG(double epsGrowthRate, double peRatio, double cur
 	return (epsGrowthRate / peRatio) * currentPrice;
 }
 
-int InvestorMath::benjaminGrahamInstrinsicValue(double eps, double expectedGrowthRate) {
+int InvestorMath::benjaminGrahamIntrinsicValue(double eps, double expectedGrowthRate) {
 	if (eps <= 0) {
 		cerr << "Error: EPS must be greater than 0. May be an API error, please try again." << endl;
 		return -1;
@@ -46,5 +46,7 @@ int InvestorMath::dividendDiscountModel(double annualDividend, double requiredRa
 		cerr << "Error: Required rate of return must be greater than dividend growth rate." << endl;
 		return -1;
 	}
-	return (annualdividend / requiredRateofreturn - dividendGrowthRate);
+	return (annualDividend / requiredRateofReturn - dividendGrowthRate);
 }
+
+#endif

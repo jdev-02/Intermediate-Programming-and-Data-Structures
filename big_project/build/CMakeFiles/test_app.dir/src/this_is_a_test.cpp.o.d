@@ -1,7 +1,7 @@
 CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o: \
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/this_is_a_test.cpp \
  /usr/include/stdc-predef.h \
- /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Stock_info.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/Stock_info.h \
  /usr/include/c++/14/iostream /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
@@ -200,8 +200,8 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o: \
  /usr/include/c++/14/bits/enable_special_members.h \
  /usr/include/c++/14/bits/node_handle.h \
  /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/ctime \
- /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Security.h \
- /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/json.hpp \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/Security.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/json.hpp \
  /usr/include/c++/14/algorithm /usr/include/c++/14/bits/stl_algo.h \
  /usr/include/c++/14/bits/algorithmfwd.h \
  /usr/include/c++/14/bits/stl_heap.h \
@@ -287,4 +287,5 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o: \
  /usr/include/c++/14/optional /usr/include/c++/14/numeric \
  /usr/include/c++/14/bits/stl_numeric.h \
  /usr/include/c++/14/pstl/glue_numeric_defs.h /usr/include/c++/14/any \
- /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Security.h
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/Security.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/Math.h
