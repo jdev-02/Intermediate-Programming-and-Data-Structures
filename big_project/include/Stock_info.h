@@ -27,25 +27,24 @@ class Stock_info
     public:
         //default constructor
         Stock_info(){};
-        //is there a reason we have two public sections? and do we want a blank constructor?
-        public:
-            // Returns an instance of class Security
-            Security getStockInfo(std::string symbol);
 
-            // Method for printing the current cache
-            void printCache() const;
+        // Returns an instance of class Security
+        Security getStockInfo(std::string symbol);
 
-        private:
-            // A hashmap to act as a cache to limit API calls to 250 per day
-            // keys are strings and values are json results from API
-            std::unordered_map<std::string, std::string> cache_quotes;
-            std::unordered_map<std::string, std::string> cache_history;
-            std::unordered_map<std::string, std::string> cache_eps_forecast;
+        // Method for printing the current cache
+        void printCache() const;
 
-            //Methods for calling the API
-            std::string get_quote(std::string symbol, std::string apiKey);
-            std::string get_history(std::string symbol, std::string apiKey);
-            std::string get_eps_forecast(std::string symbol, std::string apiKey);
+    private:
+        // A hashmap to act as a cache to limit API calls to 250 per day
+        // keys are strings and values are json results from API
+        std::unordered_map<std::string, std::string> cache_quotes;
+        std::unordered_map<std::string, std::string> cache_history;
+        std::unordered_map<std::string, std::string> cache_eps_forecast;
+
+        //Methods for calling the API
+        std::string get_quote(std::string symbol, std::string apiKey);
+        std::string get_history(std::string symbol, std::string apiKey);
+        std::string get_eps_forecast(std::string symbol, std::string apiKey);
 };
 
 
