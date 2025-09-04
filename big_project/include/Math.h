@@ -2,6 +2,8 @@
 #define MATH_H
 
 #include <iostream>
+#include "Security.h"
+
 using namespace std;
 
 // ------------------------------------------------------
@@ -18,6 +20,16 @@ using namespace std;
 //Math Interface
 class InvestorMath
 {
+private:
+	double epsGrowthRate;
+	double peRatio;
+	double currentPrice;
+	double eps;
+	double expectedGrowthRate;
+	double annualDividend = ;
+	double requiredRateofReturn;
+	double dividendGrowthRate;
+
 public:
 	InvestorMath() {};
 	int peterLynchPEG(double epsGrowthRate, double peRatio, double currentPrice);

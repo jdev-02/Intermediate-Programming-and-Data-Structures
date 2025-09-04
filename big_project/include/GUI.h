@@ -56,8 +56,9 @@ public:
     // Utility methods
     void clearScreen(); //do this after the user inputs their data and before the results are displayed
     void waitForUserInput(); //pauses until user presses a key to continue to display results
-    void displayError(const std::string& error); //displays error messages in a popup if soemthing in ingest or processing goes wrong
-    void displaySuccess(const std::string& message); //displays success messages before showing results
+    void displayError(const string& error); //displays error messages in a popup if soemthing in ingest or processing goes wrong
+    void displaySuccess(const string& message); //displays success messages before showing results
 };
+
 
 #endif

@@ -15,6 +15,8 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 #include "../include/Security.h"
 #include "..include/Math.h"
 
+#define QUARTERLY_DIVIDEND_MULT 4
+
 using namespace std;
 
 class User_info {
@@ -42,7 +44,7 @@ public:
 		//this method calcs the current value of users portfolio
 		double current_value = 0.0;
 		for (Securrity& security : portfolio) {
-			current_value += security.price * share_count; //price is a field in Security class from security.h
+			current_value += security.currentPrice * share_count; //price is a field in Security class from security.h
 		}
 		cout << "Current value of portfolio: $" << current_value << endl; //call this in the gui 
 	}
@@ -55,7 +57,7 @@ public:
 		for (Security& security : portfolio) {
 			epsGrowthRatetotal += security.eps; //eps is field in security class from security.h
 			peRatioTotal += security.pe; //pe is field in security class from security.h
-			currentPriceTotal += security.price; //price is field in security class from security.h
+			currentPriceTotal += security.currentPrice; //price is field in security class from security.h
 		}
 		cout << "Peter Lynch PEG value for this current portfolio is: $"
 			<< math.peterLynchPEG(epsgrowthRatetotal, peRatioTotal, currentPriceTotal) << endl;
@@ -83,9 +85,19 @@ public:
 		double requiredRateofReturnTotal = 0.0;
 		double dividendGrowthRateTotal = 0.0;
 		for (Security& security : portfolio) {
-			annualDividendTotal += security.eps * 0.5; //assuming 50% payout ratio for simplicity
+			//API pulls quarterly dividend, multiply by 4 to get annual dividend per share
+			double annualDividendPerShare = security.quarterlyDividendPerShare * QUARTERLY_DIVIDEND_MULT;
+
+			//Calculate total annual dividend for user's share count in this security
+			annualDividendTotal += annualDividendPerShare * share_count;
+
+			//alternative calculation using EPS and payout ratio (assuming 50% payout ratio for simplicity)
+			// This line calculates estimated annual dividend based on earnings
+			double estimatedAnnualDividend = security.eps * 0.5 * share_count;
+			//note: You might want to use this as a comparison or fallback if annualDividendPerShare is not available
+
 			requiredRateofReturnTotal += 0.07; //assuming 7% required rate of return for simplicity
-			dividendGrowthRatetotal += security.estimatedEPSAvg * 0.1; //assuming 10% growth rate for simplicity
+			dividendGrowthRateTotal += security.estimatedEPSAvg * 0.1; //assuming 10% growth rate for simplicity
 		}
 		cout << "Dividend Discount Model value for this current portfolio is: $"
 			<< math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal, dividendGrowthRateTotal) << endl;
