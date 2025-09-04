@@ -288,4 +288,8 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o: \
  /usr/include/c++/14/bits/stl_numeric.h \
  /usr/include/c++/14/pstl/glue_numeric_defs.h /usr/include/c++/14/any \
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/Security.h \
- /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/Math.h
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/Math.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/user_info.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/../include/Stock_info.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/../include/Security.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/../include/Math.h

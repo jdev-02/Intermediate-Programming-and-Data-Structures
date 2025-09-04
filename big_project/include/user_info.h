@@ -1,10 +1,10 @@
 /*
 User_info Module:
-•	Parse data from user
-•	Read in and store stock ticker as key and an instance of the class Security as the value (where each field responsible for calculating the users selected investment calculation is populated either by cache or api upon instantiation)
-•	Portfolio management and user data storage
-•	Calculation orchestration
-•	Interface between GUI and data processing modules
+ï¿½	Parse data from user
+ï¿½	Read in and store stock ticker as key and an instance of the class Security as the value (where each field responsible for calculating the users selected investment calculation is populated either by cache or api upon instantiation)
+ï¿½	Portfolio management and user data storage
+ï¿½	Calculation orchestration
+ï¿½	Interface between GUI and data processing modules
 o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% of users stocks are undervalued/overvalued based on this metric. (use the value from math library method)
 */
 
@@ -13,7 +13,7 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 #include <map>
 #include "../include/Stock_info.h"
 #include "../include/Security.h"
-#include "..include/Math.h"
+#include "../include/Math.h"
 
 #define QUARTERLY_DIVIDEND_MULT 4
 
@@ -43,8 +43,8 @@ public:
 	void calc_portfolio_current_value() {
 		//this method calcs the current value of users portfolio
 		double current_value = 0.0;
-		for (Securrity& security : portfolio) {
-			current_value += security.currentPrice * share_count; //price is a field in Security class from security.h
+		for (auto& sets : portfolio) {
+			current_value += sets.second.currentPrice * share_count; //price is a field in Security class from security.h
 		}
 		cout << "Current value of portfolio: $" << current_value << endl; //call this in the gui 
 	}
@@ -54,24 +54,24 @@ public:
 		double epsGrowthRateTotal = 0.0;
 		double peRatioTotal = 0.0;
 		double currentPriceTotal = 0.0;
-		for (Security& security : portfolio) {
-			epsGrowthRatetotal += security.eps; //eps is field in security class from security.h
-			peRatioTotal += security.pe; //pe is field in security class from security.h
-			currentPriceTotal += security.currentPrice; //price is field in security class from security.h
+		for (auto& set : portfolio) {
+			epsGrowthRateTotal += set.second.eps; //eps is field in security class from security.h
+			peRatioTotal += set.second.peRatio; //pe is field in security class from security.h
+			currentPriceTotal += set.second.currentPrice; //price is field in security class from security.h
 		}
 		cout << "Peter Lynch PEG value for this current portfolio is: $"
-			<< math.peterLynchPEG(epsgrowthRatetotal, peRatioTotal, currentPriceTotal) << endl;
+			<< math.peterLynchPEG(epsGrowthRateTotal, peRatioTotal, currentPriceTotal) << endl;
 		//call this ins the gui and then use the starting value and ending value to draw the trend line
 		cout << "Peter Lynch PEG value for portfolio in " << time_horizon << "years: $"
-			<< math.peterLynchPEG(epsgrowthRatetotal, peRatioTotal, currentPriceTotal) * time_horizon << endl; 
+			<< math.peterLynchPEG(epsGrowthRateTotal, peRatioTotal, currentPriceTotal) * time_horizon << endl; 
 	}
 	void calc_benjaminGrahamInstrinsicValue() {
 		//this method is used if user picks benjamin graham instrinsic value calculation (deep value investing)
 		double epsTotal = 0.0;
 		double expectedGrowthRateTotal = 0.0;
-		for (Security& security : portfolio) {
-			epstotal += security.eps;
-			expectedGrowthRatetotal += security.estimatedEPSAvg; //this is a field in analyst estimates struct in security.h
+		for (auto& set : portfolio) {
+			epsTotal += set.second.eps;
+			expectedGrowthRateTotal += set.second.estimatedEPSAvg; //this is a field in analyst estimates struct in security.h
 		}
 		cout << "Benjamin Graham Intrinsic value for this current portfolio is: $"
 			<< math.benjaminGrahamIntrinsicValue(epsTotal, expectedGrowthRateTotal) << endl;
@@ -84,20 +84,20 @@ public:
 		double annualDividendTotal = 0.0;
 		double requiredRateofReturnTotal = 0.0;
 		double dividendGrowthRateTotal = 0.0;
-		for (Security& security : portfolio) {
+		for (auto& set : portfolio) {
 			//API pulls quarterly dividend, multiply by 4 to get annual dividend per share
-			double annualDividendPerShare = security.quarterlyDividendPerShare * QUARTERLY_DIVIDEND_MULT;
+			double annualDividendPerShare = set.second.quarterlyDividendPerShare * QUARTERLY_DIVIDEND_MULT;
 
 			//Calculate total annual dividend for user's share count in this security
 			annualDividendTotal += annualDividendPerShare * share_count;
 
 			//alternative calculation using EPS and payout ratio (assuming 50% payout ratio for simplicity)
 			// This line calculates estimated annual dividend based on earnings
-			double estimatedAnnualDividend = security.eps * 0.5 * share_count;
+			double estimatedAnnualDividend = set.second.eps * 0.5 * share_count;
 			//note: You might want to use this as a comparison or fallback if annualDividendPerShare is not available
 
 			requiredRateofReturnTotal += 0.07; //assuming 7% required rate of return for simplicity
-			dividendGrowthRateTotal += security.estimatedEPSAvg * 0.1; //assuming 10% growth rate for simplicity
+			dividendGrowthRateTotal += set.second.estimatedEPSAvg * 0.1; //assuming 10% growth rate for simplicity
 		}
 		cout << "Dividend Discount Model value for this current portfolio is: $"
 			<< math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal, dividendGrowthRateTotal) << endl;
