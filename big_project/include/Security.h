@@ -161,7 +161,7 @@ public:
         }
 
         // Parse analyst estimates if provided
-        if (!analyst_estimates_json.empty()) {
+        //if (!analyst_estimates_json.empty()) {
             json ef = json::parse(analyst_estimates_json);
             if (ef.is_array()) {
                 for (const auto& item : ef) {
@@ -191,7 +191,7 @@ public:
                     analystEstimates.push_back(est);
                 }
             }
-        }
+        //}
     }
 };
 
