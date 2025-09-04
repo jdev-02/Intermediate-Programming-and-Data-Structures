@@ -26,7 +26,7 @@ private:
 	double currentPrice;
 	double eps;
 	double expectedGrowthRate;
-	double annualDividend = ;
+	double annualDividend;
 	double requiredRateofReturn;
 	double dividendGrowthRate;
 
