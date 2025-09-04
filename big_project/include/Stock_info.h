@@ -8,7 +8,9 @@
 #include <ctime>
 #include "Security.h"
 
-#define API_KEY "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD"
+//#define API_KEY "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD"
+//#define API_KEY "g9C8KiSXIyPVKRu6rTM39qL3BxQDUKHR"
+#define API_KEY "TWTLPDSLI1D8354E"
 
 
 // ------------------------------------------------------
@@ -40,12 +42,10 @@ class Stock_info
         // A hashmap to act as a cache to limit API calls to 250 per day
         // keys are strings and values are json results from API
         std::unordered_map<std::string, std::string> cache_quotes;
-        std::unordered_map<std::string, std::string> cache_history;
         std::unordered_map<std::string, std::string> cache_eps_forecast;
 
         //Methods for calling the API
         std::string get_quote(std::string symbol, std::string apiKey);
-        std::string get_history(std::string symbol, std::string apiKey);
         std::string get_eps_forecast(std::string symbol, std::string apiKey);
 };
 
@@ -68,7 +68,7 @@ std::string Stock_info::get_quote(std::string symbol, std::string apiKey){
     std::string readBuffer;
     
 
-    std::string url = "https://financialmodelingprep.com/api/v3/quote/" + symbol + "?apikey=" + apiKey;
+    std::string url = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=" + apiKey;
 
     curl_global_init(CURL_GLOBAL_DEFAULT); //initialize libcurl
 
@@ -113,67 +113,13 @@ std::string Stock_info::get_quote(std::string symbol, std::string apiKey){
     return readBuffer;
 }
 
-std::string Stock_info::get_history(std::string symbol, std::string apiKey){
-    //Fetch with libcurl
-    CURL* curl;
-    CURLcode res;
-    std::string readBuffer;
-    int numDays = 365*10;
-
-    std::string url = "https://financialmodelingprep.com/api/v3/historical-price-full/" + symbol +
-    "?timeseries=" + std::to_string(numDays) + "&apikey=" + apiKey;
-
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-
-    curl = curl_easy_init();
-    if (!curl) {
-        std::cerr << "curl_easy_init() failed\n";
-        curl_global_cleanup();
-        return std::string(); // empty on failure
-    }
-
-    curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); //set url for curl
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
-    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
-    curl_easy_setopt(curl, CURLOPT_USERAGENT, "stock-info/1.0");
-        
-    res = curl_easy_perform(curl);
-
-    long http_status = 0;
-    CURLcode info_res = curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_status);
-    if (info_res != CURLE_OK) {
-        std::cerr << "curl_easy_getinfo() failed: " << curl_easy_strerror(info_res) << "\n";
-        curl_easy_cleanup(curl);
-        curl_global_cleanup();
-        return std::string();
-    }
-
-    curl_easy_cleanup(curl);
-    curl_global_cleanup();
-
-    if (res != CURLE_OK) {
-        std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << "\n";
-        return std::string();
-    }
-    if (http_status < 200 || http_status >= 300) {
-        std::cerr << "HTTP error: " << http_status << "\n";
-        return std::string();
-    }
-
-    //Cache and return
-    cache_history.emplace(symbol, readBuffer);
-    return readBuffer;
-    
-}
-
 std::string Stock_info::get_eps_forecast(std::string symbol, std::string apiKey){
     //Fetch with libcurl
     CURL* curl;
     CURLcode res;
     std::string readBuffer;
 
-    std::string url = "https://financialmodelingprep.com/api/v3/analyst-estimates/" + symbol + "?apikey=" + apiKey;
+    std::string url = "https://www.alphavantage.co/query?function=EARNINGS_ESTIMATES&symbol=" + symbol + "&apikey=" + apiKey;
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
 
@@ -220,15 +166,14 @@ std::string Stock_info::get_eps_forecast(std::string symbol, std::string apiKey)
 
 Security Stock_info::getStockInfo(std::string symbol) {
     if (auto it = cache_quotes.find(symbol); it != cache_quotes.end()) {
-        return Security(cache_quotes[symbol], cache_history[symbol], cache_eps_forecast[symbol]);
+        return Security(cache_quotes[symbol], cache_eps_forecast[symbol]);
     }
 
     std::string apiKey = API_KEY;
     std::string stock_quote = get_quote(symbol, apiKey);
-    std::string stock_history = get_history(symbol, apiKey);
     std::string eps_forecast = get_eps_forecast(symbol, apiKey);
 
-    return Security(stock_quote, stock_history, eps_forecast);
+    return Security(stock_quote, eps_forecast);
 }
 
 
