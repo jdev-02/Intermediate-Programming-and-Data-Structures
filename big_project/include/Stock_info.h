@@ -8,6 +8,8 @@
 #include <ctime>
 #include "Security.h"
 
+#define API_KEY "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD"
+
 
 // ------------------------------------------------------
 // File: Stock_info.h
@@ -171,7 +173,7 @@ std::string Stock_info::get_eps_forecast(std::string symbol, std::string apiKey)
     CURLcode res;
     std::string readBuffer;
 
-    std::string url = "https://financialmodelingprep.com/api/v3/forecast/" + symbol + "?apikey=" + apiKey;
+    std::string url = "https://financialmodelingprep.com/api/v3/analyst-estimates/" + symbol + "?apikey=" + apiKey;
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
 
@@ -221,7 +223,7 @@ Security Stock_info::getStockInfo(std::string symbol) {
         return Security(cache_quotes[symbol], cache_history[symbol], cache_eps_forecast[symbol]);
     }
 
-    std::string apiKey = "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD";
+    std::string apiKey = API_KEY;
     std::string stock_quote = get_quote(symbol, apiKey);
     std::string stock_history = get_history(symbol, apiKey);
     std::string eps_forecast = get_eps_forecast(symbol, apiKey);
