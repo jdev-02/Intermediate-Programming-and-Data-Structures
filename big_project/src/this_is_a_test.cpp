@@ -5,7 +5,7 @@
 
 int main() {
      Stock_info s;
-     Security aapl = s.getStockInfo("AAPL");
+     Security aapl = Security("AAPL");
      aapl.print();
 
      User_info my_info = User_info("my_user"); 
