@@ -201,6 +201,10 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o: \
  /usr/include/c++/14/bits/node_handle.h \
  /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/ctime \
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/Security.h \
+ /usr/include/c++/14/list /usr/include/c++/14/bits/stl_list.h \
+ /usr/include/c++/14/bits/allocated_ptr.h \
+ /usr/include/c++/14/bits/list.tcc \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/Stock_info.h \
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/src/../include/json.hpp \
  /usr/include/c++/14/algorithm /usr/include/c++/14/bits/stl_algo.h \
  /usr/include/c++/14/bits/algorithmfwd.h \
@@ -224,7 +228,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o: \
  /usr/include/c++/14/bits/unique_ptr.h \
  /usr/include/c++/14/bits/shared_ptr.h \
  /usr/include/c++/14/bits/shared_ptr_base.h \
- /usr/include/c++/14/bits/allocated_ptr.h \
  /usr/include/c++/14/ext/concurrence.h \
  /usr/include/c++/14/bits/shared_ptr_atomic.h \
  /usr/include/c++/14/bits/atomic_base.h \

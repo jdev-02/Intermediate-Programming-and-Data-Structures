@@ -2,7 +2,9 @@
 #define SECURITY_H
 #include <string>
 #include <iostream>
-#include <stdexcept>   // for std::runtime_error
+#include <list>  
+#include <stdexcept> 
+#include "Stock_info.h"
 #include "json.hpp"
 
 using json = nlohmann::json;
@@ -40,7 +42,6 @@ public:
             try {
                 size_t pos = 0;
                 double d = std::stod(s, &pos);
-                // accept leading numeric portion; if you prefer strict parse, check pos == s.size()
                 return d;
             } catch (...) {
                 return 0.0;
@@ -50,7 +51,12 @@ public:
     }
 
     // Constructor that takes JSON for quote and analyst estimates
-    Security(std::string stock_quote, std::string analyst_estimates_json) {
+    Security(std::string ticker) {
+        Stock_info si;
+        std::list<std::string> stock_data = si.getStockInfo(ticker);
+        std::string analyst_estimates_json = stock_data.pop_back();
+        std::string stock_quote = stock_data.pop_back();
+    
         // ---- Quote ----
         json j = json::parse(stock_quote);
         if (!j.is_object()) {
