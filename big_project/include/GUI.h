@@ -16,7 +16,8 @@ o	Stock Value = Annual Dividend / (Required Rate of Return - Dividend Growth Rat
 
 Sources: 
 1. https://www.glfw.org/docs/3.3/group__window.html
-2. https://github.com/ocornut/imgui?tab=readme-ov-file#usage
+2. https://www.glfw.org/docs/3.3/context_guide.html
+3. https://github.com/ocornut/imgui?tab=readme-ov-file#usage
 */
 
 #ifndef GUI_H
@@ -24,11 +25,11 @@ Sources:
 
 #include "User_info.h"
 // ImGui/ImPlot/GLFW includes for GUI rendering
-#include "imgui.h"                               //ImGui API
-#include "imgui_impl_glfw.h"                     //ImGui GLFW backend
-#include "imgui_impl_opengl3.h"                  //ImGui OpenGL3 backend
-#include "implot.h"                              //plotting library
-#include <GLFW/glfw3.h>                          //GLFW windowing system
+#include "../external/imgui/imgui.h"                               //ImGui API
+#include "../external/imgui/imgui_impl_glfw.h"                     //ImGui GLFW backend
+#include "../external/imgui/imgui_impl_opengl3.h"                  //ImGui OpenGL3 backend
+#include "../external/implot/implot.h"                              //plotting library
+#include "../external/glfw/glfw3.h"                               //glfw api
 
 #include <iostream>
 #include <string>
@@ -110,6 +111,26 @@ bool GUI::init() {
 
     //create window and opengl context, data member is pointer to GLFW window
     window = glfwCreateWindow(1200, 800, "Investment Portfolio Projection Tool", NULL, NULL);
+    if (window == NULL) {
+        glfwTerminate();
+        openPopup("Failed to create GLFW window", true);
+        return false;
+    }
+    //make the gl context current per documentation
+    glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);
+    //create implot context and set style for popups
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImPlot::CreateContext();
+    ImGui::StyleColorsDark();
 
+    // Initialize ImGui backends for GLFW + OpenGL3
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init("#version 330");
+
+    return true; //successful init
 }
+
+
 #endif
