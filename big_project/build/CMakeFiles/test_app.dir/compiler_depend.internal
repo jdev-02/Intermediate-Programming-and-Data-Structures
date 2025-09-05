@@ -6,7 +6,11 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Math.h
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Security.h
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Stock_info.h
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Math.h
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Security.h
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Stock_info.h
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/json.hpp
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/user_info.h
  /usr/include/alloca.h
  /usr/include/asm-generic/bitsperlong.h
  /usr/include/asm-generic/errno-base.h
