@@ -35,7 +35,7 @@ public:
 
 	void add_stock(string ticker, Security symbol, int shares, int basis) {
 		//this medthod adds a stock to the user's portfolio so we can do calcs on it
-		portfolio[ticker] = symbol;
+		portfolio.insert({ticker, symbol}); 
 		share_count += shares;
 		cost_basis += basis;
 		total_investment += shares * basis;
