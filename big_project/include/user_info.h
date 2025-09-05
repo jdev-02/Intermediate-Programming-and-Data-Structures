@@ -1,3 +1,7 @@
+#pragma once
+
+#ifndef USER_INFO_H
+#define USER_INFO_H
 /*
 User_info Module:
 •	Parse data from user
@@ -11,9 +15,12 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 #include <iostream>
 #include <string>
 #include <map>
-#include "../include/Stock_info.h"
-#include "../include/Security.h"
-#include "..include/Math.h"
+#include <fstream> //file stream to read csv file from user input
+#include <sstream> //string stream to parse csv
+#include "Stock_info.h"
+#include "Security.h"
+#include "Math.h"
+#include "GUI.h"
 
 #define QUARTERLY_DIVIDEND_MULT 4
 
@@ -22,23 +29,49 @@ using namespace std;
 class User_info {
 private:
 	string username; //input from user
+	string ticker;
 	map<string, Security> portfolio; //map of stock ticker to security instance
 	InvestorMath math; //instance of math class to do calculations on user's portfolio
 	int share_count; //number of shares for each stock in portfolio
 	int cost_basis; //cost basis (average) for each stock in portfolio
-	int total_investment; //multiply sharecount by cost basis for each stock
+	int investment_value; //multiply sharecount by cost basis for each stock
 	int time_horizon; //input from user for investment time horizon (short (2-3 years), medium (4-7 years), long (8+ years
 public:
+
 	User_info(string user) : username(user), share_count(0), cost_basis(0), total_investment(0) {}
 	//constructor for user_info class (based on the username input from the user)
 	//then we add methods to populate the portfolio map and do calculations based on input
+
+	void parseCSV(GUI &gui) {
+		//this method will take the validated csv input from the user (from GUI) and parse it into the data members of this class in order to do calcs
+		//the csvInputBuffer is a char array in GUI, already validated and loaded by the GUI class
+		istringstream requestUserInput(string(gui.csvInputBuffer)); //convert char array to string and then to istringstream for line parsing
+		string line;
+		while (getline(requestUserInput, line)) {
+			stringstream ss(line); //string stream from current line
+			string cell;
+			vector<string> parsedRow;
+			while (getline(ss, cell, ',')) { //for each cell in the row sepaated by commas
+				cell.erase(remove_if(cell.begin(), cell.end(), ::isspace), cell.end()); //remove whitespace from each cell
+				parsedRow.push_back(cell); //push each cell from the row into a vector
+			}
+			//now that we have vectors of each row, we can populate the data members of class - ticker shares owned and cost basis
+			if (parsedRow.size() < 3) continue; //skip incomplete rows, should not happen bc validated in gui class
+			string ticker = parsedRow[0];
+			int share_count = stoi(parsedRow[1]);
+			int cost_basis = stoi(parsedRow[2]);
+			Security symbol(ticker); //instantiate security class which will call api and populate fields from security.h class
+			//add the stock to the user's portfolio using the add_stock method
+			add_stock(ticker, symbol, share_count, cost_basis);
+		}
+	}
 
 	void add_stock(string ticker, Security symbol, int shares, int basis) {
 		//this medthod adds a stock to the user's portfolio so we can do calcs on it
 		portfolio[ticker] = symbol;
 		share_count += shares;
 		cost_basis += basis;
-		total_investment += shares * basis;
+		investment_value += shares * basis;
 	}
 	void calc_portfolio_current_value() {
 		//this method calcs the current value of users portfolio
@@ -56,7 +89,7 @@ public:
 		double currentPriceTotal = 0.0;
 		for (Security& security : portfolio) {
 			epsGrowthRatetotal += security.eps; //eps is field in security class from security.h
-			peRatioTotal += security.pe; //pe is field in security class from security.h
+			peRatioTotal += security.peRatio; //peRatio is field in security class from security.h
 			currentPriceTotal += security.currentPrice; //price is field in security class from security.h
 		}
 		cout << "Peter Lynch PEG value for this current portfolio is: $"
@@ -105,4 +138,7 @@ public:
 		cout << "Dividend Discount Model value for portfolio in " << time_horizon << "years: $"
 			<< math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal, dividendGrowthRateTotal) * time_horizon << endl;
 	}
+	
 };
+
+#endif

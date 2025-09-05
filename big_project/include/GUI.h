@@ -1,3 +1,4 @@
+#pragma once
 /*
 GUI Module:
 •	Requests input from user (tickers and shares owned and cost basis in CSV format for us to parse and process in preparation for simulation)
@@ -13,52 +14,102 @@ o	Intrinsic Value = EPS × (8.5 + 2 × Expected Growth Rate) Key Metrics API "grah
 •	Dividend Discount Model:
 o	Stock Value = Annual Dividend / (Required Rate of Return - Dividend Growth Rate)
 
+Sources: 
+1. https://www.glfw.org/docs/3.3/group__window.html
+2. https://github.com/ocornut/imgui?tab=readme-ov-file#usage
 */
 
 #ifndef GUI_H
 #define GUI_H
 
 #include "User_info.h"
+// ImGui/ImPlot/GLFW includes for GUI rendering
+#include "imgui.h"                               //ImGui API
+#include "imgui_impl_glfw.h"                     //ImGui GLFW backend
+#include "imgui_impl_opengl3.h"                  //ImGui OpenGL3 backend
+#include "implot.h"                              //plotting library
+#include <GLFW/glfw3.h>                          //GLFW windowing system
+
+#include <iostream>
 #include <string>
 #include <vector>
 
+using namespace std;
+
 class GUI {
 private:
+    string username;
     User_info userInfo;
+    GLFWwindow* window; //pointer to the main app window
     int strategyType; //1 for peter lynch, 2 for ben graham, 3 for dividend discount (maybe we can use something else for multiple selections)
 
-    //Helper methods for display
-    void displayWelcomeScreen();
-    void displayMenu();
-    void displayAnalysisResults(const PortfolioAnalysis& analysis);
+    bool portfolioLoaded;        //Tracks whether user has loaded portfolio data successfully
+    //input buffers for user data
+    char usernameBuffer[128] = {}; //char array to store username input from user, will be fed into user_info class
+    char csvInputBuffer[4096] = {};   //character array to store manual CSV input from user
+    char csvFilePath[512] = {};       //character array to store file path for CSV file input
+    string popupMessage;    //string to store messages displayed in popups (error or success)
 
-    //Input handling
-    //string getCSVInput();
-    // getProjectionSelections();
-    //int getStrategySelection();
+    //growth scenarios for 5x/2.5x/1.5x requirement from documentation
+    int selectedScenario;        //index for growth scenario: 0=nothing, 1=1.25x, 2=2.5x, 3=5x growth
+    int projectionYears;         //number of years for growth projections (1-60), 0 means not set
 
 public:
+    friend class User_info;
     GUI();
-    ~GUI() = default;
+    ~GUI();
 
-    //interface methods
-    void run(); //does main loop for gui service (press q to quit or similar)
-    void requestUserInput(); 
-    displayProjections(); //displays projections based on user selection as a popup with 
-    displayVisualGraphs(); //displays graphs based on user selection as a popup
-    displayPopup(displayProjections, displayVisualGraphs); //
-    //Specific display methods
-    void showPerformanceChart();
-    void showRiskAssessment();
-    void showStrategyComparison();
-    void showGrowthProjection();
+    bool init(); //initialize the gui and create window using window var, returns false if fails from api call issue
+    void run(); //main loop to run the gui app (until user exits)
+    void cleanup(); //cleanup and free resources on exit (maybe in destructor)
 
-    // Utility methods
-    void clearScreen(); //do this after the user inputs their data and before the results are displayed
-    void waitForUserInput(); //pauses until user presses a key to continue to display results
-    void displayError(const string& error); //displays error messages in a popup if soemthing in ingest or processing goes wrong
-    void displaySuccess(const string& message); //displays success messages before showing results
+private:
+    //ui methods
+    void requestUserInput(); //request username csv, strategy type, growth scenario multiplier, and projection years to draw graph. this will validate input
+    void displayProjection(); //display numeric projections right below the graph
+    void displayVisualGraphs(); //using implot to draw graph based on calcs from user info methods
+    void displayError(string& err); //displays error based on string passed in
+    void displaySuccess(string& msg); //displays success msg based on string passed in
+
+private:
+    //UI widgets/helpers
+    void showMainWindow();
+    void handleCSVInputSection();
+    void showStrategyControls();
+    void displayProjectionsWindow();
+    void displayGrowthPlotWindow();
+
+    //Analysis helper methods
+    void performPeterLynchAnalysis();
+    void performBenjaminGrahamAnalysis();
+    void performDividendDiscountAnalysis();
+
+    //popup helper methods
+    void openPopup(const string& msg, bool isError = true);
+    void renderPopupIfNeeded();  
 };
 
+//implementation
 
+GUI::GUI() : window(nullptr), userInfo(), strategyType(0), portfolioLoaded(false),
+             selectedScenario(0), projectionYears(0) {}
+
+GUI::~GUI() {
+    cleanup(); //explicit cleanup call for freeing resources
+}
+
+bool GUI::init() {
+    //initalize GLFW
+    if (!glfwInit()) {
+        openPopup("Failed to initialize GLFW", true);
+        return false;
+    }
+    //set opengl 3.3 
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+
+    //create window and opengl context, data member is pointer to GLFW window
+    window = glfwCreateWindow(1200, 800, "Investment Portfolio Projection Tool", NULL, NULL);
+
+}
 #endif
