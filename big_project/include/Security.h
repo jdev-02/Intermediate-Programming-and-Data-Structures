@@ -54,8 +54,16 @@ public:
     Security(std::string ticker) {
         Stock_info si;
         std::list<std::string> stock_data = si.getStockInfo(ticker);
-        std::string analyst_estimates_json = stock_data.pop_back();
-        std::string stock_quote = stock_data.pop_back();
+
+        if (stock_data.size() < 2) {
+            throw std::runtime_error("Stock_info::getStockInfo() did not return both JSON blobs");
+        }
+
+        // If getStockInfo pushed {stock_quote, analyst_estimates_json} in that order:
+        std::string analyst_estimates_json = stock_data.back(); 
+        stock_data.pop_back();
+        std::string stock_quote            = stock_data.back();     
+        stock_data.pop_back();
     
         // ---- Quote ----
         json j = json::parse(stock_quote);

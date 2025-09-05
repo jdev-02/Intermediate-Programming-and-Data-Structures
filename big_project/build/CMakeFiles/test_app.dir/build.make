@@ -97,6 +97,12 @@ test_app: CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o
 test_app: CMakeFiles/test_app.dir/build.make
 test_app: CMakeFiles/test_app.dir/compiler_depend.ts
 test_app: /usr/lib/x86_64-linux-gnu/libcurl.so
+test_app: libimgui.a
+test_app: libimplot.a
+test_app: external/glfw/src/libglfw3.a
+test_app: /usr/lib/x86_64-linux-gnu/libGL.so
+test_app: /usr/lib/x86_64-linux-gnu/librt.a
+test_app: /usr/lib/x86_64-linux-gnu/libm.so
 test_app: CMakeFiles/test_app.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_app.dir/link.txt --verbose=$(VERBOSE)

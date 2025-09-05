@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/test_app.dir/link.d CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o -o test_app  /usr/lib/x86_64-linux-gnu/libcurl.so
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/test_app.dir/link.d CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o -o test_app  /usr/lib/x86_64-linux-gnu/libcurl.so libimgui.a libimplot.a external/glfw/src/libglfw3.a /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/librt.a -lm -ldl

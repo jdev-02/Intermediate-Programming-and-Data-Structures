@@ -15,18 +15,9 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 #include <iostream>
 #include <string>
 #include <map>
-<<<<<<< HEAD
-#include <fstream> //file stream to read csv file from user input
-#include <sstream> //string stream to parse csv
-#include "Stock_info.h"
-#include "Security.h"
-#include "Math.h"
-#include "GUI.h"
-=======
 #include "../include/Stock_info.h"
 #include "../include/Security.h"
 #include "../include/Math.h"
->>>>>>> 2b5c077e47e306b555d79a8f03abdb026c7bc264
 
 #define QUARTERLY_DIVIDEND_MULT 4
 
@@ -93,17 +84,10 @@ public:
 		double epsGrowthRateTotal = 0.0;
 		double peRatioTotal = 0.0;
 		double currentPriceTotal = 0.0;
-<<<<<<< HEAD
-		for (Security& security : portfolio) {
-			epsGrowthRatetotal += security.eps; //eps is field in security class from security.h
-			peRatioTotal += security.peRatio; //peRatio is field in security class from security.h
-			currentPriceTotal += security.currentPrice; //price is field in security class from security.h
-=======
 		for (auto& set : portfolio) {
 			epsGrowthRateTotal += set.second.eps; //eps is field in security class from security.h
 			peRatioTotal += set.second.peRatio; //pe is field in security class from security.h
 			currentPriceTotal += set.second.currentPrice; //price is field in security class from security.h
->>>>>>> 2b5c077e47e306b555d79a8f03abdb026c7bc264
 		}
 		cout << "Peter Lynch PEG value for this current portfolio is: $"
 			<< math.peterLynchPEG(epsGrowthRateTotal, peRatioTotal, currentPriceTotal) << endl;

@@ -366,140 +366,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o: /home/john/local_repository/cs
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h
 
-test_app: /lib/i386-linux-gnu/libffi.so.8 \
-  /lib/i386-linux-gnu/libidn2.so.0 \
-  /lib/i386-linux-gnu/libresolv.so.2 \
-  /lib/i386-linux-gnu/libunistring.so.5 \
-  /lib/i386-linux-gnu/libz.so.1 \
-  /lib/i386-linux-gnu/libzstd.so.1 \
-  /lib/x86_64-linux-gnu/libbrotlicommon.so.1 \
-  /lib/x86_64-linux-gnu/libbrotlidec.so.1 \
-  /lib/x86_64-linux-gnu/libc.so.6 \
-  /lib/x86_64-linux-gnu/libcom_err.so.2 \
-  /lib/x86_64-linux-gnu/libcrypto.so.3 \
-  /lib/x86_64-linux-gnu/libffi.so.8 \
-  /lib/x86_64-linux-gnu/libgmp.so.10 \
-  /lib/x86_64-linux-gnu/libgnutls.so.30 \
-  /lib/x86_64-linux-gnu/libgssapi_krb5.so.2 \
-  /lib/x86_64-linux-gnu/libhogweed.so.6 \
-  /lib/x86_64-linux-gnu/libidn2.so.0 \
-  /lib/x86_64-linux-gnu/libk5crypto.so.3 \
-  /lib/x86_64-linux-gnu/libkeyutils.so.1 \
-  /lib/x86_64-linux-gnu/libkrb5.so.3 \
-  /lib/x86_64-linux-gnu/libkrb5support.so.0 \
-  /lib/x86_64-linux-gnu/liblber.so.2 \
-  /lib/x86_64-linux-gnu/libldap.so.2 \
-  /lib/x86_64-linux-gnu/libm.so.6 \
-  /lib/x86_64-linux-gnu/libmvec.so.1 \
-  /lib/x86_64-linux-gnu/libnettle.so.8 \
-  /lib/x86_64-linux-gnu/libnghttp2.so.14 \
-  /lib/x86_64-linux-gnu/libp11-kit.so.0 \
-  /lib/x86_64-linux-gnu/libpsl.so.5 \
-  /lib/x86_64-linux-gnu/libresolv.so.2 \
-  /lib/x86_64-linux-gnu/librtmp.so.1 \
-  /lib/x86_64-linux-gnu/libsasl2.so.2 \
-  /lib/x86_64-linux-gnu/libssh2.so.1 \
-  /lib/x86_64-linux-gnu/libssl.so.3 \
-  /lib/x86_64-linux-gnu/libtasn1.so.6 \
-  /lib/x86_64-linux-gnu/libunistring.so.5 \
-  /lib/x86_64-linux-gnu/libz.so.1 \
-  /lib/x86_64-linux-gnu/libzstd.so.1 \
-  /lib64/ld-linux-x86-64.so.2 \
-  /usr/lib/x86_64-linux-gnu/Scrt1.o \
-  /usr/lib/x86_64-linux-gnu/crti.o \
-  /usr/lib/x86_64-linux-gnu/crtn.o \
-  /usr/lib/x86_64-linux-gnu/libc.so \
-  /usr/lib/x86_64-linux-gnu/libgcc_s.so.1 \
-  /usr/lib/x86_64-linux-gnu/libm.so \
-  /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
-  /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o \
-  /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a \
-  /usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so \
-  /usr/lib/gcc/x86_64-linux-gnu/14/libstdc++.so \
-  /usr/lib/i386-linux-gnu/libffi.so.8 \
-  /usr/lib/i386-linux-gnu/libidn2.so.0 \
-  /usr/lib/i386-linux-gnu/libresolv.so.2 \
-  /usr/lib/i386-linux-gnu/libunistring.so.5 \
-  /usr/lib/i386-linux-gnu/libz.so.1 \
-  /usr/lib/i386-linux-gnu/libzstd.so.1 \
-  /usr/lib/x86_64-linux-gnu/libc_nonshared.a \
-  /usr/lib/x86_64-linux-gnu/libcurl.so \
-  CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o
-
-
-CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
-
-/usr/lib/x86_64-linux-gnu/libc_nonshared.a:
-
-/usr/lib/i386-linux-gnu/libzstd.so.1:
-
-/usr/lib/i386-linux-gnu/libz.so.1:
-
-/usr/lib/i386-linux-gnu/libidn2.so.0:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:
-
-/usr/lib/x86_64-linux-gnu/libgcc_s.so.1:
-
-/usr/lib/x86_64-linux-gnu/libc.so:
-
-/lib64/ld-linux-x86-64.so.2:
-
-/lib/x86_64-linux-gnu/libunistring.so.5:
-
-/lib/x86_64-linux-gnu/libtasn1.so.6:
-
-/lib/x86_64-linux-gnu/libssl.so.3:
-
-/lib/x86_64-linux-gnu/libssh2.so.1:
-
-/lib/x86_64-linux-gnu/libpsl.so.5:
-
-/lib/x86_64-linux-gnu/libp11-kit.so.0:
-
-/lib/x86_64-linux-gnu/libnghttp2.so.14:
-
-/lib/x86_64-linux-gnu/libldap.so.2:
-
-/lib/x86_64-linux-gnu/liblber.so.2:
-
-/lib/x86_64-linux-gnu/libkrb5support.so.0:
-
-/lib/x86_64-linux-gnu/libkrb5.so.3:
-
-/lib/x86_64-linux-gnu/libkeyutils.so.1:
-
-/lib/x86_64-linux-gnu/libk5crypto.so.3:
-
-/lib/x86_64-linux-gnu/libidn2.so.0:
-
-/lib/x86_64-linux-gnu/libgnutls.so.30:
-
-/lib/x86_64-linux-gnu/libgmp.so.10:
-
-/lib/x86_64-linux-gnu/libcrypto.so.3:
-
-/lib/x86_64-linux-gnu/libcom_err.so.2:
-
-/lib/x86_64-linux-gnu/libbrotlidec.so.1:
-
-/lib/x86_64-linux-gnu/libbrotlicommon.so.1:
-
-/lib/i386-linux-gnu/libzstd.so.1:
-
-/lib/i386-linux-gnu/libz.so.1:
-
-/lib/i386-linux-gnu/libunistring.so.5:
-
-/lib/i386-linux-gnu/libresolv.so.2:
-
-/lib/i386-linux-gnu/libidn2.so.0:
-
-/lib/i386-linux-gnu/libffi.so.8:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h:
 
@@ -659,8 +525,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 
 /usr/include/c++/14/bits/stl_iterator_base_types.h:
 
-/usr/lib/x86_64-linux-gnu/crti.o:
-
 /usr/include/c++/14/bits/stl_heap.h:
 
 /usr/include/c++/14/functional:
@@ -672,8 +536,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 /usr/include/c++/14/bits/requires_hosted.h:
 
 /usr/include/c++/14/iostream:
-
-/lib/x86_64-linux-gnu/libresolv.so.2:
 
 /usr/include/strings.h:
 
@@ -711,8 +573,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 
 /usr/include/c++/14/bits/memory_resource.h:
 
-/lib/x86_64-linux-gnu/libffi.so.8:
-
 /usr/include/c++/14/bits/mask_array.h:
 
 /usr/include/c++/14/ext/alloc_traits.h:
@@ -728,8 +588,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/include/c++/14/bits/locale_conv.h:
-
-/lib/x86_64-linux-gnu/libm.so.6:
 
 /usr/include/c++/14/iosfwd:
 
@@ -775,10 +633,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 
 /usr/include/c++/14/bits/list.tcc:
 
-/usr/lib/x86_64-linux-gnu/crtn.o:
-
-/lib/x86_64-linux-gnu/libnettle.so.8:
-
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
 /usr/include/c++/14/bits/hash_bytes.h:
@@ -804,8 +658,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 /usr/include/c++/14/streambuf:
 
 /usr/include/c++/14/bits/stl_tree.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so:
 
 /usr/include/c++/14/bits/chrono.h:
 
@@ -905,27 +757,17 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 
 /usr/include/c++/14/bits/functexcept.h:
 
-/usr/lib/x86_64-linux-gnu/libcurl.so:
-
-/lib/x86_64-linux-gnu/libz.so.1:
-
 /usr/include/pthread.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/libstdc++.so:
 
 /usr/include/c++/14/algorithm:
 
 /usr/include/c++/14/istream:
-
-/lib/x86_64-linux-gnu/libmvec.so.1:
 
 /usr/include/stdlib.h:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
 /usr/include/x86_64-linux-gnu/asm/socket.h:
-
-/usr/lib/x86_64-linux-gnu/libm.so:
 
 /usr/include/c++/14/ios:
 
@@ -942,8 +784,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 /usr/include/c++/14/bits/charconv.h:
 
 /usr/include/c++/14/bits/basic_ios.tcc:
-
-/lib/x86_64-linux-gnu/libc.so.6:
 
 /usr/include/c++/14/pstl/glue_memory_defs.h:
 
@@ -1004,8 +844,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
 /usr/include/c++/14/bits/exception_defines.h:
-
-/lib/x86_64-linux-gnu/libgssapi_krb5.so.2:
 
 /usr/include/x86_64-linux-gnu/curl/mprintf.h:
 
@@ -1105,8 +943,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 
 /usr/include/c++/14/map:
 
-/lib/x86_64-linux-gnu/libhogweed.so.6:
-
 /usr/include/c++/14/ext/concurrence.h:
 
 /usr/include/c++/14/ext/string_conversions.h:
@@ -1114,8 +950,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 /usr/include/c++/14/ext/type_traits.h:
 
 /usr/include/limits.h:
-
-/usr/lib/i386-linux-gnu/libunistring.so.5:
 
 /usr/include/c++/14/forward_list:
 
@@ -1165,21 +999,15 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 
 /usr/include/c++/14/sstream:
 
-/lib/x86_64-linux-gnu/libzstd.so.1:
-
 /usr/include/c++/14/string:
 
 /usr/include/c++/14/bits/move.h:
 
 /usr/include/c++/14/tr1/ell_integral.tcc:
 
-/usr/lib/i386-linux-gnu/libffi.so.8:
-
 /usr/include/x86_64-linux-gnu/c++/14/bits/messages_members.h:
 
 /usr/include/c++/14/tr1/exp_integral.tcc:
-
-/usr/lib/x86_64-linux-gnu/Scrt1.o:
 
 /usr/include/c++/14/typeinfo:
 
@@ -1215,8 +1043,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 
 /usr/include/c++/14/unordered_map:
 
-/usr/lib/i386-linux-gnu/libresolv.so.2:
-
 /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
@@ -1230,8 +1056,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 /usr/include/c++/14/utility:
 
 /usr/include/ctype.h:
-
-/lib/x86_64-linux-gnu/librtmp.so.1:
 
 /usr/include/linux/errno.h:
 
@@ -1248,8 +1072,6 @@ CMakeFiles/test_app.dir/src/this_is_a_test.cpp.o:
 /usr/include/x86_64-linux-gnu/asm/sockios.h:
 
 /usr/include/math.h:
-
-/lib/x86_64-linux-gnu/libsasl2.so.2:
 
 /usr/include/c++/14/bits/allocator.h:
 

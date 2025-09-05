@@ -1,17 +1,17 @@
 #pragma once
 /*
 GUI Module:
-•	Requests input from user (tickers and shares owned and cost basis in CSV format for us to parse and process in preparation for simulation)
-•	Presents user with a request for which projections it would like to be performed and which investor strategy should evaluate and rank their portfolio on
-•	Display visual graphs and projections based on user selection
+ï¿½	Requests input from user (tickers and shares owned and cost basis in CSV format for us to parse and process in preparation for simulation)
+ï¿½	Presents user with a request for which projections it would like to be performed and which investor strategy should evaluate and rank their portfolio on
+ï¿½	Display visual graphs and projections based on user selection
 
-•	Each of the investor filters will provide you with an analysis of the current portfolio ranked by the primary formulas used to evaluate securities and returns a grade. Separately, we will be implementing the graph to show conditional market performance if each equity you hold grows by 5x/2.5x/1.5x over the time period you hold it for.
-•	Peter Lynch's PEG Ratio:
-o	Fair Value = (EPS Growth Rate / P/E Ratio) × Current Price If PEG < 1.0 = undervalued, > 1.0 = overvalued X% of users stocks are undervalued/overvalued based on this metric.
-•	Ex from API docs: "eps": 1.26, "epsEstimated": 1.19,
-•	Benjamin Graham's Intrinsic Value:
-o	Intrinsic Value = EPS × (8.5 + 2 × Expected Growth Rate) Key Metrics API "grahamNumber": 20.801963754945305,
-•	Dividend Discount Model:
+ï¿½	Each of the investor filters will provide you with an analysis of the current portfolio ranked by the primary formulas used to evaluate securities and returns a grade. Separately, we will be implementing the graph to show conditional market performance if each equity you hold grows by 5x/2.5x/1.5x over the time period you hold it for.
+ï¿½	Peter Lynch's PEG Ratio:
+o	Fair Value = (EPS Growth Rate / P/E Ratio) ï¿½ Current Price If PEG < 1.0 = undervalued, > 1.0 = overvalued X% of users stocks are undervalued/overvalued based on this metric.
+ï¿½	Ex from API docs: "eps": 1.26, "epsEstimated": 1.19,
+ï¿½	Benjamin Graham's Intrinsic Value:
+o	Intrinsic Value = EPS ï¿½ (8.5 + 2 ï¿½ Expected Growth Rate) Key Metrics API "grahamNumber": 20.801963754945305,
+ï¿½	Dividend Discount Model:
 o	Stock Value = Annual Dividend / (Required Rate of Return - Dividend Growth Rate)
 
 Sources: 
@@ -23,13 +23,25 @@ Sources:
 #ifndef GUI_H
 #define GUI_H
 
-#include "User_info.h"
+#include "user_info.h"
 // ImGui/ImPlot/GLFW includes for GUI rendering
-#include "../external/imgui/imgui.h"                               //ImGui API
-#include "../external/imgui/imgui_impl_glfw.h"                     //ImGui GLFW backend
-#include "../external/imgui/imgui_impl_opengl3.h"                  //ImGui OpenGL3 backend
-#include "../external/implot/implot.h"                              //plotting library
-#include "../external/glfw/glfw3.h"                               //glfw api
+//#include "../external/imgui/imgui.h"                               //ImGui API
+//#include "../external/imgui/imgui_impl_glfw.h"                     //ImGui GLFW backend
+//#include "../external/imgui/imgui_impl_opengl3.h"                  //ImGui OpenGL3 backend
+//#include "../external/implot/implot.h"                              //plotting library
+//#include "../external/glfw/glfw3.h"                               //glfw api
+
+// ImGui/ImPlot/GLFW includes for GUI rendering
+#include "../external/imgui/imgui.h"
+#include "../external/imgui/backends/imgui_impl_glfw.h"
+#include "../external/imgui/backends/imgui_impl_opengl3.h"
+// Include the loader helper BEFORE using any GL headers
+#include "../external/imgui/backends/imgui_impl_opengl3_loader.h"
+
+#include "../external/implot/implot.h"
+
+#include <GLFW/glfw3.h>   // GLFW installs headers under GLFW/
+
 
 #include <iostream>
 #include <string>

@@ -6,7 +6,7 @@
 #include <curl/curl.h>
 #include <unordered_map>
 #include <ctime>
-#include "Security.h"
+#include <list>
 
 //#define API_KEY "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD"
 //#define API_KEY "g9C8KiSXIyPVKRu6rTM39qL3BxQDUKHR"
@@ -33,7 +33,7 @@ class Stock_info
         Stock_info(){};
 
         // Returns an instance of class Security
-        Security getStockInfo(std::string symbol);
+        std::list<std::string> getStockInfo(std::string symbol);
 
         // Method for printing the current cache
         void printCache() const;
@@ -164,16 +164,25 @@ std::string Stock_info::get_eps_forecast(std::string symbol, std::string apiKey)
     return readBuffer;
 }
 
-Security Stock_info::getStockInfo(std::string symbol) {
+std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
+    std::list<std::string> retList;
+
+    // Check the cache first
     if (auto it = cache_quotes.find(symbol); it != cache_quotes.end()) {
-        return Security(cache_quotes[symbol], cache_eps_forecast[symbol]);
+        retList.push_back(cache_quotes[symbol]);
+        retList.push_back(cache_eps_forecast[symbol]);
+        return retList;
     }
 
+    // Otherwise fetch fresh data
     std::string apiKey = API_KEY;
     std::string stock_quote = get_quote(symbol, apiKey);
     std::string eps_forecast = get_eps_forecast(symbol, apiKey);
 
-    return Security(stock_quote, eps_forecast);
+    retList.push_back(stock_quote);
+    retList.push_back(eps_forecast);
+
+    return retList;
 }
 
 
