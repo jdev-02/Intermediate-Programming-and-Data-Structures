@@ -31,21 +31,22 @@ Sources:
 //#include "../external/implot/implot.h"                              //plotting library
 //#include "../external/glfw/glfw3.h"                               //glfw api
 
-// ImGui/ImPlot/GLFW includes for GUI rendering
+//ImGui/ImPlot/GLFW includes for GUI rendering
 #include "../external/imgui/imgui.h"
 #include "../external/imgui/backends/imgui_impl_glfw.h"
 #include "../external/imgui/backends/imgui_impl_opengl3.h"
-// Include the loader helper BEFORE using any GL headers
+//Include the loader helper BEFORE using any GL headers
 #include "../external/imgui/backends/imgui_impl_opengl3_loader.h"
 
 #include "../external/implot/implot.h"
 
-#include <GLFW/glfw3.h>   // GLFW installs headers under GLFW/
+#include <GLFW/glfw3.h>   //GLFW installs headers under GLFW/
 
 
 #include <iostream>
 #include <string>
 #include <vector>
+#include <conio.h> //For getch() on Windows
 
 using namespace std;
 
@@ -144,5 +145,16 @@ bool GUI::init() {
     return true; //successful init
 }
 
-
+void GUI::run() {
+    bool running = true;
+    while (running) {
+        if (_kbhit()) { //Check if a key has been pressed
+            char c = _getch(); //Get the character
+            if (c == 27) { //ASCII value for ESC is 27
+                running = false;
+            }
+        }
+    }
+    }
+}
 #endif
