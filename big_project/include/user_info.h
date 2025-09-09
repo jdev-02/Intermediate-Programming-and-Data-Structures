@@ -20,6 +20,32 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 #include "../include/Math.h"
 
 #define QUARTERLY_DIVIDEND_MULT 4
+#define CSV_BUF 4096
+
+
+using namespace std;
+
+/*
+User_info Module:
+�	Parse data from user
+�	Read in and store stock ticker as key and an instance of the class Security as the value (where each field responsible for calculating the users selected investment calculation is populated either by cache or api upon instantiation)
+�	Portfolio management and user data storage
+�	Calculation orchestration
+�	Interface between GUI and data processing modules
+o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% of users stocks are undervalued/overvalued based on this metric. (use the value from math library method)
+*/
+
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include "../include/Stock_info.h"
+#include "../include/Security.h"
+#include "../include/Math.h"
+
+#define QUARTERLY_DIVIDEND_MULT 4
 
 using namespace std;
 
@@ -29,15 +55,20 @@ private:
 	string ticker;
 	map<string, Security> portfolio; //map of stock ticker to security instance
 	InvestorMath math; //instance of math class to do calculations on user's portfolio
-	int share_count; //number of shares for each stock in portfolio
-	int cost_basis; //cost basis (average) for each stock in portfolio
+	map<string, int> shareCount; //number of shares for each stock in portfolio
+	map<string, double> costBasis; //cost basis (average) for each stock in portfolio
 	int investment_value; //multiply sharecount by cost basis for each stock
-	int time_horizon; //input from user for investment time horizon (short (2-3 years), medium (4-7 years), long (8+ years
+	int time_horizon; //input from user for investment time horizon (short (2-3 years), medium (4-7 years), long (8+ years)
 public:
+	char csvInputBuffer[CSV_BUF] = {};
 
-	User_info(string user) : username(user), share_count(0), cost_basis(0), total_investment(0) {}
+	User_info(string user) : username(user), ticker(""), investment_value(0), time_horizon(0) {}
 	//constructor for user_info class (based on the username input from the user)
 	//then we add methods to populate the portfolio map and do calculations based on input
+
+	void setUName(string user) {
+		username = user;
+	}
 
 	void parseCSV(GUI &gui) {
 		//this method will take the validated csv input from the user (from GUI) and parse it into the data members of this class in order to do calcs
@@ -56,25 +87,24 @@ public:
 			if (parsedRow.size() < 3) continue; //skip incomplete rows, should not happen bc validated in gui class
 			string ticker = parsedRow[0];
 			int share_count = stoi(parsedRow[1]);
-			int cost_basis = stoi(parsedRow[2]);
+			double cost_basis = stod(parsedRow[2]);
 			Security symbol(ticker); //instantiate security class which will call api and populate fields from security.h class
 			//add the stock to the user's portfolio using the add_stock method
 			add_stock(ticker, symbol, share_count, cost_basis);
 		}
 	}
 
-	void add_stock(string ticker, Security symbol, int shares, int basis) {
+	void add_stock(string ticker, Security symbol, int shares, double basis) {
 		//this medthod adds a stock to the user's portfolio so we can do calcs on it
-		portfolio.insert({ticker, symbol}); 
-		share_count += shares;
-		cost_basis += basis;
-		investment_value += shares * basis;
+		portfolio[ticker] = symbol;
+		shareCount[ticker] = shares;
+		costBasis[ticker] = basis;
 	}
 	void calc_portfolio_current_value() {
 		//this method calcs the current value of users portfolio
 		double current_value = 0.0;
 		for (auto& sets : portfolio) {
-			current_value += sets.second.currentPrice * share_count; //price is a field in Security class from security.h
+			current_value += sets.second.currentPrice * shareCount[sets.first]; //price is a field in Security class from security.h
 		}
 		cout << "Current value of portfolio: $" << current_value << endl; //call this in the gui 
 	}
@@ -119,11 +149,11 @@ public:
 			double annualDividendPerShare = set.second.quarterlyDividendPerShare * QUARTERLY_DIVIDEND_MULT;
 
 			//Calculate total annual dividend for user's share count in this security
-			annualDividendTotal += annualDividendPerShare * share_count;
+			annualDividendTotal += annualDividendPerShare * shareCount[set.first];
 
 			//alternative calculation using EPS and payout ratio (assuming 50% payout ratio for simplicity)
 			// This line calculates estimated annual dividend based on earnings
-			double estimatedAnnualDividend = set.second.eps * 0.5 * share_count;
+			double estimatedAnnualDividend = set.second.eps * 0.5 * shareCount[set.first];
 			//note: You might want to use this as a comparison or fallback if annualDividendPerShare is not available
 
 			requiredRateofReturnTotal += 0.07; //assuming 7% required rate of return for simplicity
@@ -134,8 +164,10 @@ public:
 		//call this ins the gui and then use the starting value and ending value to draw the trend line
 		cout << "Dividend Discount Model value for portfolio in " << time_horizon << "years: $"
 			<< math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal, dividendGrowthRateTotal) * time_horizon << endl;
-	}
+	}	
 	
 };
+
+#endif
 
 #endif
