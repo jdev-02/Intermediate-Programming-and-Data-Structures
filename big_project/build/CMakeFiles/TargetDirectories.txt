@@ -1,6 +1,7 @@
 /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/imgui.dir
 /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/implot.dir
 /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/test_app.dir
+/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/runSecurityTests.dir
 /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/test.dir
 /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/edit_cache.dir
 /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/rebuild_cache.dir

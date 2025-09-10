@@ -1,0 +1,29 @@
+Start testing: Sep 09 20:56 PDT
+----------------------------------------------------------
+1/1 Testing: Security.ParsesData_TEST
+1/1 Test: Security.ParsesData_TEST
+Command: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/runSecurityTests" "--gtest_filter=Security.ParsesData_TEST" "--gtest_also_run_disabled_tests"
+Directory: /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build
+"Security.ParsesData_TEST" start time: Sep 09 20:56 PDT
+Output:
+----------------------------------------------------------
+Note: Google Test filter = Security.ParsesData_TEST
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Security
+[ RUN      ] Security.ParsesData_TEST
+[       OK ] Security.ParsesData_TEST (13 ms)
+[----------] 1 test from Security (13 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (13 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Security.ParsesData_TEST" end time: Sep 09 20:56 PDT
+"Security.ParsesData_TEST" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 09 20:56 PDT

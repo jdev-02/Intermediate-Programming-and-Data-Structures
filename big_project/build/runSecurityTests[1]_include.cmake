@@ -1,0 +1,5 @@
+if(EXISTS "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/runSecurityTests[1]_tests.cmake")
+  include("/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/runSecurityTests[1]_tests.cmake")
+else()
+  add_test(runSecurityTests_NOT_BUILT runSecurityTests_NOT_BUILT)
+endif()

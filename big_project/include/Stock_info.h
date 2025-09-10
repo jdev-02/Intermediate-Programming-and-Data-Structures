@@ -14,6 +14,7 @@
 //#define API_KEY "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD"
 //#define API_KEY "g9C8KiSXIyPVKRu6rTM39qL3BxQDUKHR"
 #define API_KEY "TWTLPDSLI1D8354E"
+#define CACHE_TIME_OUT 10 * 24 * 60 * 60 // 10 days
 
 
 // ------------------------------------------------------
@@ -54,10 +55,10 @@ class Stock_info
             std::time_t timestamp{}; // seconds since epoch
         };
 
-        static std::unordered_map<std::string, CacheEntry> s_pcache; // symbol -> entry
+        inline static std::unordered_map<std::string, CacheEntry> s_pcache; // symbol -> entry
         inline static bool s_cache_loaded = false;
         inline static const char* s_cache_file = "stock_cache.json";
-        inline static const std::time_t s_max_age_seconds = 10 * 24 * 60 * 60; // 10 days
+        inline static const std::time_t s_max_age_seconds = CACHE_TIME_OUT;
 
         // Helper: load persistent cache from disk once
         static void load_persistent_cache() {
@@ -279,9 +280,11 @@ std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
 
 
 void Stock_info::printCache() const {
+    
     // Print persistent cache summary
+    const std::time_t now = std::time(nullptr);
     for (const auto& [sym, e] : s_pcache) {
-        std::cout << sym << " => {timestamp: " << static_cast<long long>(e.timestamp)
+        std::cout << sym << " => {Age: " << (now - e.timestamp)/(24 * 60 * 60) << " days"
                   << ", quote_len: " << e.quote.size()
                   << ", eps_len: " << e.eps_forecast.size() << "}\n";
     }

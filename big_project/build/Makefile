@@ -211,6 +211,19 @@ test_app/fast:
 .PHONY : test_app/fast
 
 #=============================================================================
+# Target rules for targets named runSecurityTests
+
+# Build rule for target.
+runSecurityTests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 runSecurityTests
+.PHONY : runSecurityTests
+
+# fast build rule for target.
+runSecurityTests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runSecurityTests.dir/build.make CMakeFiles/runSecurityTests.dir/build
+.PHONY : runSecurityTests/fast
+
+#=============================================================================
 # Target rules for targets named uninstall
 
 # Build rule for target.
@@ -513,6 +526,30 @@ src/this_is_a_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_app.dir/build.make CMakeFiles/test_app.dir/src/this_is_a_test.cpp.s
 .PHONY : src/this_is_a_test.cpp.s
 
+tests/security_tests.o: tests/security_tests.cpp.o
+.PHONY : tests/security_tests.o
+
+# target to build an object file
+tests/security_tests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runSecurityTests.dir/build.make CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o
+.PHONY : tests/security_tests.cpp.o
+
+tests/security_tests.i: tests/security_tests.cpp.i
+.PHONY : tests/security_tests.i
+
+# target to preprocess a source file
+tests/security_tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runSecurityTests.dir/build.make CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.i
+.PHONY : tests/security_tests.cpp.i
+
+tests/security_tests.s: tests/security_tests.cpp.s
+.PHONY : tests/security_tests.s
+
+# target to generate assembly for a file
+tests/security_tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runSecurityTests.dir/build.make CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.s
+.PHONY : tests/security_tests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -531,6 +568,7 @@ help:
 	@echo "... glfw"
 	@echo "... imgui"
 	@echo "... implot"
+	@echo "... runSecurityTests"
 	@echo "... test_app"
 	@echo "... external/imgui/backends/imgui_impl_glfw.o"
 	@echo "... external/imgui/backends/imgui_impl_glfw.i"
@@ -565,6 +603,9 @@ help:
 	@echo "... src/this_is_a_test.o"
 	@echo "... src/this_is_a_test.i"
 	@echo "... src/this_is_a_test.s"
+	@echo "... tests/security_tests.o"
+	@echo "... tests/security_tests.i"
+	@echo "... tests/security_tests.s"
 .PHONY : help
 
 

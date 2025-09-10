@@ -12,7 +12,6 @@ int main() {
     Security goog = Security("GOOG");   // Alphabet (Class C)
     Security amzn = Security("AMZN");   // Amazon
     Security meta = Security("META");   // Meta Platforms
-    //Security brk = Security("BRK.B");   // Berkshire Hathaway (Class B)
     Security llnl = Security("LLY");    // Eli Lilly
     Security tsla = Security("TSLA");   // Tesla
 
@@ -25,7 +24,6 @@ int main() {
     goog.print();
     amzn.print();
     meta.print();
-    //brk.print();
     llnl.print();
     tsla.print();
 
