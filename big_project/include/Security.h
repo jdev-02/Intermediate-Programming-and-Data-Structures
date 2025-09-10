@@ -74,10 +74,10 @@ public:
 
         symbol                       = obj["Symbol"].get<std::string>();
         name                         = obj["Name"].get<std::string>();
-        currentPrice                 = std::stod(obj["50DayMovingAverage"].get<std::string>());
-        eps                          = std::stod(obj["EPS"].get<std::string>());
-        peRatio                      = std::stod(obj["PERatio"].get<std::string>());
-        quarterlyDividendPerShare    = std::stod(obj["DividendPerShare"].get<std::string>());
+        currentPrice                 = to_double(obj["50DayMovingAverage"].get<std::string>());
+        eps                          = to_double(obj["EPS"].get<std::string>());
+        peRatio                      = to_double(obj["PERatio"].get<std::string>());
+        quarterlyDividendPerShare    = to_double(obj["DividendPerShare"].get<std::string>());
 
         // ---- Analyst Estimates ----
         json je = json::parse(analyst_estimates_json);

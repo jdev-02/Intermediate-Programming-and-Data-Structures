@@ -7,6 +7,9 @@
 #include <unordered_map>
 #include <ctime>
 #include <list>
+#include <fstream>
+#include <filesystem>
+#include "json.hpp"
 
 //#define API_KEY "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD"
 //#define API_KEY "g9C8KiSXIyPVKRu6rTM39qL3BxQDUKHR"
@@ -43,6 +46,67 @@ class Stock_info
         // keys are strings and values are json results from API
         std::unordered_map<std::string, std::string> cache_quotes;
         std::unordered_map<std::string, std::string> cache_eps_forecast;
+
+        // Persistent cache (shared across instances)
+        struct CacheEntry {
+            std::string quote;
+            std::string eps_forecast;
+            std::time_t timestamp{}; // seconds since epoch
+        };
+
+        static std::unordered_map<std::string, CacheEntry> s_pcache; // symbol -> entry
+        inline static bool s_cache_loaded = false;
+        inline static const char* s_cache_file = "stock_cache.json";
+        inline static const std::time_t s_max_age_seconds = 10 * 24 * 60 * 60; // 10 days
+
+        // Helper: load persistent cache from disk once
+        static void load_persistent_cache() {
+            if (s_cache_loaded) return;
+            s_cache_loaded = true;
+            std::ifstream in(s_cache_file);
+            if (!in.good()) return; // nothing to load
+            try {
+                nlohmann::json j;
+                in >> j;
+                if (!j.is_object()) return;
+                for (auto it = j.begin(); it != j.end(); ++it) {
+                    if (!it.value().is_object()) continue;
+                    CacheEntry e{};
+                    const auto& o = it.value();
+                    if (o.contains("quote") && o["quote"].is_string()) e.quote = o["quote"].get<std::string>();
+                    if (o.contains("eps_forecast") && o["eps_forecast"].is_string()) e.eps_forecast = o["eps_forecast"].get<std::string>();
+                    if (o.contains("timestamp") && (o["timestamp"].is_number_integer() || o["timestamp"].is_number_unsigned()))
+                        e.timestamp = static_cast<std::time_t>(o["timestamp"].get<long long>());
+                    if (!it.key().empty()) {
+                        s_pcache[it.key()] = std::move(e);
+                    }
+                }
+            } catch (...) {
+                
+            }
+        }
+
+        // Helper: save persistent cache to disk
+        static void save_persistent_cache() {
+            nlohmann::json j = nlohmann::json::object();
+            for (const auto& [sym, e] : s_pcache) {
+                j[sym] = {
+                    {"quote", e.quote},
+                    {"eps_forecast", e.eps_forecast},
+                    {"timestamp", static_cast<long long>(e.timestamp)}
+                };
+            }
+            std::ofstream out(s_cache_file);
+            if (out.good()) {
+                out << j.dump(2);
+            }
+        }
+
+        static bool is_fresh(const CacheEntry& e) {
+            const std::time_t now = std::time(nullptr);
+            if (e.timestamp == 0) return false;
+            return (now - e.timestamp) <= s_max_age_seconds;
+        }
 
         //Methods for calling the API
         std::string get_quote(std::string symbol, std::string apiKey);
@@ -108,8 +172,7 @@ std::string Stock_info::get_quote(std::string symbol, std::string apiKey){
         return std::string();
     }
 
-    //Cache and return
-    cache_quotes.emplace(symbol, readBuffer);
+    // No direct persistent update here; handled by getStockInfo
     return readBuffer;
 }
 
@@ -159,19 +222,24 @@ std::string Stock_info::get_eps_forecast(std::string symbol, std::string apiKey)
         return std::string();
     }
 
-    //Cache and return
-    cache_eps_forecast.emplace(symbol, readBuffer);
+    // No direct persistent update here; handled by getStockInfo
     return readBuffer;
 }
 
 std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
     std::list<std::string> retList;
 
-    // Check the cache first
-    if (auto it = cache_quotes.find(symbol); it != cache_quotes.end()) {
-        retList.push_back(cache_quotes[symbol]);
-        retList.push_back(cache_eps_forecast[symbol]);
-        return retList;
+    // Ensure persistent cache is loaded
+    load_persistent_cache();
+
+    // Check persistent cache first
+    if (auto it = s_pcache.find(symbol); it != s_pcache.end()) {
+        const CacheEntry& e = it->second;
+        if (is_fresh(e) && !e.quote.empty() && !e.eps_forecast.empty()) {
+            retList.push_back(e.quote);
+            retList.push_back(e.eps_forecast);
+            return retList;
+        }
     }
 
     // Otherwise fetch fresh data
@@ -179,17 +247,43 @@ std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
     std::string stock_quote = get_quote(symbol, apiKey);
     std::string eps_forecast = get_eps_forecast(symbol, apiKey);
 
+    // If fetch succeeded, update persistent cache and return
+    if (!stock_quote.empty() && !eps_forecast.empty()) {
+        CacheEntry e;
+        e.quote = stock_quote;
+        e.eps_forecast = eps_forecast;
+        e.timestamp = std::time(nullptr);
+        s_pcache[symbol] = std::move(e);
+        save_persistent_cache();
+
+        retList.push_back(stock_quote);
+        retList.push_back(eps_forecast);
+        return retList;
+    }
+
+    // If fetch failed but we have any cached data (even stale), use it as fallback
+    if (auto it = s_pcache.find(symbol); it != s_pcache.end()) {
+        const CacheEntry& e = it->second;
+        if (!e.quote.empty() && !e.eps_forecast.empty()) {
+            retList.push_back(e.quote);
+            retList.push_back(e.eps_forecast);
+            return retList;
+        }
+    }
+
+    // Last resort: return whatever we got (may be empty strings)
     retList.push_back(stock_quote);
     retList.push_back(eps_forecast);
-
     return retList;
 }
 
 
 void Stock_info::printCache() const {
-    //prints the current cache which is full of json strings of symbol and their associated data)
-    for (const auto& [sym, json] : cache_quotes) {
-        std::cout << sym << " => " << json << "\n";
+    // Print persistent cache summary
+    for (const auto& [sym, e] : s_pcache) {
+        std::cout << sym << " => {timestamp: " << static_cast<long long>(e.timestamp)
+                  << ", quote_len: " << e.quote.size()
+                  << ", eps_len: " << e.eps_forecast.size() << "}\n";
     }
 }
 
