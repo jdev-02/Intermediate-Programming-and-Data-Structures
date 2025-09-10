@@ -284,7 +284,7 @@ void Stock_info::printCache() const {
     // Print persistent cache summary
     const std::time_t now = std::time(nullptr);
     for (const auto& [sym, e] : s_pcache) {
-        std::cout << sym << " => {Age: " << (now - e.timestamp)/(24 * 60 * 60) << " days"
+        std::cout << sym << " => {Age: " << (now - e.timestamp)/(24.0 * 60.0 * 60.0) << " days"
                   << ", quote_len: " << e.quote.size()
                   << ", eps_len: " << e.eps_forecast.size() << "}\n";
     }
