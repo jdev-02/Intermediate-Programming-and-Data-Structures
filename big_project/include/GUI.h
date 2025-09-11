@@ -104,7 +104,6 @@ private:
     void showMainWindow();
     void handleCSVInputSection();
     void showStrategyControls();
-    void displayProjectionsWindow();
     void displayGrowthPlotWindow();
 
     //Analysis helper methods
@@ -119,16 +118,16 @@ private:
 
 //implementation
 
-GUI::GUI() : window(nullptr), userInfo(), strategyType(0), portfolioLoaded(false),
+inline GUI::GUI() : window(nullptr), userInfo(), strategyType(0), portfolioLoaded(false),
              selectedScenario(0), projectionYears(0) {
 
 }
 
-GUI::~GUI() {
+inline GUI::~GUI() {
     cleanup(); //explicit cleanup call for freeing resources
 }
 
-bool GUI::init() {
+inline bool GUI::init() {
     //initalize GLFW
     if (!glfwInit()) {
         openPopup("Failed to initialize GLFW", true);
@@ -163,7 +162,7 @@ bool GUI::init() {
     return true; //successful init
 }
 
-void GUI::run() {
+inline void GUI::run() {
     if (!window) {
         return 2; //window not initliazed
     }
@@ -197,7 +196,7 @@ void GUI::run() {
     }
 }
 
-void GUI::cleanup() {
+inline void GUI::cleanup() {
     if (window) {
         //shutdown imgui in reverse order of init process
         ImGui_ImplGlfw_Shutdown(); //free opengl resources
@@ -211,13 +210,13 @@ void GUI::cleanup() {
     glfwTerminate(); //shutdown glfw lib resources
 }
 
-void GUI::requestUserInput() {
+inline void GUI::requestUserInput() {
     showMainWindow();
     handleCSVInputSection(); //handle portfolio data section
     showStrategyControls(); //shows strategy options and descriptions
 }
 
-void GUI::showMainWindow() {
+inline void GUI::showMainWindow() {
     ImGui::Begin("Portfolio Input and Configuration"); // main input windwo for user
     ImGui::Text("Investment Portfolio Projection Tool");
     ImGui::Separator(); //adds a visual separator from imgui lib
@@ -240,7 +239,7 @@ void GUI::showMainWindow() {
     ImGui::End(); //closes the main window rendering
 }
 
-void GUI::handleCSVInputSection() {
+inline void GUI::handleCSVInputSection() {
     ImGui::Begin("-----CSV Portfolio Data Input-----"); //create csv input window
     //file path input
     ImGui::Text("CSV File Path:");
@@ -257,7 +256,7 @@ void GUI::handleCSVInputSection() {
                 string fileContents((ifstreambuf_iterator<char>(file)), istreambuf_iterator<char>());
                 //now validate for at least one valid line
                 bool validstate = false;
-                istringstream iss(fileContents) ; //create stringstream with the filecontents as we will pass contents to userinfo
+                istringstream iss(fileContents); //create stringstream with the filecontents as we will pass contents to userinfo
                 string line;
                 while (getline(iss, line)) {
                     //while theres lines in the file contents
@@ -275,7 +274,7 @@ void GUI::handleCSVInputSection() {
                         strncpy(csvInputBuffer, fileContents.c_str(), CSV_BUF - 1); //minus one on buff for null char
                         csvInputBuffer[CSV_BUF - 1] = '\0'; //mannually null terminate to prevent buffer overflow
                         strncpy(userInfo.csvInputBuffer, csvInputBuffer, CSV_BUF - 1); //this will copy from this input buffer to input buffer in userinfo
-                        userInfo.csvInputBuffer[CSV_BUF-1] = '\0';
+                        userInfo.csvInputBuffer[CSV_BUF - 1] = '\0';
                         userInfo.parseCSV(*this); //pass the object information from this module to the method in userinfo
                         portfolioLoaded = true;
                         displaySuccess("CSV file loaded and processed successfully.");
@@ -310,5 +309,62 @@ void GUI::handleCSVInputSection() {
             }
             ImGui::End();
                 }
+            }
+        }
+    }
+
+}
+
+inline void GUI::showStrategyControls() {
+    ImGui::Begin("Analysis Strategy and Projections Selection");
+    ImGui::Text("Investment Strategy Analysis:");
+    ImGui::RadioButton("None Selected", &strategyType, 0);
+    ImGui::SameLine();
+    ImGui::RadioButton("Peter Lynch (PEG Ratio)", &strategyType, 1);
+    ImGui::SameLine();
+    ImGui::RadioButton("Benjamin Graham (Intrinsic Value)", &strategyType, 2);
+    ImGui::SameLine();
+    ImGui::RadioButton("Dividend Discount Model", &strategyType, 3);
+
+    ImGui::Separator();
+    ImGui::Text("Growth Projection Scenario:");
+    ImGui::RadioButton("Conservative (1.5x)", &selectedScenario, 0);
+    ImGui::SameLine();
+    ImGui::RadioButton("Moderate (2.5x)", &selectedScenario, 1);
+    ImGui::SameLine();
+    ImGui::RadioButton("Optimistic (5x)", &selectedScenario, 2);
+    //slider for proejctionyears value data member
+    ImGui::SliderInt("Projection Timeline (Years)", &projectionYears, 1, 60);
+
+    ImGui::Separator();
+    //take size of the portfolio map from user info and that will be the number of posistions loaded
+    ImGui::Text("Portfolio Status: %zu positions loaded", userInfo.portfolio.size());
+    double totalValue = userInfo.calc_portfolio_current_value();
+    ImGui::Text("Total Portfolio Value: $%.2f", totalValue);
+
+    ImGui::End();
+
+}
+
+inline void GUI::displayProjectionsWindow() {
+    if (strategyType == 0) {
+        return;
+    } //else you are good so show results from projection
+    ImGui::Begin("Investment Analysis Results");
+    ImGui::Text("Analysis Results");
+    ImGui::Separator();
+
+    switch (strategyType) {
+    case 1: userInfo.calc_peterLynchPEG(); break;
+    case 2: userInfo.calc_benjaminGrahamInstrinsicValue(); break;
+    case 3: userInfo.calc_dividendDiscountModel(); break;
+    }
+
+    ImGui::End();
+}
+
+inline void GUI::displayGrowthPlotWindow() {
+
+}
 
 #endif

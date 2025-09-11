@@ -100,13 +100,13 @@ public:
 		shareCount[ticker] = shares;
 		costBasis[ticker] = basis;
 	}
-	void calc_portfolio_current_value() {
+	double calc_portfolio_current_value() {
 		//this method calcs the current value of users portfolio
 		double current_value = 0.0;
 		for (auto& sets : portfolio) {
 			current_value += sets.second.currentPrice * shareCount[sets.first]; //price is a field in Security class from security.h
 		}
-		cout << "Current value of portfolio: $" << current_value << endl; //call this in the gui 
+		return current_value;
 	}
 	void calc_peterLynchPEG() {
 		//this method is used if user picks peter lynch PEG calculation (growth at resonable price)
