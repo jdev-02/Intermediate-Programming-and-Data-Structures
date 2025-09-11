@@ -17,7 +17,7 @@ long long calculateDiagonalSum(int size) {
         // These values are at the corners of the layer's square
 
         // The side length of the square for this layer
-        int side = size;
+        int side = 2 * layer + 1;
 
         // The highest number in this layer (bottom-right corner)
         long long top_right = (long long)side * side;

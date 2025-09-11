@@ -257,7 +257,7 @@ void GUI::handleCSVInputSection() {
                 string fileContents((ifstreambuf_iterator<char>(file)), istreambuf_iterator<char>());
                 //now validate for at least one valid line
                 bool validstate = false;
-                istringstream iss(fileContents); //create stringstream with the filecontents as we will pass contents to userinfo
+                istringstream iss(fileContents) ; //create stringstream with the filecontents as we will pass contents to userinfo
                 string line;
                 while (getline(iss, line)) {
                     //while theres lines in the file contents
