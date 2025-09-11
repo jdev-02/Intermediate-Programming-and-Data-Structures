@@ -70,10 +70,10 @@ public:
 		username = user;
 	}
 
-	void parseCSV(GUI &gui) {
+	void parseCSV(const std::string& csvData) {
 		//this method will take the validated csv input from the user (from GUI) and parse it into the data members of this class in order to do calcs
-		//the csvInputBuffer is a char array in GUI, already validated and loaded by the GUI class
-		istringstream requestUserInput(string(gui.csvInputBuffer)); //convert char array to string and then to istringstream for line parsing
+		//csvData is provided by the GUI after validation
+		istringstream requestUserInput(csvData); //convert provided string to istringstream for line parsing
 		string line;
 		while (getline(requestUserInput, line)) {
 			stringstream ss(line); //string stream from current line
@@ -96,7 +96,7 @@ public:
 
 	void add_stock(string ticker, Security symbol, int shares, double basis) {
 		//this medthod adds a stock to the user's portfolio so we can do calcs on it
-		portfolio[ticker] = symbol;
+		portfolio.insert_or_assign(ticker, symbol);
 		shareCount[ticker] = shares;
 		costBasis[ticker] = basis;
 	}
@@ -169,4 +169,3 @@ public:
 };
 
 #endif
-

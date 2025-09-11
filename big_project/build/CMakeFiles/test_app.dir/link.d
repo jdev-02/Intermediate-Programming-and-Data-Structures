@@ -55,7 +55,6 @@ test_app: \
   /lib/i386-linux-gnu/libz.so.1 \
   /usr/lib/i386-linux-gnu/libz.so.1 \
   /lib/x86_64-linux-gnu/libz.so.1 \
-  /lib/x86_64-linux-gnu/libm.so.6 \
   /lib64/ld-linux-x86-64.so.2 \
   /lib/i386-linux-gnu/libunistring.so.5 \
   /usr/lib/i386-linux-gnu/libunistring.so.5 \
@@ -191,8 +190,6 @@ external/glfw/src/libglfw3.a:
 /usr/lib/i386-linux-gnu/libz.so.1:
 
 /lib/x86_64-linux-gnu/libz.so.1:
-
-/lib/x86_64-linux-gnu/libm.so.6:
 
 /lib64/ld-linux-x86-64.so.2:
 

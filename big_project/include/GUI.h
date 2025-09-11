@@ -46,8 +46,12 @@ Sources:
 #include <iostream>
 #include <string>
 #include <vector>
-#include <conio.h> //For getch() on Windows
+//#include <conio.h> //For getch() on Windows
 #include <algorithm>
+#include <sstream>
+#include <fstream>
+#include <iterator>
+#include <cstring>
 
 #define SUCCESS 0
 #define GLFW_INIT_FAIL 1
@@ -96,8 +100,8 @@ private:
     void requestUserInput(); //request username csv, strategy type, growth scenario multiplier, and projection years to draw graph. this will validate input
     void displayProjection(); //display numeric projections right below the graph
     void displayVisualGraphs(); //using implot to draw graph based on calcs from user info methods
-    void displayError(string& err); //displays error based on string passed in
-    void displaySuccess(string& msg); //displays success msg based on string passed in
+    void displayError(const string& err); //displays error based on string passed in
+    void displaySuccess(const string& msg); //displays success msg based on string passed in
 
 private:
     //UI widgets/helpers
@@ -105,6 +109,7 @@ private:
     void handleCSVInputSection();
     void showStrategyControls();
     void displayGrowthPlotWindow();
+    void displayProjectionsWindow();
 
     //Analysis helper methods
     void performPeterLynchAnalysis();
@@ -118,7 +123,7 @@ private:
 
 //implementation
 
-inline GUI::GUI() : window(nullptr), userInfo(), strategyType(0), portfolioLoaded(false),
+inline GUI::GUI() : window(nullptr), userInfo(""), strategyType(0), portfolioLoaded(false),
              selectedScenario(0), projectionYears(0) {
 
 }
@@ -164,17 +169,17 @@ inline bool GUI::init() {
 
 inline void GUI::run() {
     if (!window) {
-        return 2; //window not initliazed
+        return; //window not initliazed
     }
     cout << "Starting Investment Portfolio Projection Tool GUI..." << endl;
     //main loop until user closes window 
     while (!glfwWindowShouldClose(window)) { //while the window is open
         glfwPollEvents(); //poll for events which takes in ipnut from user like kbd and mouse
-        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS {
+        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
             glfwSetWindowShouldClose(window,true); //close window if user presses escape key
             }
         //now we make the imgui frame
-        ImGui_ImplOpenGl3_newFrame(); //prepare opengl backend
+        ImGui_ImplOpenGL3_NewFrame(); //prepare opengl backend
         ImGui_ImplGlfw_NewFrame(); //prepare glfw backend
         ImGui::NewFrame(); //new imgui frame
         requestUserInput();
@@ -184,7 +189,7 @@ inline void GUI::run() {
         }
         renderPopupIfNeeded(); //render popup if required
         //frame rendering process for imgui and glfw
-        Imgui::Render(); //finalize imgui frame
+        ImGui::Render(); //finalize imgui frame
         int displaywidth, displayheight;
         glfwGetFramebufferSize(window, &displaywidth, &displayheight); //get pixel dimentions of framebuffer from glfw
         glViewport(0, 0, displaywidth, displayheight); //set opengl viewport to cover entire window
@@ -199,7 +204,7 @@ inline void GUI::run() {
 inline void GUI::cleanup() {
     if (window) {
         //shutdown imgui in reverse order of init process
-        ImGui_ImplGlfw_Shutdown(); //free opengl resources
+        ImGui_ImplOpenGL3_Shutdown(); //free opengl resources
         ImGui_ImplGlfw_Shutdown(); //frees glfw integration resources
         ImPlot::DestroyContext(); //destroys implot contex of any generated chart resources
         ImGui::DestroyContext(); //destroys imgui context of gui rendering resources
@@ -229,7 +234,7 @@ inline void GUI::showMainWindow() {
         if (!username.empty()) {
             //username validation
             userInfo.setUName(username);
-            displaySuccess(useername); //provide positive feedback for successful addition of username
+            displaySuccess(username); //provide positive feedback for successful addition of username
         }
         else { //it is empty which is an error
             string error = "Username cannot be empty.";
@@ -253,7 +258,7 @@ inline void GUI::handleCSVInputSection() {
             //if valid input
             ifstream file(filePath);
             if (file) { //if filestream established properly
-                string fileContents((ifstreambuf_iterator<char>(file)), istreambuf_iterator<char>());
+                string fileContents((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
                 //now validate for at least one valid line
                 bool validstate = false;
                 istringstream iss(fileContents); //create stringstream with the filecontents as we will pass contents to userinfo
@@ -270,48 +275,47 @@ inline void GUI::handleCSVInputSection() {
                         validstate = true;
                         break;
                     }
-                    if (valid) { //we have filecontents loaded with the proper format
-                        strncpy(csvInputBuffer, fileContents.c_str(), CSV_BUF - 1); //minus one on buff for null char
-                        csvInputBuffer[CSV_BUF - 1] = '\0'; //mannually null terminate to prevent buffer overflow
-                        strncpy(userInfo.csvInputBuffer, csvInputBuffer, CSV_BUF - 1); //this will copy from this input buffer to input buffer in userinfo
-                        userInfo.csvInputBuffer[CSV_BUF - 1] = '\0';
-                        userInfo.parseCSV(*this); //pass the object information from this module to the method in userinfo
-                        portfolioLoaded = true;
-                        displaySuccess("CSV file loaded and processed successfully.");
-                    }
-                    else {
-                        //input validation error
-                        displayError("CSV file format invalid. Expected: Ticker,Shares,Cost Basis on each line.");
-                    }
-                    else {
-                        //file input error
-                        displayError("File not found or insufficient permissions to open file.");
-                    }
+                }
+                if (validstate) { //we have filecontents loaded with the proper format
+                    strncpy(csvInputBuffer, fileContents.c_str(), CSV_BUF - 1); //minus one on buff for null char
+                    csvInputBuffer[CSV_BUF - 1] = '\0'; //mannually null terminate to prevent buffer overflow
+                    strncpy(userInfo.csvInputBuffer, csvInputBuffer, CSV_BUF - 1); //this will copy from this input buffer to input buffer in userinfo
+                    userInfo.csvInputBuffer[CSV_BUF - 1] = '\0';
+                    userInfo.parseCSV(fileContents); //pass the object information from this module to the method in userinfo
+                    portfolioLoaded = true;
+                    displaySuccess("CSV file loaded and processed successfully.");
+                } else {
+                    //input validation error
+                    displayError("CSV file format invalid. Expected: Ticker,Shares,Cost Basis on each line.");
+                }
+            }
             else {
-                //blank file path input field
-                displayError("Please enter a file path to continue.");
+                //file input error
+                displayError("File not found or insufficient permissions to open file.");
             }
-            //manual input option as well
-            ImGui::Text("You can also paste CSV data (Format: Ticker, Shares, CostBasis):");
-            ImGUI::InputTextMultiline("##csvdata", csvInputBuffer, CSV_BUF, ImVec2(-1, 120)); //imvec gives the 2d vector size for inputting the data
-            if (ImGUI:Button("Process CSV")) {
-                string csvData(csvInputBuffer);
-                if (!csvData.empty()) {
-                    strncpy(userInfo.csvInputBuffer, csvInputBuffer, CSV_BUF - 1);
-                    userInfo.csvInputBuffer[CSV_BUF] = '\0';
-                    userinfo.parseCSV(*this); //pass object info from this object to the userinfo method to parse the data since validated
-                    poartfolioLoaded = true;
-                    displaySuccess("CSV data processed successfully via manual method.");
-                }
-                else {
-                    displayError("Please enter valid CSV data in the field.");
-                }
-            }
-            ImGui::End();
-                }
-            }
+        } else {
+            //blank file path input field
+            displayError("Please enter a file path to continue.");
         }
     }
+
+    //manual input option as well
+    ImGui::Text("You can also paste CSV data (Format: Ticker, Shares, CostBasis):");
+    ImGui::InputTextMultiline("##csvdata", csvInputBuffer, CSV_BUF, ImVec2(-1, 120)); //imvec gives the 2d vector size for inputting the data
+    if (ImGui::Button("Process CSV")) {
+        string csvData(csvInputBuffer);
+        if (!csvData.empty()) {
+            strncpy(userInfo.csvInputBuffer, csvInputBuffer, CSV_BUF - 1);
+            userInfo.csvInputBuffer[CSV_BUF - 1] = '\0';
+            userInfo.parseCSV(csvData); //pass object info from this object to the userinfo method to parse the data since validated
+            portfolioLoaded = true;
+            displaySuccess("CSV data processed successfully via manual method.");
+        }
+        else {
+            displayError("Please enter valid CSV data in the field.");
+        }
+    }
+    ImGui::End();
 
 }
 
@@ -338,7 +342,7 @@ inline void GUI::showStrategyControls() {
 
     ImGui::Separator();
     //take size of the portfolio map from user info and that will be the number of posistions loaded
-    ImGui::Text("Portfolio Status: %zu positions loaded", userInfo.portfolio.size());
+    ImGui::Text("Portfolio Status: %s", portfolioLoaded ? "Loaded" : "Not Loaded");
     double totalValue = userInfo.calc_portfolio_current_value();
     ImGui::Text("Total Portfolio Value: $%.2f", totalValue);
 
@@ -365,6 +369,43 @@ inline void GUI::displayProjectionsWindow() {
 
 inline void GUI::displayGrowthPlotWindow() {
 
+}
+
+inline void GUI::displayProjection() {
+    if (!portfolioLoaded) return;
+    ImGui::Begin("Projections");
+    ImGui::Text("Projection results will appear here.");
+    ImGui::End();
+}
+
+inline void GUI::displayVisualGraphs() {
+    if (!portfolioLoaded) return;
+    ImGui::Begin("Graphs");
+    ImGui::Text("Graphs will appear here.");
+    ImGui::End();
+}
+
+inline void GUI::displayError(const string& err) { openPopup(err, true); }
+inline void GUI::displaySuccess(const string& msg) { openPopup(msg, false); }
+
+inline void GUI::performPeterLynchAnalysis() {}
+inline void GUI::performBenjaminGrahamAnalysis() {}
+inline void GUI::performDividendDiscountAnalysis() {}
+
+inline void GUI::openPopup(const string& msg, bool isError) {
+    popupMessage = msg;
+    popupIsError = isError;
+    showPopup = true;
+}
+
+inline void GUI::renderPopupIfNeeded() {
+    if (!showPopup) return;
+    ImGui::OpenPopup(popupIsError ? "Error" : "Success");
+    if (ImGui::BeginPopupModal(popupIsError ? "Error" : "Success", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
+        ImGui::TextWrapped("%s", popupMessage.c_str());
+        if (ImGui::Button("OK")) { ImGui::CloseCurrentPopup(); showPopup = false; }
+        ImGui::EndPopup();
+    }
 }
 
 #endif
