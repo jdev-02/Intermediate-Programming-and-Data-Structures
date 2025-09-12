@@ -15,6 +15,9 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 #include <iostream>
 #include <string>
 #include <map>
+#include <format>
+#include <sstream>
+#include <iomanip>
 #include "../include/Stock_info.h"
 #include "../include/Security.h"
 #include "../include/Math.h"
@@ -116,57 +119,115 @@ public:
 		double epsGrowthRateTotal = 0.0;
 		double peRatioTotal = 0.0;
 		double currentPriceTotal = 0.0;
+		double lynchVal;
+		int countunder = 0;
+		string retString;
 		for (auto& set : portfolio) {
 			epsGrowthRateTotal += set.second.eps; //eps is field in security class from security.h
 			peRatioTotal += set.second.peRatio; //pe is field in security class from security.h
 			currentPriceTotal += set.second.currentPrice; //price is field in security class from security.h
+			lynchVal = math.peterLynchPEG(set.second.eps,set.second.peRatio,set.second.currentPrice);
+			if (lynchVal < 1.0 ) {
+				retString += set.second.name; retString += " is undervalued.\n";
+				countunder++;
+			} else {
+				retString += set.second.name; retString += " is overvalued.\n";
+			}
 		}
-		string retString = "Peter Lynch PEG value for this current portfolio is: $" 
-    		+ std::to_string(math.peterLynchPEG(epsGrowthRateTotal, peRatioTotal, currentPriceTotal)) 
-    		+ "\n";
+		retString += std::to_string((countunder/portfolio.size()*100));
+		retString += '%';
+		retString += " are undervalued stocks in your portfolio.\n";
+		retString += "Peter Lynch PEG ratio value for this current portfolio is: " 
+    		+ std::to_string(math.peterLynchPEG(epsGrowthRateTotal/portfolio.size(), peRatioTotal/portfolio.size(), currentPriceTotal/portfolio.size())) 
+    		+ "\nThis metric is mostly useless but fun to see applied to an entire portfolio.\n";
+		
+		
 		
 		return retString;
 	}
-	string calc_benjaminGrahamInstrinsicValue() {
-		//this method is used if user picks benjamin graham instrinsic value calculation (deep value investing)
-		double epsTotal = 0.0;
-		double expectedGrowthRateTotal = 0.0;
-		for (auto& set : portfolio) {
-			epsTotal += set.second.eps;
-			expectedGrowthRateTotal += set.second.estimatedEPSAvg; //this is a field in analyst estimates struct in security.h
+
+string calc_benjaminGrahamInstrinsicValue() {
+	//this method is used if user picks benjamin graham intrinsic value calculation (deep value investing)
+	
+	if (portfolio.empty()) return "No holdings.\n"; //portfolio should never be empty bc the analysis cant be run on an empty input
+
+	double totalIV = 0.0;
+	int countunder = 0;
+	string retString;
+	std::ostringstream oss;
+	string tempString;
+	
+	for (auto& set : portfolio) {
+		double eps = set.second.eps; //eps is field in security class from security.h
+		double g = set.second.estimatedEPSAvg; //analyst estimates field in security class from security.h
+		
+		// Convert decimal to percent if needed (assuming estimatedEPSAvg comes as decimal like 0.079 for 7.9%)
+		if (g > 0.0 && g < 1.0) g *= 100.0;
+		
+		double grahamVal = math.benjaminGrahamIntrinsicValue(eps, g);
+		totalIV += grahamVal;
+
+		
+		oss << " intrinsic value: $" << std::fixed << std::setprecision(2) << grahamVal
+    	<< " vs current price: $" << set.second.currentPrice;
+
+		tempString = oss.str();
+		retString += set.second.name + tempString;
+		if (grahamVal > set.second.currentPrice) {
+			retString += " - undervalued.\n";
+			countunder++;
+		} else {
+			retString += " - overvalued.\n";
 		}
-		string retString ="Benjamin Graham Intrinsic value for this current portfolio is: $"
-			+ to_string(math.benjaminGrahamIntrinsicValue(epsTotal, expectedGrowthRateTotal))+  "\n";
-
-		return retString;
-
 	}
+
+		// Fix integer division issue by casting to double
+	double pctUnder = 100.0 * static_cast<double>(countunder) / static_cast<double>(portfolio.size());
+	retString += std::to_string(static_cast<int>(pctUnder));
+	retString += '%';
+	retString += " are undervalued stocks in your portfolio.\n";
+
+	oss << "Benjamin Graham intrinsic value (sum across holdings): $"  << std::fixed << std::setprecision(2) << totalIV
+    	<< "\nThis metric provides a conservative estimate of stock value based on earnings and growth.\n";
+
+	tempString = oss.str();
+	retString += tempString;
+	
+	return retString;
+}
+
 	string calc_dividendDiscountModel() {
 		//this method is used if user picks dividend discount model calculation (income investing)
+
 		double annualDividendTotal = 0.0;
 		double requiredRateofReturnTotal = 0.0;
 		double dividendGrowthRateTotal = 0.0;
+		double ddmVal;
+		int countunder = 0;
+		string retString;
 		for (auto& set : portfolio) {
-			//API pulls quarterly dividend, multiply by 4 to get annual dividend per share
-			double annualDividendPerShare = set.second.quarterlyDividendPerShare * QUARTERLY_DIVIDEND_MULT;
-
-			//Calculate total annual dividend for user's share count in this security
-			annualDividendTotal += annualDividendPerShare * shareCount[set.first];
-
-			//alternative calculation using EPS and payout ratio (assuming 50% payout ratio for simplicity)
-			// This line calculates estimated annual dividend based on earnings
-			double estimatedAnnualDividend = set.second.eps * 0.5 * shareCount[set.first];
-			//note: You might want to use this as a comparison or fallback if annualDividendPerShare is not available
-
-			requiredRateofReturnTotal += rate_of_return; //assuming 7% required rate of return for simplicity
-			dividendGrowthRateTotal += 4/100; //assuming 4% growth rate for simplicity
+			double annualDividendPerShare = set.second.quarterlyDividendPerShare * QUARTERLY_DIVIDEND_MULT; //quarterly dividend field in security class from security.h
+			annualDividendTotal += annualDividendPerShare * shareCount[set.first]; //total dividend dollars for portfolio
+			requiredRateofReturnTotal += rate_of_return; //assumed rate of return
+			dividendGrowthRateTotal += 4.0/100.0; //assumed dividend growth rate
+			ddmVal = math.dividendDiscountModel(annualDividendPerShare, rate_of_return, 4.0/100.0);
+			retString += set.second.name + " DDM value: $" + std::to_string(ddmVal) + " vs current price: $" + std::to_string(set.second.currentPrice);
+			if (ddmVal > set.second.currentPrice) {
+				retString += " - undervalued.\n";
+				countunder++;
+			} else {
+				retString += " - overvalued.\n";
+			}
 		}
-		string retString = "Dividend Discount Model with an assumed 4";
+		retString += std::to_string((countunder/portfolio.size()*100));
 		retString += '%';
-		retString+= " dividend growth rate for this current portfolio is: $" +
-			to_string(math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal, dividendGrowthRateTotal))+ "\n";
+		retString += " are undervalued stocks in your portfolio.\n";
+		retString += "Dividend Discount Model with an assumed 4% dividend growth rate for this current portfolio is: $" 
+			+ std::to_string(math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal/portfolio.size(), dividendGrowthRateTotal/portfolio.size())) 
+			+ "\nThis metric values the entire portfolio based on expected future dividend payments.\n";
+		
 		return retString;
-	}	
+	}
 	
 };
 

@@ -217,8 +217,9 @@ inline void GUI::cleanup() {
 
 inline void GUI::requestUserInput() {
     showMainWindow();
-    handleCSVInputSection(); //handle portfolio data section
     showStrategyControls(); //shows strategy options and descriptions
+    handleCSVInputSection(); //handle portfolio data section
+    
 }
 
 inline void GUI::showMainWindow() {
@@ -234,7 +235,8 @@ inline void GUI::showMainWindow() {
         if (!username.empty()) {
             //username validation
             userInfo.setUName(username);
-            displaySuccess(username); //provide positive feedback for successful addition of username
+            string successUsername = "Welcome "; successUsername+=username; successUsername+= "! Please choose your investment types and upload your portfolio.";
+            displaySuccess(successUsername); //provide positive feedback for successful addition of username
         }
         else { //it is empty which is an error
             string error = "Username cannot be empty.";
@@ -380,7 +382,7 @@ inline void GUI::showStrategyControls() {
     //take size of the portfolio map from user info and that will be the number of posistions loaded
     ImGui::Text("Portfolio Status: %s", portfolioLoaded ? "Loaded" : "Not Loaded");
     double totalValue = userInfo.calc_portfolio_current_value();
-    ImGui::Text("Total Portfolio Value: $%d", totalValue);
+    ImGui::Text("Total Portfolio Value: $%.2f", totalValue);
 
     ImGui::End();
 
