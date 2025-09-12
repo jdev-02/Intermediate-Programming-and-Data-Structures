@@ -384,7 +384,7 @@ inline void GUI::displayGrowthPlotWindow() {
     std::vector<int> results;
     results.push_back(portfolio_value_initial);
     for(int i =1; i <= projectionYears; i++){
-        results.push_back(results.back()*(1 + growthMultipliers[selectedScenario]));
+        results.push_back(results.back()*(1 + growthMultipliers[selectedScenario]/100));
     } 
 
     std::vector<int> years;
@@ -404,10 +404,10 @@ inline void GUI::displayGrowthPlotWindow() {
     
     ImGui::Separator();
     ImGui::Text("Projection Summary:");
-    ImGui::Text("Current Value: $%d", portfolio_value_initial);
-    ImGui::Text("Projected Value: $%d", finalValue);
-    ImGui::Text("Total Return: %d", totalReturn);
-    ImGui::Text("Annualized Return: %d", annualizedReturn);
+    ImGui::Text("Current Value: $%.2f", portfolio_value_initial);
+    ImGui::Text("Projected Value: $%.2f", finalValue);
+    ImGui::Text("Total Return: %.2f", totalReturn);
+    ImGui::Text("Annualized Return: %.2f", annualizedReturn);
     
     ImGui::End();
 
