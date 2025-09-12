@@ -58,7 +58,7 @@ int InvestorMath::dividendDiscountModel(double annualDividend, double requiredRa
 		cerr << "Error: Required rate of return must be greater than dividend growth rate." << endl;
 		return -1;
 	}
-	return (annualDividend / requiredRateofReturn - dividendGrowthRate);
+	return (annualDividend / (requiredRateofReturn - dividendGrowthRate));
 }
 
 #endif
