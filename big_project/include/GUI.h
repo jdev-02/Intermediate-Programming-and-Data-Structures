@@ -124,7 +124,7 @@ private:
 //implementation
 
 inline GUI::GUI() : window(nullptr), userInfo(""), strategyType(0), portfolioLoaded(false),
-             selectedScenario(0), projectionYears(0) {
+             selectedScenario(0), projectionYears(1) {
 
 }
 
@@ -344,7 +344,7 @@ inline void GUI::showStrategyControls() {
     //take size of the portfolio map from user info and that will be the number of posistions loaded
     ImGui::Text("Portfolio Status: %s", portfolioLoaded ? "Loaded" : "Not Loaded");
     double totalValue = userInfo.calc_portfolio_current_value();
-    ImGui::Text("Total Portfolio Value: $%.2f", totalValue);
+    ImGui::Text("Total Portfolio Value: $%d", totalValue);
 
     ImGui::End();
 
@@ -359,16 +359,59 @@ inline void GUI::displayProjectionsWindow() {
     ImGui::Separator();
 
     switch (strategyType) {
-    case 1: userInfo.calc_peterLynchPEG(); break;
-    case 2: userInfo.calc_benjaminGrahamInstrinsicValue(); break;
-    case 3: userInfo.calc_dividendDiscountModel(); break;
+    case 1: 
+        ImGui::Text("%s",userInfo.calc_peterLynchPEG().c_str()); break;
+    case 2: 
+        ImGui::Text("%s",userInfo.calc_benjaminGrahamInstrinsicValue().c_str()); break;
+    case 3: 
+        ImGui::Text("%s",userInfo.calc_dividendDiscountModel().c_str()); break;
     }
 
     ImGui::End();
 }
 
 inline void GUI::displayGrowthPlotWindow() {
+    ImGui::Begin("Growth Projection and Charts");
+ 
+    float growthMultipliers[3] = { 1.5f,2.5f,5.0f };
+    const char* scenarioNames[3] = { "Conservative", "Moderate", "Optimistic" };
+    //use the data member from userinfo to load which multiplier to apply
+    float usermult = growthMultipliers[selectedScenario];
+    ImGui::Text("This is a %d year scenario with a %s projection.", projectionYears, scenarioNames[selectedScenario]);
+    ImGui::Separator();
 
+    double portfolio_value_initial = userInfo.calc_portfolio_current_value();
+    std::vector<int> results;
+    results.push_back(portfolio_value_initial);
+    for(int i =1; i <= projectionYears; i++){
+        results.push_back(results.back()*(1 + growthMultipliers[selectedScenario]));
+    } 
+
+    std::vector<int> years;
+    for (int i = 1; i <= projectionYears; ++i) {
+        years.push_back(i);
+    }
+
+    if(ImPlot::BeginPlot("Portfolio Growth Over Time", ImVec2(-1, 400))) {
+        ImPlot::SetupAxes("Years", "Portfolio Value ($)");
+        ImPlot::PlotLine("Portfolio Value", years.data(),results.data(), (int)years.size());
+        ImPlot::EndPlot();
+    }
+    
+    double finalValue = results.back();
+    double totalReturn = ((finalValue - portfolio_value_initial) / portfolio_value_initial) * 100.0;
+    double annualizedReturn = (pow(finalValue / portfolio_value_initial, 1.0 / projectionYears) - 1.0) * 100.0;
+    
+    ImGui::Separator();
+    ImGui::Text("Projection Summary:");
+    ImGui::Text("Current Value: $%d", portfolio_value_initial);
+    ImGui::Text("Projected Value: $%d", finalValue);
+    ImGui::Text("Total Return: %d", totalReturn);
+    ImGui::Text("Annualized Return: %d", annualizedReturn);
+    
+    ImGui::End();
+
+    
 }
 
 inline void GUI::displayProjection() {
@@ -381,7 +424,7 @@ inline void GUI::displayProjection() {
 inline void GUI::displayVisualGraphs() {
     if (!portfolioLoaded) return;
     ImGui::Begin("Graphs");
-    ImGui::Text("Graphs will appear here.");
+    displayGrowthPlotWindow();
     ImGui::End();
 }
 

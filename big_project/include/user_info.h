@@ -108,7 +108,7 @@ public:
 		}
 		return current_value;
 	}
-	void calc_peterLynchPEG() {
+	string calc_peterLynchPEG() {
 		//this method is used if user picks peter lynch PEG calculation (growth at resonable price)
 
 		double epsGrowthRateTotal = 0.0;
@@ -119,13 +119,13 @@ public:
 			peRatioTotal += set.second.peRatio; //pe is field in security class from security.h
 			currentPriceTotal += set.second.currentPrice; //price is field in security class from security.h
 		}
-		cout << "Peter Lynch PEG value for this current portfolio is: $"
-			<< math.peterLynchPEG(epsGrowthRateTotal, peRatioTotal, currentPriceTotal) << endl;
-		//call this ins the gui and then use the starting value and ending value to draw the trend line
-		cout << "Peter Lynch PEG value for portfolio in " << time_horizon << "years: $"
-			<< math.peterLynchPEG(epsGrowthRateTotal, peRatioTotal, currentPriceTotal) * time_horizon << endl; 
+		string retString = "Peter Lynch PEG value for this current portfolio is: $" 
+    		+ std::to_string(math.peterLynchPEG(epsGrowthRateTotal, peRatioTotal, currentPriceTotal)) 
+    		+ "\n";
+		
+		return retString;
 	}
-	void calc_benjaminGrahamInstrinsicValue() {
+	string calc_benjaminGrahamInstrinsicValue() {
 		//this method is used if user picks benjamin graham instrinsic value calculation (deep value investing)
 		double epsTotal = 0.0;
 		double expectedGrowthRateTotal = 0.0;
@@ -133,13 +133,13 @@ public:
 			epsTotal += set.second.eps;
 			expectedGrowthRateTotal += set.second.estimatedEPSAvg; //this is a field in analyst estimates struct in security.h
 		}
-		cout << "Benjamin Graham Intrinsic value for this current portfolio is: $"
-			<< math.benjaminGrahamIntrinsicValue(epsTotal, expectedGrowthRateTotal) << endl;
-		//call this ins the gui and then use the starting value and ending value to draw the trend line
-		cout << "Benjamin Graham Intrinsic value for portfolio in " << time_horizon << "years: $"
-			<< math.benjaminGrahamIntrinsicValue(epsTotal, expectedGrowthRateTotal) * time_horizon << endl;
+		string retString ="Benjamin Graham Intrinsic value for this current portfolio is: $"
+			+ to_string(math.benjaminGrahamIntrinsicValue(epsTotal, expectedGrowthRateTotal))+  "\n";
+
+		return retString;
+
 	}
-	void calc_dividendDiscountModel() {
+	string calc_dividendDiscountModel() {
 		//this method is used if user picks dividend discount model calculation (income investing)
 		double annualDividendTotal = 0.0;
 		double requiredRateofReturnTotal = 0.0;
@@ -159,11 +159,9 @@ public:
 			requiredRateofReturnTotal += 0.07; //assuming 7% required rate of return for simplicity
 			dividendGrowthRateTotal += set.second.estimatedEPSAvg * 0.1; //assuming 10% growth rate for simplicity
 		}
-		cout << "Dividend Discount Model value for this current portfolio is: $"
-			<< math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal, dividendGrowthRateTotal) << endl;
-		//call this ins the gui and then use the starting value and ending value to draw the trend line
-		cout << "Dividend Discount Model value for portfolio in " << time_horizon << "years: $"
-			<< math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal, dividendGrowthRateTotal) * time_horizon << endl;
+		string retString = "Dividend Discount Model value for this current portfolio is: $" +
+			to_string(math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal, dividendGrowthRateTotal))+ "\n";
+		return retString;
 	}	
 	
 };
