@@ -271,8 +271,7 @@ std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
             return retList;
         }
     }
-
-    // Last resort: return whatever we got (may be empty strings)
+    // NO VALID RETURN VALUE FOUND
     retList.push_back(stock_quote);
     retList.push_back(eps_forecast);
     return retList;

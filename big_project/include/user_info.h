@@ -62,6 +62,8 @@ private:
 public:
 	char csvInputBuffer[CSV_BUF] = {};
 
+	double rate_of_return = 0.07; // Assumed value
+
 	User_info(string user) : username(user), ticker(""), investment_value(0), time_horizon(0) {}
 	//constructor for user_info class (based on the username input from the user)
 	//then we add methods to populate the portfolio map and do calculations based on input
@@ -156,10 +158,12 @@ public:
 			double estimatedAnnualDividend = set.second.eps * 0.5 * shareCount[set.first];
 			//note: You might want to use this as a comparison or fallback if annualDividendPerShare is not available
 
-			requiredRateofReturnTotal += 0.07; //assuming 7% required rate of return for simplicity
-			dividendGrowthRateTotal += set.second.estimatedEPSAvg * 0.1; //assuming 10% growth rate for simplicity
+			requiredRateofReturnTotal += rate_of_return; //assuming 7% required rate of return for simplicity
+			dividendGrowthRateTotal += 4/100; //assuming 4% growth rate for simplicity
 		}
-		string retString = "Dividend Discount Model value for this current portfolio is: $" +
+		string retString = "Dividend Discount Model with an assumed 4";
+		retString += '%';
+		retString+= " dividend growth rate for this current portfolio is: $" +
 			to_string(math.dividendDiscountModel(annualDividendTotal, requiredRateofReturnTotal, dividendGrowthRateTotal))+ "\n";
 		return retString;
 	}	
