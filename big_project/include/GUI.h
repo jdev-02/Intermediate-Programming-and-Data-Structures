@@ -259,7 +259,7 @@ inline void GUI::handleCSVInputSection() {
             ifstream file(filePath);
             if (file) { //if filestream established properly
                 string fileContents((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
-                //now validate for at least one valid line
+                //now validate for all lines valid
                 bool validstate = false;
                 istringstream iss(fileContents); //create stringstream with the filecontents as we will pass contents to userinfo
                 string line;
@@ -271,8 +271,10 @@ inline void GUI::handleCSVInputSection() {
                     while (getline(ss, cell, ',')) {
                         ++count;
                     }
-                    if (count == 3) {
+                    if (count == 3) {   
                         validstate = true;
+                    }else{
+                        validstate = false;
                         break;
                     }
                 }
@@ -281,9 +283,14 @@ inline void GUI::handleCSVInputSection() {
                     csvInputBuffer[CSV_BUF - 1] = '\0'; //mannually null terminate to prevent buffer overflow
                     strncpy(userInfo.csvInputBuffer, csvInputBuffer, CSV_BUF - 1); //this will copy from this input buffer to input buffer in userinfo
                     userInfo.csvInputBuffer[CSV_BUF - 1] = '\0';
-                    userInfo.parseCSV(fileContents); //pass the object information from this module to the method in userinfo
-                    portfolioLoaded = true;
-                    displaySuccess("CSV file loaded and processed successfully.");
+                    try{
+                        userInfo.parseCSV(fileContents); //pass object info from this object to the userinfo method to parse the data since validated
+                        portfolioLoaded = true;
+                        displaySuccess("CSV file loaded and processed successfully.");
+                    }catch(...){
+                        displayError("Invalid input could not resolve");
+                    }
+
                 } else {
                     //input validation error
                     displayError("CSV file format invalid. Expected: Ticker,Shares,Cost Basis on each line.");
@@ -304,15 +311,44 @@ inline void GUI::handleCSVInputSection() {
     ImGui::InputTextMultiline("##csvdata", csvInputBuffer, CSV_BUF, ImVec2(-1, 120)); //imvec gives the 2d vector size for inputting the data
     if (ImGui::Button("Process CSV")) {
         string csvData(csvInputBuffer);
-        if (!csvData.empty()) {
-            strncpy(userInfo.csvInputBuffer, csvInputBuffer, CSV_BUF - 1);
-            userInfo.csvInputBuffer[CSV_BUF - 1] = '\0';
-            userInfo.parseCSV(csvData); //pass object info from this object to the userinfo method to parse the data since validated
-            portfolioLoaded = true;
-            displaySuccess("CSV data processed successfully via manual method.");
+
+
+        //now validate for all lines valid
+        bool validstate = false;
+        istringstream iss(csvData); //create stringstream with the filecontents as we will pass contents to userinfo
+        string line;
+        while (getline(iss, line)) {
+            //while theres lines in the file contents
+            stringstream ss(line);
+            string cell;
+            int count = 0;
+            while (getline(ss, cell, ',')) {
+                ++count;
+            }
+            if (count == 3) {   
+                validstate = true;
+            }else{
+                validstate = false;
+                break;
+            }
         }
-        else {
-            displayError("Please enter valid CSV data in the field.");
+        if (validstate) {
+            if (!csvData.empty()) {
+                strncpy(userInfo.csvInputBuffer, csvInputBuffer, CSV_BUF - 1);
+                userInfo.csvInputBuffer[CSV_BUF - 1] = '\0';
+                
+                try{
+                    userInfo.parseCSV(csvData); //pass object info from this object to the userinfo method to parse the data since validated
+                    portfolioLoaded = true;
+                    displaySuccess("CSV data processed successfully via manual method.");
+                }catch(...){
+                    displayError("Invalid input could not resolve");
+                }
+            }
+
+        }else{
+            //input validation error
+            displayError("CSV file format invalid. Expected: Ticker,Shares,Cost Basis on each line.");
         }
     }
     ImGui::End();
