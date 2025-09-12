@@ -443,6 +443,7 @@ inline void GUI::openPopup(const string& msg, bool isError) {
 
 inline void GUI::renderPopupIfNeeded() {
     if (!showPopup) return;
+    ImGui::SetNextWindowSizeConstraints(ImVec2(200, 100), ImVec2(600, 400));
     ImGui::OpenPopup(popupIsError ? "Error" : "Success");
     if (ImGui::BeginPopupModal(popupIsError ? "Error" : "Success", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
         ImGui::TextWrapped("%s", popupMessage.c_str());
