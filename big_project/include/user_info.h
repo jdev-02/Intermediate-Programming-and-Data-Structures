@@ -15,6 +15,9 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 #include <iostream>
 #include <string>
 #include <map>
+#include <vector>
+#include <sstream>
+#include <algorithm>
 #include "../include/Stock_info.h"
 #include "../include/Security.h"
 #include "../include/Math.h"
@@ -25,35 +28,11 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 
 using namespace std;
 
-/*
-User_info Module:
-�	Parse data from user
-�	Read in and store stock ticker as key and an instance of the class Security as the value (where each field responsible for calculating the users selected investment calculation is populated either by cache or api upon instantiation)
-�	Portfolio management and user data storage
-�	Calculation orchestration
-�	Interface between GUI and data processing modules
-o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% of users stocks are undervalued/overvalued based on this metric. (use the value from math library method)
-*/
-
-#include <iostream>
-#include <string>
-#include <map>
-#include <vector>
-#include <sstream>
-#include <algorithm>
-#include "../include/Stock_info.h"
-#include "../include/Security.h"
-#include "../include/Math.h"
-
-#define QUARTERLY_DIVIDEND_MULT 4
-
-using namespace std;
-
 class User_info {
 private:
 	string username; //input from user
 	string ticker;
-	map<string, Security> portfolio; //map of stock ticker to security instance
+	map<string, FinancialInstrument*> portfolio; //map of stock ticker to security instance
 	InvestorMath math; //instance of math class to do calculations on user's portfolio
 	map<string, int> shareCount; //number of shares for each stock in portfolio
 	map<string, double> costBasis; //cost basis (average) for each stock in portfolio
@@ -65,6 +44,12 @@ public:
 	User_info(string user) : username(user), ticker(""), investment_value(0), time_horizon(0) {}
 	//constructor for user_info class (based on the username input from the user)
 	//then we add methods to populate the portfolio map and do calculations based on input
+	~User_info() {
+		//clean up all allocated FinancialInstrument objects
+		for (auto& pair : portfolio) {
+			delete pair.second;
+		}
+	}
 
 	void setUName(string user) {
 		username = user;
@@ -94,7 +79,7 @@ public:
 		}
 	}
 
-	void add_stock(string ticker, Security symbol, int shares, double basis) {
+	void add_stock(string ticker, FinancialInstrument* symbol, int shares, double basis) {
 		//this medthod adds a stock to the user's portfolio so we can do calcs on it
 		portfolio[ticker] = symbol;
 		shareCount[ticker] = shares;

@@ -27,12 +27,6 @@ Sources:
 */
 
 #include "user_info.h"
-// ImGui/ImPlot/GLFW includes for GUI rendering
-//#include "../external/imgui/imgui.h"                               //ImGui API
-//#include "../external/imgui/imgui_impl_glfw.h"                     //ImGui GLFW backend
-//#include "../external/imgui/imgui_impl_opengl3.h"                  //ImGui OpenGL3 backend
-//#include "../external/implot/implot.h"                              //plotting library
-//#include "../external/glfw/glfw3.h"                               //glfw api
 
 //ImGui/ImPlot/GLFW includes for GUI rendering
 #include "../external/imgui/imgui.h"                                 //imgui api
@@ -364,6 +358,14 @@ inline void GUI::displayProjectionsWindow() {
 }
 
 inline void GUI::displayGrowthPlotWindow() {
+    
+    ImGui::Begin("Growth Projection and Charts");
+
+    float growthMultipliers[3] = { 1.5f,2.5f,5.0f };
+    const char* scenarioNames[3] = { "Conservative", "Moderate", "Optimistic" };
+    //use the data member from userinfo to load which multiplier to apply
+    float usermult = growthMultiplier[selectedScenario];
+    //take in the value of the account 
 
 }
 

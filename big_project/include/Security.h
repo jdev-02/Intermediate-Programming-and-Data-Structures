@@ -9,16 +9,26 @@
 
 using json = nlohmann::json;
 
-// ------------------------------------------------------
+//--------------------------------------------------------
 // File: Security.h
 //
-// Author: Jonathan Goohs, John Rolfe
+//Author: Jonathan Goohs, John Rolfe
 //
 // Description: Container class for information on each 
-// company that was pulled down from the API. 
-// ------------------------------------------------------
+//company that was pulled down from the API. 
+//------------------------------------------------------
 
-class Security {
+//Base class for all financial instruments, not just equities
+class FinancialInstrument {
+public:
+    virtual ~FinancialInstrument() = default;
+    virtual void print() const = 0;
+    virtual std::string getSymbol() const = 0;
+    virtual std::string getName() const = 0;
+};
+
+//Security class inherits from FinancialInstrumen
+class Security: public FinancialInstrument {
 public:
     std::string symbol;
     std::string name;
@@ -31,7 +41,7 @@ public:
 
     void print();
 
-    // Helper: robustly convert a json scalar (number or string) to double
+    //Helper: robustly convert a json scalar (number or string) to double
     static double to_double(const json& x) {
         if (x.is_number_float() || x.is_number_integer() || x.is_number_unsigned()) {
             return x.get<double>();
@@ -50,7 +60,7 @@ public:
         return 0.0;
     }
 
-    // Constructor that takes JSON for quote and analyst estimates
+    //constructor that takes JSON for quote and analyst estimates
     Security(std::string ticker) {
         Stock_info si;
         std::list<std::string> stock_data = si.getStockInfo(ticker);
@@ -58,14 +68,12 @@ public:
         if (stock_data.size() < 2) {
             throw std::runtime_error("Stock_info::getStockInfo() did not return both JSON blobs");
         }
-
-        // If getStockInfo pushed {stock_quote, analyst_estimates_json} in that order:
+        //If getStockInfo pushed {stock_quote, analyst_estimates_json} in that order:
         std::string analyst_estimates_json = stock_data.back(); 
         stock_data.pop_back();
         std::string stock_quote            = stock_data.back();     
         stock_data.pop_back();
-    
-        // ---- Quote ----
+        //stock Quote
         json j = json::parse(stock_quote);
         if (!j.is_object()) {
             throw std::runtime_error("Unexpected Quote JSON shape (expected object)");
@@ -79,13 +87,13 @@ public:
         peRatio                      = to_double(obj["PERatio"].get<std::string>());
         quarterlyDividendPerShare    = to_double(obj["DividendPerShare"].get<std::string>());
 
-        // ---- Analyst Estimates ----
+        //Analyst Estimates
         json je = json::parse(analyst_estimates_json);
         if (!je.is_object()) {
             throw std::runtime_error("Unexpected Analyst JSON shape (expected object)");
         }
 
-        estimatedEPSAvg = 0.0; // default if nothing matches
+        estimatedEPSAvg = 0.0; //default if nothing matches
 
         auto it = je.find("estimates");
         if (it != je.end() && it->is_array()) {
@@ -97,7 +105,7 @@ public:
                     if (!v.is_null()) {
                         estimatedEPSAvg = to_double(v);  
                     }
-                    break; // stop at the first match
+                    break; //stop at the first match
                 }
             }
         }
@@ -116,4 +124,4 @@ inline void Security::print() {
     std::cout << "----------------------------------------\n";
 }
 
-#endif // SECURITY_H
+#endif //SECURITY_H
