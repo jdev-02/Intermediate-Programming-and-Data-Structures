@@ -367,11 +367,11 @@ inline void GUI::displayProjectionsWindow() {
         ImGui::Text("%s",userInfo.calc_dividendDiscountModel().c_str()); break;
     }
 
-    ImGui::End();
+   ImGui::End();
 }
 
 inline void GUI::displayGrowthPlotWindow() {
-    ImGui::Begin("Growth Projection and Charts");
+    //ImGui::Begin("Growth Projection and Charts");
  
     float growthMultipliers[3] = { 1.5f,2.5f,5.0f };
     const char* scenarioNames[3] = { "Conservative", "Moderate", "Optimistic" };
@@ -409,16 +409,17 @@ inline void GUI::displayGrowthPlotWindow() {
     ImGui::Text("Total Return: %.2f", totalReturn);
     ImGui::Text("Annualized Return: %.2f", annualizedReturn);
     
-    ImGui::End();
+    //ImGui::End();
 
     
 }
 
 inline void GUI::displayProjection() {
     if (!portfolioLoaded) return;
-    ImGui::Begin("Projections");
-    ImGui::Text("Projection results will appear here.");
-    ImGui::End();
+    //ImGui::Begin("Projections");
+    //ImGui::Text("Projection results will appear here.");
+    displayProjectionsWindow();
+    //ImGui::End();
 }
 
 inline void GUI::displayVisualGraphs() {
