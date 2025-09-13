@@ -1,4 +1,3 @@
-#pragma once
 
 #ifndef GUI_H
 #define GUI_H
@@ -57,7 +56,13 @@ Sources:
 #define UNAME_BUF 128
 #define CSV_BUF 4096
 #define FPATH_BUF 512
-
+#define NOSTRAT_BUT 0
+#define PLYNCH_BUT 1
+#define BGRAHAM_BUT   2
+#define DIVIDEND_BUT 3
+#define CONSERVE_BUT 0
+#define MODERATE_BUT 1
+#define AGGRESSIVE_BUT 2
 using namespace std;
 
 class GUI {
@@ -354,21 +359,21 @@ inline void GUI::handleCSVInputSection() {
 inline void GUI::showStrategyControls() {
     ImGui::Begin("Analysis Strategy and Projections Selection");
     ImGui::Text("Investment Strategy Analysis:");
-    ImGui::RadioButton("None Selected", &strategyType, 0);
+    ImGui::RadioButton("None Selected", &strategyType, NOSTRAT_BUT);
     ImGui::SameLine();
-    ImGui::RadioButton("Peter Lynch (PEG Ratio)", &strategyType, 1);
+    ImGui::RadioButton("Peter Lynch (PEG Ratio)", &strategyType, PLYNCH_BUT);
     ImGui::SameLine();
-    ImGui::RadioButton("Benjamin Graham (Intrinsic Value)", &strategyType, 2);
+    ImGui::RadioButton("Benjamin Graham (Intrinsic Value)", &strategyType, BGRAHAM_BUT);
     ImGui::SameLine();
-    ImGui::RadioButton("Dividend Discount Model", &strategyType, 3);
+    ImGui::RadioButton("Dividend Discount Model", &strategyType, DIVIDEND_BUT);
 
     ImGui::Separator();
     ImGui::Text("Growth Projection Scenario:");
-    ImGui::RadioButton("Conservative (1.5x)", &selectedScenario, 0);
+    ImGui::RadioButton("Conservative (1.5x)", &selectedScenario, CONSERVE_BUT);
     ImGui::SameLine();
-    ImGui::RadioButton("Moderate (2.5x)", &selectedScenario, 1);
+    ImGui::RadioButton("Moderate (2.5x)", &selectedScenario, MODERATE_BUT);
     ImGui::SameLine();
-    ImGui::RadioButton("Optimistic (5x)", &selectedScenario, 2);
+    ImGui::RadioButton("Optimistic (5x)", &selectedScenario, AGGRESSIVE_BUT);
     //slider for proejctionyears value data member
     ImGui::SliderInt("Projection Timeline (Years)", &projectionYears, 1, 60);
 
@@ -383,7 +388,7 @@ inline void GUI::showStrategyControls() {
 }
 
 inline void GUI::displayProjectionsWindow() {
-    if (strategyType == 0) {
+    if (strategyType == NOSTRAT_BUT) {
         return;
     } //else you are good so show results from projection
     ImGui::Begin("Investment Analysis Results");

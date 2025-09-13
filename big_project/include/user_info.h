@@ -53,6 +53,8 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 
 #define QUARTERLY_DIVIDEND_MULT 4
 #define CSV_BUF 4096
+#define ASSUMED_ROR 0.07
+#define MAXROWELEMENTS 3
 
 
 using namespace std;
@@ -69,8 +71,7 @@ private:
 	int time_horizon; //input from user for investment time horizon (short (2-3 years), medium (4-7 years), long (8+ years)
 public:
 	char csvInputBuffer[CSV_BUF] = {};
-
-	double rate_of_return = 0.07; // Assumed value
+	double rate_of_return = ASSUMED_ROR; // Assumed value
 
 	User_info(string user) : username(user), ticker(""), investment_value(0), time_horizon(0) {}
 	//constructor for user_info class (based on the username input from the user)
@@ -96,11 +97,11 @@ public:
 			string cell;
 			vector<string> parsedRow;
 			while (getline(ss, cell, ',')) { //for each cell in the row sepaated by commas
-				cell.erase(remove_if(cell.begin(), cell.end(), ::isspace), cell.end()); //remove whitespace from each cell
+				cell.erase(remove_if(cell.begin(), cell.end(),::isspace), cell.end()); //remove whitespace from each cell
 				parsedRow.push_back(cell); //push each cell from the row into a vector
 			}
 			//now that we have vectors of each row, we can populate the data members of class - ticker shares owned and cost basis
-			if (parsedRow.size() < 3) continue; //skip incomplete rows, should not happen bc validated in gui class
+			if (parsedRow.size() < MAXROWELEMENTS) continue; //skip incomplete rows, should not happen bc validated in gui class
 			string ticker = parsedRow[0];
 			int share_count = stoi(parsedRow[1]);
 			double cost_basis = stod(parsedRow[2]);
@@ -151,9 +152,6 @@ public:
 		retString += "Peter Lynch PEG ratio value for this current portfolio is: " 
     		+ std::to_string(math.peterLynchPEG(epsGrowthRateTotal/portfolio.size(), peRatioTotal/portfolio.size(), currentPriceTotal/portfolio.size())) 
     		+ "\nThis metric is mostly useless but fun to see applied to an entire portfolio.\n";
-		
-		
-		
 		return retString;
 	}
 
@@ -172,12 +170,11 @@ string calc_benjaminGrahamInstrinsicValue() {
 		double eps = set.second.eps; //eps is field in security class from security.h
 		double g = set.second.estimatedEPSAvg; //analyst estimates field in security class from security.h
 		
-		// Convert decimal to percent if needed (assuming estimatedEPSAvg comes as decimal like 0.079 for 7.9%)
+		//convert decimal to percent if needed (assuming estimatedEPSAvg comes as decimal like 0.079 for 7.9%)
 		if (g > 0.0 && g < 1.0) g *= 100.0;
 		
 		double grahamVal = math.benjaminGrahamIntrinsicValue(eps, g);
 		totalIV += grahamVal;
-
 		
 		oss << " intrinsic value: $" << std::fixed << std::setprecision(2) << grahamVal
     	<< " vs current price: $" << set.second.currentPrice;
@@ -192,7 +189,7 @@ string calc_benjaminGrahamInstrinsicValue() {
 		}
 	}
 
-		// Fix integer division issue by casting to double
+	//Fix integer division issue by casting to double
 	double pctUnder = 100.0 * static_cast<double>(countunder) / static_cast<double>(portfolio.size());
 	retString += std::to_string(static_cast<int>(pctUnder));
 	retString += '%';
@@ -203,7 +200,6 @@ string calc_benjaminGrahamInstrinsicValue() {
 
 	tempString = oss.str();
 	retString += tempString;
-	
 	return retString;
 }
 
@@ -239,7 +235,6 @@ string calc_benjaminGrahamInstrinsicValue() {
 		
 		return retString;
 	}
-	
 };
 
 #endif

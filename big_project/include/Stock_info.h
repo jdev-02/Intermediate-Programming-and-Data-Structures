@@ -15,6 +15,9 @@
 //#define API_KEY "g9C8KiSXIyPVKRu6rTM39qL3BxQDUKHR"
 #define API_KEY "TWTLPDSLI1D8354E"
 #define CACHE_TIME_OUT 10 * 24 * 60 * 60 // 10 days
+#define BAD_ALLOC 0
+#define MIN_HTTP_RANGE 200
+#define MAX_HTTP_RANGE 300
 
 
 // ------------------------------------------------------
@@ -36,19 +39,19 @@ class Stock_info
         //default constructor
         Stock_info(){};
 
-        // Returns an instance of class Security
+        //Returns an instance of class Security
         std::list<std::string> getStockInfo(std::string symbol);
 
-        // Method for printing the current cache
+        //Method for printing the current cache
         void printCache() const;
 
     private:
-        // A hashmap to act as a cache to limit API calls to 250 per day
-        // keys are strings and values are json results from API
+        //A hashmap to act as a cache to limit API calls to 250 per day
+        //keys are strings and values are json results from API
         std::unordered_map<std::string, std::string> cache_quotes;
         std::unordered_map<std::string, std::string> cache_eps_forecast;
 
-        // Persistent cache (shared across instances)
+        //Persistent cache (shared across instances)
         struct CacheEntry {
             std::string quote;
             std::string eps_forecast;
@@ -60,7 +63,7 @@ class Stock_info
         inline static const char* s_cache_file = "stock_cache.json";
         inline static const std::time_t s_max_age_seconds = CACHE_TIME_OUT;
 
-        // Helper: load persistent cache from disk once
+        //Helper: load persistent cache from disk once
         static void load_persistent_cache() {
             if (s_cache_loaded) return;
             s_cache_loaded = true;
@@ -87,7 +90,7 @@ class Stock_info
             }
         }
 
-        // Helper: save persistent cache to disk
+        //Helper: save persistent cache to disk
         static void save_persistent_cache() {
             nlohmann::json j = nlohmann::json::object();
             for (const auto& [sym, e] : s_pcache) {
@@ -115,13 +118,13 @@ class Stock_info
 };
 
 
-// Callback to capture the API response, returns size of data written
+//Callback to capture the API response, returns size of data written
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* s) {
     size_t newLength = size * nmemb;
     try {
         s->append((char*)contents, newLength);
     } catch (std::bad_alloc& e) {
-        return 0;
+        return BAD_ALLOC;
     }
     return newLength;
 }
@@ -131,17 +134,14 @@ std::string Stock_info::get_quote(std::string symbol, std::string apiKey){
     CURL* curl;
     CURLcode res;
     std::string readBuffer;
-    
-
     std::string url = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=" + apiKey;
-
     curl_global_init(CURL_GLOBAL_DEFAULT); //initialize libcurl
 
     curl = curl_easy_init(); //makes curl handle
     if (!curl) {
         std::cerr << "curl_easy_init() failed\n";
         curl_global_cleanup();
-        return std::string(); // empty on failure
+        return std::string(); //empty on failure
     }
 
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); //set url for curl
@@ -168,12 +168,12 @@ std::string Stock_info::get_quote(std::string symbol, std::string apiKey){
         std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << "\n";
         return std::string();
     }
-    if (http_status < 200 || http_status >= 300) {
+    if (http_status < MIN_HTTP_RANGE || http_status >= MAX_HTTP_RANGE) {
         std::cerr << "HTTP error: " << http_status << "\n";
         return std::string();
     }
 
-    // No direct persistent update here; handled by getStockInfo
+    //No direct persistent update here; handled by getStockInfo
     return readBuffer;
 }
 
@@ -218,7 +218,7 @@ std::string Stock_info::get_eps_forecast(std::string symbol, std::string apiKey)
         std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << "\n";
         return std::string();
     }
-    if (http_status < 200 || http_status >= 300) {
+    if (http_status < MIN_HTTP_RANGE || http_status >= MAX_HTTP_RANGE) {
         std::cerr << "HTTP error: " << http_status << "\n";
         return std::string();
     }
@@ -271,7 +271,8 @@ std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
             return retList;
         }
     }
-    // NO VALID RETURN VALUE FOUND
+
+    // Last resort: return whatever we got (may be empty strings)
     retList.push_back(stock_quote);
     retList.push_back(eps_forecast);
     return retList;
