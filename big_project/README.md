@@ -11,7 +11,6 @@ The Portfolio Projection System allows users to upload stock portfolios and anal
 -Portfolio Analysis: Upload CSV files or manually enter stock positions
 -Multiple Projection Models: Peter Lynch PEG, Benjamin Graham Intrinsic Value, Dividend Discount Model
 -Scenario Planning: Conservative, moderate, and optimistic market projections
--Stock Rankings: Priority-based ranking system using selected methodology
 -Real-time Data: Integration with Alpha Vantage API (with local caching)
 -GUI Interface: User-friendly desktop application using ImGui, ImPlot, and GLFW
 
@@ -26,24 +25,9 @@ The Portfolio Projection System allows users to upload stock portfolios and anal
 #macOS Installation
 ```bash
 #Install dependencies using Homebrew
-brew install cmake nlohmann-json glfw
+brew install cmake glfw
 
-#ImGui and ImPlot will be included as submodules or built from source
-#See Building from Source section below
 ```
-
-#Linux Installation (Ubuntu/Debian)
-```bash
-sudo apt-get update
-sudo apt-get install cmake libnlohmann-json3-dev libglfw3-dev libgl1-mesa-dev
-```
-
-#Building from Source
-
-```bash
-#Clone the repository
-git clone https://github.com/yourusername/portfolio-projection-system.git
-cd portfolio-projection-system
 
 #Create build directory
 mkdir build && cd build
@@ -53,19 +37,7 @@ cmake ..
 make
 
 #Run the application
-./portfolio_simulator
-```
-
-#API Setup
-
-Important: This application requires an Alpha Vantage API key to function.
-
-1. Sign up at [Alpha Vantage](https://www.alphavantage.co/support/#api-key)
-2. Obtain your free API key (250 calls/day limit)
-3. The API key is set in the code (`Stock_info.h`). Edit the `#define API_KEY` line with your key:
-
-```cpp
-#define API_KEY "your_api_key_here"
+./test_app
 ```
 
 #Usage
@@ -79,8 +51,11 @@ MSFT,50,280.25
 GOOGL,25,2500.75
 ```
 
+An example is included in /tests/input_test.csv
+
 #Running Analysis
-1. Launch the application: `./portfolio_simulator`
+0. from the build folder run commands `cmake ..` and  `make`
+1. Launch the application: from the build folder `./test_app`
 2. Enter your username
 3. Choose analysis method from radio button
 4. Select time horizon
@@ -114,31 +89,23 @@ GOOGL,25,2500.75
 ### Project Structure
 ```
 portfolio-projection-system/
-├── src/                    # Source files
-│   ├── main.cpp
-│   ├── user_info.h
-│   ├── Stock_info.h
-│   ├── Security.h
-│   └── GUI.h
-├── tests/                  # Unit tests
-├── docs/                   # Additional documentation
-├── CMakeLists.txt
-└── README.md
+├── CMakeLists.txt              -->Created the make file
+├── external                    -->Includes external libraries used
+├── include                     -->Repo for project files
+│   ├── GUI.h
+│   ├── json.hpp
+│   ├── Math.h
+│   ├── Security.h
+│   ├── Stock_info.h
+│   └── user_info.h
+├── reactions                   -->Project reactions from participants
+│   └── reactions.txt
+├── README.md                   -->This file **YOU ARE HERE**
+├── src                         -->.cpp that is compiled to launch the GUI
+│   └── this_is_a_test.cpp
+└── tests                       -->Test repository
+    ├── input_test.csv
+    └── security_tests.cpp
+
+
 ```
-
-## Troubleshooting
-
-**Common Issues:**
-
-- **GUI doesn't appear**: Ensure all ImGui/GLFW dependencies are installed
-- **API rate limit exceeded**: Application uses local cache to minimize calls
-- **Build errors**: Verify all dependencies are installed and CMake version is 3.15+
-- **Missing API key**: Edit `Stock_info.h` and add your Alpha Vantage API key to the `#define API_KEY` line
-
-**Network Requirements:**
-- Internet connection required for initial stock data fetching
-- Offline mode available using cached data after first successful API calls
-
-**Graphics Issues:**
-- **OpenGL errors**: Ensure your system has OpenGL support and updated graphics drivers
-- **ImGui rendering problems**: Verify GLFW is properly installed and linked
