@@ -25,26 +25,25 @@ Sources:
 4. https://registry.khronos.org/OpenGL-Refpages/gl4/html/glClearColor.xhtml#:~:text=Name,detail%20on%20the%20removedTypes%20page.
 */
 
+
 #include "user_info.h"
 
-//ImGui/ImPlot/GLFW includes for GUI rendering
-#include "../external/imgui/imgui.h"                                 //imgui api
-#include "../external/imgui/backends/imgui_impl_glfw.h"              //imgui glfw backend
-#include "../external/imgui/backends/imgui_impl_opengl3.h"           //imgui opengl3 backend
-//Include the loader helper BEFORE using any GL headers
-#include "../external/imgui/backends/imgui_impl_opengl3_loader.h"    
-#include "../external/implot/implot.h"                               //plotting library
-#include <GLFW/glfw3.h>                                              //glfw api
 
+#include <algorithm>
+#include <cstring>
+#include <fstream>
 #include <iostream>
+#include <iterator>
+#include <sstream>
 #include <string>
 #include <vector>
-//#include <conio.h> //For getch() on Windows
-#include <algorithm>
-#include <sstream>
-#include <fstream>
-#include <iterator>
-#include <cstring>
+
+#include "../external/imgui/backends/imgui_impl_opengl3_loader.h"    // Include loader BEFORE any GL headers
+#include <GLFW/glfw3.h>                                              // GLFW API
+#include "../external/imgui/imgui.h"                                 // ImGui API
+#include "../external/implot/implot.h"                               // Plotting library
+#include "../external/imgui/backends/imgui_impl_glfw.h"              // ImGui GLFW backend
+#include "../external/imgui/backends/imgui_impl_opengl3.h"           // ImGui OpenGL3 backend
 
 #define SUCCESS 0
 #define GLFW_INIT_FAIL 1
@@ -58,11 +57,12 @@ Sources:
 #define FPATH_BUF 512
 #define NOSTRAT_BUT 0
 #define PLYNCH_BUT 1
-#define BGRAHAM_BUT   2
+#define BGRAHAM_BUT 2
 #define DIVIDEND_BUT 3
 #define CONSERVE_BUT 0
 #define MODERATE_BUT 1
 #define AGGRESSIVE_BUT 2
+
 using namespace std;
 
 class GUI {
@@ -122,7 +122,7 @@ private:
 
 //implementation
 
-inline GUI::GUI() : window(nullptr), userInfo(""), strategyType(0), portfolioLoaded(false),
+inline GUI::GUI() : userInfo(""), window(nullptr), portfolioLoaded(false), strategyType(0),
              selectedScenario(0), projectionYears(1) {
 
 }
@@ -414,7 +414,7 @@ inline void GUI::displayGrowthPlotWindow() {
     float growthMultipliers[3] = { 0.65f,1.0f,2.0f };
     const char* scenarioNames[3] = { "Conservative", "Moderate", "Optimistic" };
     //use the data member from userinfo to load which multiplier to apply
-    float usermult = growthMultipliers[selectedScenario];
+    // removed unused variable 'usermult'
     ImGui::Text("This is a %d year scenario with a %s projection.", projectionYears, scenarioNames[selectedScenario]);
     ImGui::Separator();
 

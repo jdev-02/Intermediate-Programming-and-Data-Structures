@@ -11,8 +11,8 @@ using namespace std;
 //
 //Author: Jonathan Goohs, John Rolfe
 //
-//Description: Math.h contains eligible custom calcualtions from popular
-//investors, including Peter Lynch's PEG ratio fair value calculation,
+// Description: Math.h contains eligible custom calcualtions from popular
+// investors, including Peter Lynch's PEG ratio fair value calculation,
 // benjhamin grahams intrinsic value calculation, and teh dividend
 //  discount model of stock value
 // ----------------------------------------------------
