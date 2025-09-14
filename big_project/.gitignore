@@ -1,0 +1,20 @@
+# Build artifacts
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+/compile_commands.json
+/Testing/
+
+# Object and binary outputs
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+
+# Project-specific cache
+build/stock_cache.json
+

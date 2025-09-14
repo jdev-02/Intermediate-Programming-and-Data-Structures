@@ -1,6 +1,27 @@
 #ifndef STOCK_INFO_H   // If STOCK_INFO_H is not defined
 #define STOCK_INFO_H   // Define STOCK_INFO_H
 
+
+// ------------------------------------------------------
+// File: Stock_info.h
+//
+// Author: Jonathan Goohs, John Rolfe
+//
+// Description: fetch company overview (“quote”) and EPS
+// forecast data from the Alpha Vantage API, with a simple on-disk persistent
+// cache to reduce API calls and tolerate temporary network issues.
+//Public API:
+//   - Stock_info()
+//   - std::list<std::string> getStockInfo(std::string symbol)
+//       Returns two JSON strings:
+//         [0] = OVERVIEW JSON (company metadata)
+//         [1] = EARNINGS_ESTIMATES JSON (EPS forecasts)
+//       Throws std::invalid_argument on complete failure (no API / no cache).
+//   - void printCache() const
+//       Prints one summary line per cached symbol (age and payload sizes).
+//
+// ------------------------------------------------------
+
 #include <iostream>
 #include <string>
 #include <curl/curl.h>
@@ -11,25 +32,12 @@
 #include <filesystem>
 #include "json.hpp"
 
-//#define API_KEY "PYARh7MERk6CSX3WcbbwqzkbVYAu6XBD"
-//#define API_KEY "g9C8KiSXIyPVKRu6rTM39qL3BxQDUKHR"
-#define API_KEY "TWTLPDSLI1D8354E"
-#define CACHE_TIME_OUT 10 * 24 * 60 * 60 // 10 days
-#define BAD_ALLOC 0
-#define MIN_HTTP_RANGE 200
-#define MAX_HTTP_RANGE 300
+#define API_KEY "TWTLPDSLI1D8354E" 
+#define CACHE_TIME_OUT 10 * 24 * 60 * 60         // 10 days in seconds
+#define BAD_ALLOC 0                               // Return value for write callback on OOM
+#define MIN_HTTP_RANGE 200                        // Inclusive minimum HTTP OK code
+#define MAX_HTTP_RANGE 300                        // Exclusive upper bound (i.e., < 300)
 
-
-// ------------------------------------------------------
-// File: Stock_info.h
-//
-// Author: Jonathan Goohs, John Rolfe
-//
-// Description: Class Stock_info.h returns an instance of
-// class Security that contains relevant ingformation.
-// Method: Calling the API on given stock symbol, limited to 250 calls per day.
-// Method: data is validated and parsed 
-// ------------------------------------------------------
 
 //Stock_Info Interface
 class Stock_info
@@ -39,10 +47,22 @@ class Stock_info
         //default constructor
         Stock_info(){};
 
-        //Returns an instance of class Security
+
+         //etch stock data for a symbol.
+         //
+         // Resolution order:
+         //   1) If a fresh persistent cache entry exists, return that.
+         //   2) Otherwise, call the API (OVERVIEW + EARNINGS_ESTIMATES).
+         //      - On success, cache the results and return them.
+         //   3) If API fetch fails but any cached (stale) entry exists, return it.
+         //   4) Otherwise throw std::invalid_argument.
+         //
+         // param symbol  Ticker symbol, e.g., "AAPL".
+         // returns std::list<std::string> { overview_json, eps_forecast_json }
         std::list<std::string> getStockInfo(std::string symbol);
 
-        //Method for printing the current cache
+        //Print the persistent cache summary to stdout.
+        //Shows age (days) and payload sizes for quick debugging.
         void printCache() const;
 
     private:
@@ -59,9 +79,10 @@ class Stock_info
         };
 
         inline static std::unordered_map<std::string, CacheEntry> s_pcache; // symbol -> entry
-        inline static bool s_cache_loaded = false;
-        inline static const char* s_cache_file = "stock_cache.json";
-        inline static const std::time_t s_max_age_seconds = CACHE_TIME_OUT;
+        inline static bool s_cache_loaded = false;                           // one-time load guard
+        inline static const char* s_cache_file = "stock_cache.json";         // cache path
+        inline static const std::time_t s_max_age_seconds = CACHE_TIME_OUT;  // freshness window
+
 
         //Helper: load persistent cache from disk once
         static void load_persistent_cache() {
@@ -106,13 +127,17 @@ class Stock_info
             }
         }
 
+        // Check if a cache entry is still fresh.
         static bool is_fresh(const CacheEntry& e) {
             const std::time_t now = std::time(nullptr);
             if (e.timestamp == 0) return false;
             return (now - e.timestamp) <= s_max_age_seconds;
         }
 
-        //Methods for calling the API
+        // -------------------------------------------------------------------------
+        // Network fetch helpers (Alpha Vantage)
+        // -------------------------------------------------------------------------
+        // Each Method takes string for symbol to fetch and the apikey
         std::string get_quote(std::string symbol, std::string apiKey);
         std::string get_eps_forecast(std::string symbol, std::string apiKey);
 };
@@ -172,8 +197,7 @@ std::string Stock_info::get_quote(std::string symbol, std::string apiKey){
         std::cerr << "HTTP error: " << http_status << "\n";
         return std::string();
     }
-
-    //No direct persistent update here; handled by getStockInfo
+    
     return readBuffer;
 }
 
@@ -223,9 +247,9 @@ std::string Stock_info::get_eps_forecast(std::string symbol, std::string apiKey)
         return std::string();
     }
 
-    //no direct persistent update here; handled by getStockInfo
     return readBuffer;
 }
+
 
 std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
     std::list<std::string> retList;

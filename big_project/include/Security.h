@@ -14,20 +14,34 @@ using json = nlohmann::json;
 //
 //Author: Jonathan Goohs, John Rolfe
 //
-// Description: Container class for information on each 
-//company that was pulled down from the API. 
+// Defines a polymorphic base class (FinancialInstrument) and a concrete
+// equity-like Security that pulls fields from Alpha Vantage JSON
+//( via Stock_info) and exposes simple accessors.
 //------------------------------------------------------
 
-//Base class for all financial instruments, not just equities
+// ============================================================================
+// Base: FinancialInstrument
+// A minimal polymorphic interface for financial instruments (equity, etc.).
+// ============================================================================
 class FinancialInstrument {
 public:
-    virtual ~FinancialInstrument() = default;                 // <-- polymorphic base: virtual dtor
-    virtual void print() const = 0;                           // <-- pure virtual, const
-    virtual std::string getSymbol() const = 0;                // <-- pure virtual, const
-    virtual std::string getName() const = 0;                  // <-- pure virtual, const
+    virtual ~FinancialInstrument() = default; 
+    
+    //Print a human-readable summary. Must not modify object state.
+    virtual void print() const = 0;
+
+    //Instrument symbol/ticker (implementation-defined).
+    virtual std::string getSymbol() const = 0;
+
+    //return Human-readable instrument name.
+    virtual std::string getName() const = 0;
 };
 
-//Security class inherits from FinancialInstrumen
+// ============================================================================
+// Derived: Security
+// A concrete instrument populated from Alpha Vantage "OVERVIEW" and
+// "EARNINGS_ESTIMATES" responses.
+// ============================================================================
 class Security: public FinancialInstrument {
 public:
     std::string symbol;
@@ -62,20 +76,40 @@ public:
         return 0.0;
     }
 
-    //constructor that takes JSON for quote and analyst estimates
+     // Constructs a Security by fetching and parsing Alpha Vantage JSON.
+     //
+     // Steps:
+     //  1) Calls Stock_info::getStockInfo(ticker) which returns two JSON strings:
+     //     - back()           => analyst_estimates_json ("EARNINGS_ESTIMATES")
+     //     - second-from-back => stock_quote           ("OVERVIEW")
+     //  2) Parses "OVERVIEW" object fields:
+     //     - "Symbol", "Name" (std::string)
+     //     - "50DayMovingAverage", "EPS", "PERatio", "DividendPerShare" (numbers / strings)
+     //  3) Parses "EARNINGS_ESTIMATES" to extract the first estimate whose
+     //     "horizon" equals "current fiscal quarter" and reads "eps_estimate_average".
+     //
+     // Throws:
+     //  - std::runtime_error if either JSON blob is missing or of unexpected shape.
+     //
     Security(std::string ticker) {
+        // Fetch both JSON payloads
         Stock_info si;
         std::list<std::string> stock_data = si.getStockInfo(ticker);
 
         if (stock_data.size() < 2) {
             throw std::runtime_error("Stock_info::getStockInfo() did not return both JSON blobs");
         }
+
         //If getStockInfo pushed {stock_quote, analyst_estimates_json} in that order:
         std::string analyst_estimates_json = stock_data.back(); 
         stock_data.pop_back();
         std::string stock_quote            = stock_data.back();     
         stock_data.pop_back();
-        //stock Quote
+
+
+        // -----------------------------
+        // Parse OVERVIEW (company info)
+        // -----------------------------
         json j = json::parse(stock_quote);
         if (!j.is_object()) {
             throw std::runtime_error("Unexpected Quote JSON shape (expected object)");
@@ -89,7 +123,9 @@ public:
         peRatio                      = to_double(obj["PERatio"].get<std::string>());
         quarterlyDividendPerShare    = to_double(obj["DividendPerShare"].get<std::string>());
 
-        //Analyst Estimates
+        // ---------------------------------------
+        // Parse EARNINGS_ESTIMATES (analyst data)
+        // ---------------------------------------
         json je = json::parse(analyst_estimates_json);
         if (!je.is_object()) {
             throw std::runtime_error("Unexpected Analyst JSON shape (expected object)");
@@ -112,6 +148,8 @@ public:
             }
         }
     }
+
+    
     std::string getSymbol() const override { return symbol; }
     std::string getName()   const override { return name;   }
 };
