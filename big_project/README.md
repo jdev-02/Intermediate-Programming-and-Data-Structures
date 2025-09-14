@@ -54,6 +54,7 @@ GOOGL,25,2500.75
 An example is included in /tests/input_test.csv
 
 #Running Analysis
+
 0. from the build folder run commands `cmake ..` and  `make`
 1. Launch the application: from the build folder `./test_app`
 2. Enter your username
