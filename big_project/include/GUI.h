@@ -408,16 +408,6 @@ inline void GUI::displayProjectionsWindow() {
 }
 
 inline void GUI::displayGrowthPlotWindow() {
-<<<<<<< HEAD
-    
-    ImGui::Begin("Growth Projection and Charts");
-
-    float growthMultipliers[3] = { 1.5f,2.5f,5.0f };
-    const char* scenarioNames[3] = { "Conservative", "Moderate", "Optimistic" };
-    //use the data member from userinfo to load which multiplier to apply
-    float usermult = growthMultiplier[selectedScenario];
-    //take in the value of the account 
-=======
     //ImGui::Begin("Growth Projection and Charts");
     
     double growth_rate = userInfo.rate_of_return;
@@ -427,7 +417,6 @@ inline void GUI::displayGrowthPlotWindow() {
     float usermult = growthMultipliers[selectedScenario];
     ImGui::Text("This is a %d year scenario with a %s projection.", projectionYears, scenarioNames[selectedScenario]);
     ImGui::Separator();
->>>>>>> 75bebccedb57f4d68bf4f1610c59dd491181c3c2
 
     double portfolio_value_initial = userInfo.calc_portfolio_current_value();
     std::vector<int> results;

@@ -21,10 +21,10 @@ using json = nlohmann::json;
 //Base class for all financial instruments, not just equities
 class FinancialInstrument {
 public:
-    virtual ~FinancialInstrument() = default;
-    virtual void print() const = 0;
-    virtual std::string getSymbol() const = 0;
-    virtual std::string getName() const = 0;
+    virtual ~FinancialInstrument() = default;                 // <-- polymorphic base: virtual dtor
+    virtual void print() const = 0;                           // <-- pure virtual, const
+    virtual std::string getSymbol() const = 0;                // <-- pure virtual, const
+    virtual std::string getName() const = 0;                  // <-- pure virtual, const
 };
 
 //Security class inherits from FinancialInstrumen
@@ -33,13 +33,15 @@ public:
     std::string symbol;
     std::string name;
     double currentPrice;
-    double eps;
-    //double pe;                       
+    double eps;                       
     double peRatio;
     double quarterlyDividendPerShare;
     double estimatedEPSAvg;
 
     void print();
+    std::string getSymbol();
+    std::string getName();
+    void print() const override;
 
     //Helper: robustly convert a json scalar (number or string) to double
     static double to_double(const json& x) {
@@ -110,9 +112,11 @@ public:
             }
         }
     }
+    std::string getSymbol() const override { return symbol; }
+    std::string getName()   const override { return name;   }
 };
 
-inline void Security::print() {
+inline void Security::print() const{
     std::cout << "----------------------------------------\n";
     std::cout << "Symbol:                     " << symbol << "\n";
     std::cout << "Name:                       " << name << "\n";

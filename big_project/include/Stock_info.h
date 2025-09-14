@@ -272,10 +272,8 @@ std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
         }
     }
 
-    // Last resort: return whatever we got (may be empty strings)
-    retList.push_back(stock_quote);
-    retList.push_back(eps_forecast);
-    return retList;
+    // If none of that worked then throw error for bad input
+    throw std::invalid_argument("Could not resolve name to a stock from API or cache");
 }
 
 

@@ -15,8 +15,6 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 #include <iostream>
 #include <string>
 #include <map>
-<<<<<<< HEAD
-=======
 #include <format>
 #include <sstream>
 #include <iomanip>
@@ -43,7 +41,6 @@ o	Logic for something like peter lynch peg - undervalued, > 1.0 = overvalued X% 
 #include <iostream>
 #include <string>
 #include <map>
->>>>>>> 75bebccedb57f4d68bf4f1610c59dd491181c3c2
 #include <vector>
 #include <sstream>
 #include <algorithm>
@@ -63,7 +60,7 @@ class User_info {
 private:
 	string username; //input from user
 	string ticker;
-	map<string, FinancialInstrument*> portfolio; //map of stock ticker to security instance
+	map<string, Security > portfolio; //map of stock ticker to security instance
 	InvestorMath math; //instance of math class to do calculations on user's portfolio
 	map<string, int> shareCount; //number of shares for each stock in portfolio
 	map<string, double> costBasis; //cost basis (average) for each stock in portfolio
@@ -76,13 +73,8 @@ public:
 	User_info(string user) : username(user), ticker(""), investment_value(0), time_horizon(0) {}
 	//constructor for user_info class (based on the username input from the user)
 	//then we add methods to populate the portfolio map and do calculations based on input
-	~User_info() {
-		//clean up all allocated FinancialInstrument objects
-		for (auto& pair : portfolio) {
-			delete pair.second;
-		}
-	}
 
+	
 	void setUName(string user) {
 		username = user;
 	}
@@ -111,7 +103,7 @@ public:
 		}
 	}
 
-	void add_stock(string ticker, FinancialInstrument* symbol, int shares, double basis) {
+	void add_stock(string ticker, Security symbol, int shares, double basis) {
 		//this medthod adds a stock to the user's portfolio so we can do calcs on it
 		portfolio.insert_or_assign(ticker, symbol);
 		shareCount[ticker] = shares;
@@ -180,6 +172,8 @@ string calc_benjaminGrahamInstrinsicValue() {
     	<< " vs current price: $" << set.second.currentPrice;
 
 		tempString = oss.str();
+		oss.str(""); 
+		oss.clear();
 		retString += set.second.name + tempString;
 		if (grahamVal > set.second.currentPrice) {
 			retString += " - undervalued.\n";
