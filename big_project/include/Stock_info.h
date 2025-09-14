@@ -223,17 +223,17 @@ std::string Stock_info::get_eps_forecast(std::string symbol, std::string apiKey)
         return std::string();
     }
 
-    // No direct persistent update here; handled by getStockInfo
+    //no direct persistent update here; handled by getStockInfo
     return readBuffer;
 }
 
 std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
     std::list<std::string> retList;
 
-    // Ensure persistent cache is loaded
+    //Ensure persistent cache is loaded
     load_persistent_cache();
 
-    // Check persistent cache first
+    //Check persistent cache first
     if (auto it = s_pcache.find(symbol); it != s_pcache.end()) {
         const CacheEntry& e = it->second;
         if (is_fresh(e) && !e.quote.empty() && !e.eps_forecast.empty()) {
@@ -243,12 +243,12 @@ std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
         }
     }
 
-    // Otherwise fetch fresh data
+    //otherwise fetch fresh data
     std::string apiKey = API_KEY;
     std::string stock_quote = get_quote(symbol, apiKey);
     std::string eps_forecast = get_eps_forecast(symbol, apiKey);
 
-    // If fetch succeeded, update persistent cache and return
+    //If fetch succeeded, update persistent cache and return
     if (!stock_quote.empty() && !eps_forecast.empty()) {
         CacheEntry e;
         e.quote = stock_quote;
@@ -262,7 +262,7 @@ std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
         return retList;
     }
 
-    // If fetch failed but we have any cached data (even stale), use it as fallback
+    //If fetch failed but we have any cached data (even stale), use it as fallback
     if (auto it = s_pcache.find(symbol); it != s_pcache.end()) {
         const CacheEntry& e = it->second;
         if (!e.quote.empty() && !e.eps_forecast.empty()) {
@@ -272,14 +272,14 @@ std::list<std::string> Stock_info::getStockInfo(std::string symbol) {
         }
     }
 
-    // If none of that worked then throw error for bad input
+    //If none of that worked then throw error for bad input
     throw std::invalid_argument("Could not resolve name to a stock from API or cache");
 }
 
 
 void Stock_info::printCache() const {
     
-    // Print persistent cache summary
+    //print persistent cache summary
     const std::time_t now = std::time(nullptr);
     for (const auto& [sym, e] : s_pcache) {
         std::cout << sym << " => {Age: " << (now - e.timestamp)/(24.0 * 60.0 * 60.0) << " days"
@@ -288,4 +288,4 @@ void Stock_info::printCache() const {
     }
 }
 
-#endif // STOCK_INFO_H
+#endif 
