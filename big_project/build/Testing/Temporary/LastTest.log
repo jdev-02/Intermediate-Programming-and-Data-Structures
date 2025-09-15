@@ -1,29 +1,133 @@
-Start testing: Sep 09 20:56 PDT
+Start testing: Sep 14 21:18 PDT
 ----------------------------------------------------------
-1/1 Testing: Security.ParsesData_TEST
-1/1 Test: Security.ParsesData_TEST
-Command: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/runSecurityTests" "--gtest_filter=Security.ParsesData_TEST" "--gtest_also_run_disabled_tests"
+1/5 Testing: StockInfoTest.AAPL_FetchesQuoteAndEstimates
+1/5 Test: StockInfoTest.AAPL_FetchesQuoteAndEstimates
+Command: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/runSecurityTests" "--gtest_filter=StockInfoTest.AAPL_FetchesQuoteAndEstimates" "--gtest_also_run_disabled_tests"
 Directory: /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build
-"Security.ParsesData_TEST" start time: Sep 09 20:56 PDT
+"StockInfoTest.AAPL_FetchesQuoteAndEstimates" start time: Sep 14 21:18 PDT
 Output:
 ----------------------------------------------------------
-Note: Google Test filter = Security.ParsesData_TEST
+Note: Google Test filter = StockInfoTest.AAPL_FetchesQuoteAndEstimates
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 1 test from Security
-[ RUN      ] Security.ParsesData_TEST
-[       OK ] Security.ParsesData_TEST (13 ms)
-[----------] 1 test from Security (13 ms total)
+[----------] 1 test from StockInfoTest
+[ RUN      ] StockInfoTest.AAPL_FetchesQuoteAndEstimates
+[       OK ] StockInfoTest.AAPL_FetchesQuoteAndEstimates (77 ms)
+[----------] 1 test from StockInfoTest (77 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (13 ms total)
+[==========] 1 test from 1 test suite ran. (78 ms total)
 [  PASSED  ] 1 test.
 <end of output>
-Test time =   0.02 sec
+Test time =   0.08 sec
 ----------------------------------------------------------
 Test Passed.
-"Security.ParsesData_TEST" end time: Sep 09 20:56 PDT
-"Security.ParsesData_TEST" time elapsed: 00:00:00
+"StockInfoTest.AAPL_FetchesQuoteAndEstimates" end time: Sep 14 21:18 PDT
+"StockInfoTest.AAPL_FetchesQuoteAndEstimates" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Sep 09 20:56 PDT
+2/5 Testing: SecurityTest.AAPL_ParsesMinimalFields
+2/5 Test: SecurityTest.AAPL_ParsesMinimalFields
+Command: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/runSecurityTests" "--gtest_filter=SecurityTest.AAPL_ParsesMinimalFields" "--gtest_also_run_disabled_tests"
+Directory: /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build
+"SecurityTest.AAPL_ParsesMinimalFields" start time: Sep 14 21:18 PDT
+Output:
+----------------------------------------------------------
+Note: Google Test filter = SecurityTest.AAPL_ParsesMinimalFields
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SecurityTest
+[ RUN      ] SecurityTest.AAPL_ParsesMinimalFields
+[       OK ] SecurityTest.AAPL_ParsesMinimalFields (80 ms)
+[----------] 1 test from SecurityTest (80 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (80 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"SecurityTest.AAPL_ParsesMinimalFields" end time: Sep 14 21:18 PDT
+"SecurityTest.AAPL_ParsesMinimalFields" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/5 Testing: SecurityTest.BADSTRING
+3/5 Test: SecurityTest.BADSTRING
+Command: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/runSecurityTests" "--gtest_filter=SecurityTest.BADSTRING" "--gtest_also_run_disabled_tests"
+Directory: /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build
+"SecurityTest.BADSTRING" start time: Sep 14 21:18 PDT
+Output:
+----------------------------------------------------------
+Note: Google Test filter = SecurityTest.BADSTRING
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SecurityTest
+[ RUN      ] SecurityTest.BADSTRING
+[       OK ] SecurityTest.BADSTRING (77 ms)
+[----------] 1 test from SecurityTest (77 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (77 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"SecurityTest.BADSTRING" end time: Sep 14 21:18 PDT
+"SecurityTest.BADSTRING" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/5 Testing: UserInfoTest.AddStockAndCalcValue
+4/5 Test: UserInfoTest.AddStockAndCalcValue
+Command: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/runSecurityTests" "--gtest_filter=UserInfoTest.AddStockAndCalcValue" "--gtest_also_run_disabled_tests"
+Directory: /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build
+"UserInfoTest.AddStockAndCalcValue" start time: Sep 14 21:18 PDT
+Output:
+----------------------------------------------------------
+Note: Google Test filter = UserInfoTest.AddStockAndCalcValue
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from UserInfoTest
+[ RUN      ] UserInfoTest.AddStockAndCalcValue
+[       OK ] UserInfoTest.AddStockAndCalcValue (79 ms)
+[----------] 1 test from UserInfoTest (79 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (79 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"UserInfoTest.AddStockAndCalcValue" end time: Sep 14 21:18 PDT
+"UserInfoTest.AddStockAndCalcValue" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/5 Testing: UserInfoTest.CSVParsingEnablesCalcs
+5/5 Test: UserInfoTest.CSVParsingEnablesCalcs
+Command: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/runSecurityTests" "--gtest_filter=UserInfoTest.CSVParsingEnablesCalcs" "--gtest_also_run_disabled_tests"
+Directory: /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build
+"UserInfoTest.CSVParsingEnablesCalcs" start time: Sep 14 21:18 PDT
+Output:
+----------------------------------------------------------
+Note: Google Test filter = UserInfoTest.CSVParsingEnablesCalcs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from UserInfoTest
+[ RUN      ] UserInfoTest.CSVParsingEnablesCalcs
+[       OK ] UserInfoTest.CSVParsingEnablesCalcs (79 ms)
+[----------] 1 test from UserInfoTest (79 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (79 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"UserInfoTest.CSVParsingEnablesCalcs" end time: Sep 14 21:18 PDT
+"UserInfoTest.CSVParsingEnablesCalcs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 14 21:18 PDT

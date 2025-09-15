@@ -36,34 +36,39 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/c++/14/bits/stl_tempbuf.h \
  /usr/include/c++/14/bits/stl_construct.h \
  /usr/include/c++/14/bits/stl_iterator_base_types.h \
+ /usr/include/c++/14/bits/iterator_concepts.h \
+ /usr/include/c++/14/concepts /usr/include/c++/14/bits/ptr_traits.h \
+ /usr/include/c++/14/bits/ranges_cmp.h \
  /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
  /usr/include/c++/14/bits/concept_check.h \
  /usr/include/c++/14/debug/assertions.h \
  /usr/include/c++/14/bits/stl_pair.h /usr/include/c++/14/bits/utility.h \
- /usr/include/c++/14/ext/numeric_traits.h \
+ /usr/include/c++/14/compare /usr/include/c++/14/ext/numeric_traits.h \
  /usr/include/c++/14/bits/cpp_type_traits.h \
  /usr/include/c++/14/ext/type_traits.h \
  /usr/include/c++/14/bits/stl_uninitialized.h \
  /usr/include/c++/14/bits/stl_algobase.h \
  /usr/include/c++/14/bits/stl_iterator.h \
- /usr/include/c++/14/bits/ptr_traits.h /usr/include/c++/14/debug/debug.h \
+ /usr/include/c++/14/debug/debug.h \
  /usr/include/c++/14/bits/predefined_ops.h /usr/include/c++/14/bit \
- /usr/include/c++/14/concepts /usr/include/c++/14/ext/alloc_traits.h \
+ /usr/include/c++/14/ext/alloc_traits.h \
  /usr/include/c++/14/bits/alloc_traits.h \
  /usr/include/c++/14/bits/stl_raw_storage_iter.h \
  /usr/include/c++/14/bits/align.h \
  /usr/include/c++/14/bits/uses_allocator.h \
  /usr/include/c++/14/bits/unique_ptr.h /usr/include/c++/14/tuple \
- /usr/include/c++/14/bits/invoke.h \
+ /usr/include/c++/14/bits/invoke.h /usr/include/c++/14/bits/ranges_util.h \
+ /usr/include/c++/14/bits/ranges_base.h \
+ /usr/include/c++/14/initializer_list \
+ /usr/include/c++/14/bits/max_size_type.h /usr/include/c++/14/numbers \
  /usr/include/c++/14/bits/stl_function.h \
  /usr/include/c++/14/backward/binders.h \
  /usr/include/c++/14/bits/functional_hash.h \
- /usr/include/c++/14/bits/hash_bytes.h \
- /usr/include/c++/14/bits/shared_ptr.h /usr/include/c++/14/iosfwd \
- /usr/include/c++/14/bits/requires_hosted.h \
- /usr/include/c++/14/bits/stringfwd.h /usr/include/c++/14/bits/postypes.h \
- /usr/include/c++/14/cwchar /usr/include/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/floatn.h \
+ /usr/include/c++/14/bits/hash_bytes.h /usr/include/c++/14/ostream \
+ /usr/include/c++/14/bits/requires_hosted.h /usr/include/c++/14/ios \
+ /usr/include/c++/14/iosfwd /usr/include/c++/14/bits/stringfwd.h \
+ /usr/include/c++/14/bits/postypes.h /usr/include/c++/14/cwchar \
+ /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
@@ -73,18 +78,22 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/c++/14/bits/shared_ptr_base.h /usr/include/c++/14/typeinfo \
- /usr/include/c++/14/bits/allocated_ptr.h \
- /usr/include/c++/14/bits/refwrap.h \
- /usr/include/c++/14/ext/aligned_buffer.h \
- /usr/include/c++/14/ext/atomicity.h \
+ /usr/include/c++/14/exception /usr/include/c++/14/bits/exception_ptr.h \
+ /usr/include/c++/14/bits/cxxabi_init_exception.h \
+ /usr/include/c++/14/typeinfo /usr/include/c++/14/bits/nested_exception.h \
+ /usr/include/c++/14/bits/char_traits.h \
+ /usr/include/c++/14/bits/localefwd.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/c++locale.h \
+ /usr/include/c++/14/clocale /usr/include/locale.h \
+ /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/14/cctype \
+ /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/endianness.h \
+ /usr/include/c++/14/bits/ios_base.h /usr/include/c++/14/ext/atomicity.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/gthr.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/gthr-default.h \
  /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
- /usr/include/x86_64-linux-gnu/bits/endian.h \
- /usr/include/x86_64-linux-gnu/bits/endianness.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/linux/sched/types.h /usr/include/linux/types.h \
  /usr/include/x86_64-linux-gnu/asm/types.h \
@@ -117,27 +126,11 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/atomic_word.h \
  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
- /usr/include/c++/14/ext/concurrence.h /usr/include/c++/14/exception \
- /usr/include/c++/14/bits/exception_ptr.h \
- /usr/include/c++/14/bits/cxxabi_init_exception.h \
- /usr/include/c++/14/bits/nested_exception.h \
- /usr/include/c++/14/bits/shared_ptr_atomic.h \
- /usr/include/c++/14/bits/atomic_base.h \
- /usr/include/c++/14/bits/atomic_lockfree_defines.h \
- /usr/include/c++/14/backward/auto_ptr.h \
- /usr/include/c++/14/pstl/glue_memory_defs.h \
- /usr/include/c++/14/pstl/execution_defs.h /usr/include/c++/14/ostream \
- /usr/include/c++/14/ios /usr/include/c++/14/bits/char_traits.h \
- /usr/include/c++/14/bits/localefwd.h \
- /usr/include/x86_64-linux-gnu/c++/14/bits/c++locale.h \
- /usr/include/c++/14/clocale /usr/include/locale.h \
- /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/14/cctype \
- /usr/include/ctype.h /usr/include/c++/14/bits/ios_base.h \
  /usr/include/c++/14/bits/locale_classes.h /usr/include/c++/14/string \
  /usr/include/c++/14/bits/ostream_insert.h \
  /usr/include/c++/14/bits/cxxabi_forced.h \
+ /usr/include/c++/14/bits/refwrap.h \
  /usr/include/c++/14/bits/range_access.h \
- /usr/include/c++/14/initializer_list \
  /usr/include/c++/14/bits/basic_string.h /usr/include/c++/14/string_view \
  /usr/include/c++/14/bits/string_view.tcc \
  /usr/include/c++/14/ext/string_conversions.h /usr/include/c++/14/cstdlib \
@@ -178,7 +171,41 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/14/bits/ctype_inline.h \
  /usr/include/c++/14/bits/locale_facets.tcc \
  /usr/include/c++/14/bits/basic_ios.tcc \
- /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/set \
+ /usr/include/c++/14/bits/ostream.tcc \
+ /usr/include/c++/14/bits/shared_ptr.h \
+ /usr/include/c++/14/bits/shared_ptr_base.h \
+ /usr/include/c++/14/bits/allocated_ptr.h \
+ /usr/include/c++/14/ext/aligned_buffer.h \
+ /usr/include/c++/14/ext/concurrence.h \
+ /usr/include/c++/14/bits/shared_ptr_atomic.h \
+ /usr/include/c++/14/bits/atomic_base.h \
+ /usr/include/c++/14/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/14/bits/atomic_wait.h /usr/include/c++/14/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+ /usr/include/linux/close_range.h /usr/include/syscall.h \
+ /usr/include/x86_64-linux-gnu/sys/syscall.h \
+ /usr/include/x86_64-linux-gnu/asm/unistd.h \
+ /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
+ /usr/include/x86_64-linux-gnu/bits/syscall.h \
+ /usr/include/c++/14/bits/std_mutex.h \
+ /usr/include/c++/14/backward/auto_ptr.h \
+ /usr/include/c++/14/bits/ranges_uninitialized.h \
+ /usr/include/c++/14/bits/ranges_algobase.h \
+ /usr/include/c++/14/pstl/glue_memory_defs.h \
+ /usr/include/c++/14/pstl/execution_defs.h /usr/include/c++/14/set \
  /usr/include/c++/14/bits/stl_tree.h \
  /usr/include/c++/14/bits/node_handle.h \
  /usr/include/c++/14/bits/stl_set.h \
@@ -191,7 +218,7 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/c++/14/bits/vector.tcc \
  /usr/include/gtest/gtest-assertion-result.h \
  /usr/include/gtest/gtest-message.h \
- /usr/include/gtest/internal/gtest-port.h /usr/include/c++/14/ciso646 \
+ /usr/include/gtest/internal/gtest-port.h /usr/include/c++/14/version \
  /usr/include/c++/14/stdlib.h /usr/include/string.h \
  /usr/include/strings.h /usr/include/c++/14/iostream \
  /usr/include/c++/14/locale \
@@ -209,30 +236,28 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h \
  /usr/include/gtest/internal/custom/gtest-port.h \
- /usr/include/gtest/internal/gtest-port-arch.h /usr/include/unistd.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
- /usr/include/x86_64-linux-gnu/bits/environments.h \
- /usr/include/x86_64-linux-gnu/bits/confname.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
- /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
- /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
- /usr/include/linux/close_range.h /usr/include/regex.h \
+ /usr/include/gtest/internal/gtest-port-arch.h /usr/include/regex.h \
  /usr/include/c++/14/condition_variable /usr/include/c++/14/bits/chrono.h \
  /usr/include/c++/14/ratio /usr/include/c++/14/bits/parse_numbers.h \
- /usr/include/c++/14/bits/std_mutex.h \
- /usr/include/c++/14/bits/unique_lock.h /usr/include/c++/14/mutex \
+ /usr/include/c++/14/bits/unique_lock.h /usr/include/c++/14/stop_token \
+ /usr/include/c++/14/atomic /usr/include/c++/14/bits/std_thread.h \
+ /usr/include/c++/14/semaphore /usr/include/c++/14/bits/semaphore_base.h \
+ /usr/include/c++/14/bits/atomic_timed_wait.h \
+ /usr/include/c++/14/bits/this_thread_sleep.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/semaphore.h \
+ /usr/include/x86_64-linux-gnu/bits/semaphore.h /usr/include/c++/14/mutex \
  /usr/include/c++/14/any /usr/include/c++/14/optional \
  /usr/include/c++/14/bits/enable_special_members.h \
  /usr/include/c++/14/variant /usr/include/gtest/gtest-death-test.h \
  /usr/include/gtest/internal/gtest-death-test-internal.h \
- /usr/include/gtest/gtest-matchers.h /usr/include/c++/14/atomic \
- /usr/include/c++/14/functional /usr/include/c++/14/bits/std_function.h \
+ /usr/include/gtest/gtest-matchers.h /usr/include/c++/14/functional \
+ /usr/include/c++/14/bits/std_function.h \
  /usr/include/c++/14/unordered_map \
  /usr/include/c++/14/bits/unordered_map.h \
  /usr/include/c++/14/bits/hashtable.h \
  /usr/include/c++/14/bits/hashtable_policy.h /usr/include/c++/14/array \
- /usr/include/c++/14/compare /usr/include/gtest/gtest-printers.h \
- /usr/include/c++/14/utility /usr/include/c++/14/bits/stl_relops.h \
+ /usr/include/gtest/gtest-printers.h /usr/include/c++/14/utility \
+ /usr/include/c++/14/bits/stl_relops.h \
  /usr/include/gtest/internal/gtest-internal.h \
  /usr/include/x86_64-linux-gnu/sys/wait.h /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
@@ -265,6 +290,7 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/gtest/internal/gtest-type-util.h \
  /usr/include/c++/14/cxxabi.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/cxxabi_tweaks.h \
+ /usr/include/c++/14/span \
  /usr/include/gtest/internal/custom/gtest-printers.h \
  /usr/include/gtest/gtest-param-test.h /usr/include/c++/14/iterator \
  /usr/include/c++/14/bits/stream_iterator.h \
@@ -273,9 +299,13 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/gtest/gtest-test-part.h \
  /usr/include/gtest/gtest-typed-test.h \
  /usr/include/gtest/gtest_pred_impl.h /usr/include/gtest/gtest_prod.h \
+ /usr/include/c++/14/fstream \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h \
+ /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/iomanip \
+ /usr/include/c++/14/bits/quoted_string.h /usr/include/c++/14/list \
+ /usr/include/c++/14/bits/stl_list.h /usr/include/c++/14/bits/list.tcc \
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Security.h \
- /usr/include/c++/14/list /usr/include/c++/14/bits/stl_list.h \
- /usr/include/c++/14/bits/list.tcc \
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Stock_info.h \
  /usr/include/x86_64-linux-gnu/curl/curl.h \
  /usr/include/x86_64-linux-gnu/curl/curlver.h \
@@ -290,15 +320,6 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
- /usr/include/x86_64-linux-gnu/sys/time.h \
  /usr/include/x86_64-linux-gnu/curl/easy.h \
  /usr/include/x86_64-linux-gnu/curl/multi.h \
  /usr/include/x86_64-linux-gnu/curl/curl.h \
@@ -306,19 +327,16 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/curl/options.h \
  /usr/include/x86_64-linux-gnu/curl/header.h \
  /usr/include/x86_64-linux-gnu/curl/websockets.h \
- /usr/include/x86_64-linux-gnu/curl/mprintf.h /usr/include/c++/14/fstream \
- /usr/include/x86_64-linux-gnu/c++/14/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h \
- /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/filesystem \
- /usr/include/c++/14/bits/fs_fwd.h /usr/include/c++/14/bits/fs_path.h \
- /usr/include/c++/14/iomanip /usr/include/c++/14/bits/quoted_string.h \
- /usr/include/c++/14/codecvt /usr/include/c++/14/bits/fs_dir.h \
- /usr/include/c++/14/bits/fs_ops.h \
+ /usr/include/x86_64-linux-gnu/curl/mprintf.h \
+ /usr/include/c++/14/filesystem /usr/include/c++/14/bits/fs_fwd.h \
+ /usr/include/c++/14/bits/fs_path.h /usr/include/c++/14/codecvt \
+ /usr/include/c++/14/bits/fs_dir.h /usr/include/c++/14/bits/fs_ops.h \
  /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/json.hpp \
  /usr/include/c++/14/algorithm /usr/include/c++/14/bits/stl_algo.h \
  /usr/include/c++/14/bits/algorithmfwd.h \
  /usr/include/c++/14/bits/stl_heap.h \
  /usr/include/c++/14/bits/uniform_int_dist.h \
+ /usr/include/c++/14/bits/ranges_algo.h \
  /usr/include/c++/14/pstl/glue_algorithm_defs.h \
  /usr/include/c++/14/forward_list /usr/include/c++/14/bits/forward_list.h \
  /usr/include/c++/14/bits/forward_list.tcc /usr/include/c++/14/valarray \
@@ -353,7 +371,17 @@ CMakeFiles/runSecurityTests.dir/tests/security_tests.cpp.o: \
  /usr/include/c++/14/bits/gslice.h \
  /usr/include/c++/14/bits/gslice_array.h \
  /usr/include/c++/14/bits/mask_array.h \
- /usr/include/c++/14/bits/indirect_array.h /usr/include/c++/14/version \
- /usr/include/c++/14/cstring /usr/include/c++/14/numeric \
+ /usr/include/c++/14/bits/indirect_array.h /usr/include/c++/14/cstring \
+ /usr/include/c++/14/ranges /usr/include/c++/14/numeric \
  /usr/include/c++/14/bits/stl_numeric.h \
- /usr/include/c++/14/pstl/glue_numeric_defs.h
+ /usr/include/c++/14/pstl/glue_numeric_defs.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/Stock_info.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/json.hpp \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/user_info.h \
+ /usr/include/c++/14/format /usr/include/c++/14/charconv \
+ /usr/include/c++/14/bits/unicode.h \
+ /usr/include/c++/14/bits/unicode-data.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/../include/Stock_info.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/../include/Security.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/../include/Math.h \
+ /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include/../include/Security.h

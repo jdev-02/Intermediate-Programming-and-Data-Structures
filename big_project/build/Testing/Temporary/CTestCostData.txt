@@ -1,2 +1,11 @@
-Security.ParsesData_TEST 1 0.018653
+Security.ParsesData_TEST 9 0.00570231
+Security.ParsesNumericFields 0 0
+Security.EstimateMissingDefaultsZero 0 0
+Security.NonNumericStringsBecomeZero 0 0
+Security.bad_symbol 3 0.0166503
+StockInfoTest.AAPL_FetchesQuoteAndEstimates 3 0.0272224
+SecurityTest.AAPL_ParsesMinimalFields 3 0.0281502
+SecurityTest.BADSTRING 3 0.0274333
+UserInfoTest.AddStockAndCalcValue 2 0.0419908
+UserInfoTest.CSVParsingEnablesCalcs 2 0.0417743
 ---

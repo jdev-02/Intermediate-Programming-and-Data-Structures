@@ -7,7 +7,7 @@ events:
       - "/usr/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:205 (message)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      The system is: Linux - 6.14.0-28-generic - x86_64
+      The system is: Linux - 6.14.0-29-generic - x86_64
   -
     kind: "message-v1"
     backtrace:
@@ -39,8 +39,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-shkHBg"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-shkHBg"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-gHNXDM"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-gHNXDM"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -50,13 +50,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-shkHBg'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-gHNXDM'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3401a/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_3401a.dir/build.make CMakeFiles/cmTC_3401a.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-shkHBg'
-        Building CXX object CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/c++   -v -o CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fded7/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_fded7.dir/build.make CMakeFiles/cmTC_fded7.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-gHNXDM'
+        Building CXX object CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -o CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/usr/bin/c++
         OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
@@ -66,8 +66,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.0 (Ubuntu 14.2.0-19ubuntu2) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3401a.dir/'
-         /usr/libexec/gcc/x86_64-linux-gnu/14/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_3401a.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccN2TtrP.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fded7.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/14/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_fded7.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccr9x5Hl.s
         GNU C++17 (Ubuntu 14.2.0-19ubuntu2) version 14.2.0 (x86_64-linux-gnu)
         	compiled by GNU C version 14.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -88,14 +88,14 @@ events:
          /usr/include
         End of search list.
         Compiler executable checksum: 5018c062212e1c72e1ce61830114a4ab
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3401a.dir/'
-         as -v --64 -o CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccN2TtrP.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fded7.dir/'
+         as -v --64 -o CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccr9x5Hl.s
         GNU assembler version 2.44 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.44
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_3401a
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3401a.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_fded7
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fded7.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/c++
         COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper
@@ -108,14 +108,14 @@ events:
         gcc version 14.2.0 (Ubuntu 14.2.0-19ubuntu2) 
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3401a' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3401a.'
-         /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccoUcYLa.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_3401a /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_fded7' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_fded7.'
+         /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOkw7oq.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_fded7 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
         collect2 version 14.2.0
-        /usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccoUcYLa.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_3401a /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+        /usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOkw7oq.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_fded7 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
         GNU ld (GNU Binutils for Ubuntu) 2.44
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3401a' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3401a.'
-        /usr/bin/c++  -v -Wl,-v CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_3401a
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-shkHBg'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_fded7' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_fded7.'
+        /usr/bin/c++  -v -Wl,-v CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_fded7
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-gHNXDM'
         
       exitCode: 0
   -
@@ -156,13 +156,13 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-shkHBg']
+        ignore line: [Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-gHNXDM']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3401a/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_3401a.dir/build.make CMakeFiles/cmTC_3401a.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-shkHBg']
-        ignore line: [Building CXX object CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fded7/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_fded7.dir/build.make CMakeFiles/cmTC_fded7.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-gHNXDM']
+        ignore line: [Building CXX object CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/c++]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
@@ -172,8 +172,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.0 (Ubuntu 14.2.0-19ubuntu2) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3401a.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_3401a.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccN2TtrP.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fded7.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_fded7.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccr9x5Hl.s]
         ignore line: [GNU C++17 (Ubuntu 14.2.0-19ubuntu2) version 14.2.0 (x86_64-linux-gnu)]
         ignore line: [	compiled by GNU C version 14.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -194,14 +194,14 @@ events:
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 5018c062212e1c72e1ce61830114a4ab]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3401a.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccN2TtrP.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fded7.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccr9x5Hl.s]
         ignore line: [GNU assembler version 2.44 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.44]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_3401a]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3401a.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_fded7]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fded7.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/c++]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper]
@@ -214,13 +214,13 @@ events:
         ignore line: [gcc version 14.2.0 (Ubuntu 14.2.0-19ubuntu2) ]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3401a' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3401a.']
-        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccoUcYLa.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_3401a /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_fded7' '-foffload-options=-l_GCC_m' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_fded7.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOkw7oq.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_fded7 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
           arg [/usr/libexec/gcc/x86_64-linux-gnu/14/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccoUcYLa.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccOkw7oq.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -238,7 +238,7 @@ events:
           arg [-znow] ==> ignore
           arg [-zrelro] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_3401a] ==> ignore
+          arg [cmTC_fded7] ==> ignore
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o]
@@ -251,7 +251,7 @@ events:
           arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
           arg [-L/usr/lib/gcc/x86_64-linux-gnu/14/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/14/../../..]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -262,7 +262,7 @@ events:
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
         ignore line: [collect2 version 14.2.0]
-        ignore line: [/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccoUcYLa.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_3401a /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_3401a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccOkw7oq.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_fded7 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_fded7.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
         linker tool for 'CXX': /usr/bin/ld
         collapse obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
         collapse obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
@@ -322,8 +322,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-myLHZF"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-myLHZF"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-9e7GDq"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-9e7GDq"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -332,13 +332,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-myLHZF'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-9e7GDq'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_02b21/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_02b21.dir/build.make CMakeFiles/cmTC_02b21.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-myLHZF'
-        Building C object CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o
-        /usr/bin/cc   -v -o CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b0bbf/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b0bbf.dir/build.make CMakeFiles/cmTC_b0bbf.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-9e7GDq'
+        Building C object CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
@@ -348,8 +348,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.0 (Ubuntu 14.2.0-19ubuntu2) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_02b21.dir/'
-         /usr/libexec/gcc/x86_64-linux-gnu/14/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_02b21.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccq48N0A.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b0bbf.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/14/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b0bbf.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc7F8N8U.s
         GNU C17 (Ubuntu 14.2.0-19ubuntu2) version 14.2.0 (x86_64-linux-gnu)
         	compiled by GNU C version 14.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -366,14 +366,14 @@ events:
          /usr/include
         End of search list.
         Compiler executable checksum: 8d75a8b870b18ead058f0fb05febd3df
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_02b21.dir/'
-         as -v --64 -o CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o /tmp/ccq48N0A.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b0bbf.dir/'
+         as -v --64 -o CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o /tmp/cc7F8N8U.s
         GNU assembler version 2.44 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.44
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_02b21
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_02b21.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_b0bbf
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b0bbf.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper
@@ -386,14 +386,14 @@ events:
         gcc version 14.2.0 (Ubuntu 14.2.0-19ubuntu2) 
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_02b21' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_02b21.'
-         /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccfv20Pm.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_02b21 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b0bbf' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b0bbf.'
+         /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4WpCqo.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_b0bbf /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
         collect2 version 14.2.0
-        /usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccfv20Pm.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_02b21 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
+        /usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4WpCqo.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_b0bbf /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o
         GNU ld (GNU Binutils for Ubuntu) 2.44
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_02b21' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_02b21.'
-        /usr/bin/cc  -v -Wl,-v CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o -o cmTC_02b21
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-myLHZF'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b0bbf' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b0bbf.'
+        /usr/bin/cc  -v -Wl,-v CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o -o cmTC_b0bbf
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-9e7GDq'
         
       exitCode: 0
   -
@@ -428,13 +428,13 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-myLHZF']
+        ignore line: [Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-9e7GDq']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_02b21/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_02b21.dir/build.make CMakeFiles/cmTC_02b21.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-myLHZF']
-        ignore line: [Building C object CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b0bbf/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_b0bbf.dir/build.make CMakeFiles/cmTC_b0bbf.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-9e7GDq']
+        ignore line: [Building C object CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
@@ -444,8 +444,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.0 (Ubuntu 14.2.0-19ubuntu2) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_02b21.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_02b21.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccq48N0A.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b0bbf.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b0bbf.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc7F8N8U.s]
         ignore line: [GNU C17 (Ubuntu 14.2.0-19ubuntu2) version 14.2.0 (x86_64-linux-gnu)]
         ignore line: [	compiled by GNU C version 14.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -462,14 +462,14 @@ events:
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 8d75a8b870b18ead058f0fb05febd3df]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_02b21.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o /tmp/ccq48N0A.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b0bbf.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o /tmp/cc7F8N8U.s]
         ignore line: [GNU assembler version 2.44 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.44]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_02b21]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_02b21.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_b0bbf]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b0bbf.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper]
@@ -482,13 +482,13 @@ events:
         ignore line: [gcc version 14.2.0 (Ubuntu 14.2.0-19ubuntu2) ]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/14/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/14/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/14/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_02b21' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_02b21.']
-        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccfv20Pm.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_02b21 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b0bbf' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b0bbf.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/14/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4WpCqo.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_b0bbf /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
           arg [/usr/libexec/gcc/x86_64-linux-gnu/14/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccfv20Pm.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc4WpCqo.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -506,7 +506,7 @@ events:
           arg [-znow] ==> ignore
           arg [-zrelro] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_02b21] ==> ignore
+          arg [cmTC_b0bbf] ==> ignore
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o]
@@ -519,7 +519,7 @@ events:
           arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
           arg [-L/usr/lib/gcc/x86_64-linux-gnu/14/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/14/../../..]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -534,7 +534,7 @@ events:
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
         ignore line: [collect2 version 14.2.0]
-        ignore line: [/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/ccfv20Pm.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_02b21 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_02b21.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [/usr/bin/ld -plugin /usr/libexec/gcc/x86_64-linux-gnu/14/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/14/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4WpCqo.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_b0bbf /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/14 -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/14/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/14/../../.. -v CMakeFiles/cmTC_b0bbf.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o]
         linker tool for 'C': /usr/bin/ld
         collapse obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
         collapse obj [/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
@@ -574,8 +574,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-0A7HkZ"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-0A7HkZ"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-dTxKBO"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-dTxKBO"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -585,17 +585,17 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-0A7HkZ'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-dTxKBO'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6265b/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_6265b.dir/build.make CMakeFiles/cmTC_6265b.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-0A7HkZ'
-        Building C object CMakeFiles/cmTC_6265b.dir/src.c.o
-        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_6265b.dir/src.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-0A7HkZ/src.c
-        Linking C executable cmTC_6265b
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6265b.dir/link.txt --verbose=1
-        /usr/bin/cc CMakeFiles/cmTC_6265b.dir/src.c.o -o cmTC_6265b
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-0A7HkZ'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_dbc03/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_dbc03.dir/build.make CMakeFiles/cmTC_dbc03.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-dTxKBO'
+        Building C object CMakeFiles/cmTC_dbc03.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_dbc03.dir/src.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-dTxKBO/src.c
+        Linking C executable cmTC_dbc03
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dbc03.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_dbc03.dir/src.c.o -o cmTC_dbc03
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-dTxKBO'
         
       exitCode: 0
   -
@@ -606,8 +606,8 @@ events:
     checks:
       - "Looking for memfd_create"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-mv6ksD"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-mv6ksD"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-uZUrhV"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-uZUrhV"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -617,17 +617,17 @@ events:
       variable: "HAVE_MEMFD_CREATE"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-mv6ksD'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-uZUrhV'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_dc8a5/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_dc8a5.dir/build.make CMakeFiles/cmTC_dc8a5.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-mv6ksD'
-        Building C object CMakeFiles/cmTC_dc8a5.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=memfd_create -o CMakeFiles/cmTC_dc8a5.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-mv6ksD/CheckFunctionExists.c
-        Linking C executable cmTC_dc8a5
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dc8a5.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=memfd_create CMakeFiles/cmTC_dc8a5.dir/CheckFunctionExists.c.o -o cmTC_dc8a5
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-mv6ksD'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_44e19/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_44e19.dir/build.make CMakeFiles/cmTC_44e19.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-uZUrhV'
+        Building C object CMakeFiles/cmTC_44e19.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=memfd_create -o CMakeFiles/cmTC_44e19.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-uZUrhV/CheckFunctionExists.c
+        Linking C executable cmTC_44e19
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_44e19.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=memfd_create CMakeFiles/cmTC_44e19.dir/CheckFunctionExists.c.o -o cmTC_44e19
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-uZUrhV'
         
       exitCode: 0
   -
@@ -639,8 +639,8 @@ events:
     checks:
       - "Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-r8TaG5"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-r8TaG5"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-p2UK0r"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-p2UK0r"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -650,17 +650,17 @@ events:
       variable: "X11_LIB_X11_SOLO"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-r8TaG5'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-p2UK0r'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_68c7c/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_68c7c.dir/build.make CMakeFiles/cmTC_68c7c.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-r8TaG5'
-        Building C object CMakeFiles/cmTC_68c7c.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -o CMakeFiles/cmTC_68c7c.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-r8TaG5/CheckFunctionExists.c
-        Linking C executable cmTC_68c7c
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_68c7c.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=XOpenDisplay CMakeFiles/cmTC_68c7c.dir/CheckFunctionExists.c.o -o cmTC_68c7c  /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-r8TaG5'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e5489/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_e5489.dir/build.make CMakeFiles/cmTC_e5489.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-p2UK0r'
+        Building C object CMakeFiles/cmTC_e5489.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -o CMakeFiles/cmTC_e5489.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-p2UK0r/CheckFunctionExists.c
+        Linking C executable cmTC_e5489
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e5489.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=XOpenDisplay CMakeFiles/cmTC_e5489.dir/CheckFunctionExists.c.o -o cmTC_e5489  /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-p2UK0r'
         
       exitCode: 0
   -
@@ -672,8 +672,8 @@ events:
     checks:
       - "Looking for gethostbyname"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-AMpJBW"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-AMpJBW"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-cVR5Gn"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-cVR5Gn"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -683,17 +683,17 @@ events:
       variable: "CMAKE_HAVE_GETHOSTBYNAME"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-AMpJBW'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-cVR5Gn'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ce5ca/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_ce5ca.dir/build.make CMakeFiles/cmTC_ce5ca.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-AMpJBW'
-        Building C object CMakeFiles/cmTC_ce5ca.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -o CMakeFiles/cmTC_ce5ca.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-AMpJBW/CheckFunctionExists.c
-        Linking C executable cmTC_ce5ca
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce5ca.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname CMakeFiles/cmTC_ce5ca.dir/CheckFunctionExists.c.o -o cmTC_ce5ca
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-AMpJBW'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_63c1d/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_63c1d.dir/build.make CMakeFiles/cmTC_63c1d.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-cVR5Gn'
+        Building C object CMakeFiles/cmTC_63c1d.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -o CMakeFiles/cmTC_63c1d.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-cVR5Gn/CheckFunctionExists.c
+        Linking C executable cmTC_63c1d
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_63c1d.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname CMakeFiles/cmTC_63c1d.dir/CheckFunctionExists.c.o -o cmTC_63c1d
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-cVR5Gn'
         
       exitCode: 0
   -
@@ -705,8 +705,8 @@ events:
     checks:
       - "Looking for connect"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-iz8bzM"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-iz8bzM"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-T87Anj"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-T87Anj"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -716,17 +716,17 @@ events:
       variable: "CMAKE_HAVE_CONNECT"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-iz8bzM'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-T87Anj'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9172f/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_9172f.dir/build.make CMakeFiles/cmTC_9172f.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-iz8bzM'
-        Building C object CMakeFiles/cmTC_9172f.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect -o CMakeFiles/cmTC_9172f.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-iz8bzM/CheckFunctionExists.c
-        Linking C executable cmTC_9172f
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9172f.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_9172f.dir/CheckFunctionExists.c.o -o cmTC_9172f
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-iz8bzM'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_cecc0/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_cecc0.dir/build.make CMakeFiles/cmTC_cecc0.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-T87Anj'
+        Building C object CMakeFiles/cmTC_cecc0.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect -o CMakeFiles/cmTC_cecc0.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-T87Anj/CheckFunctionExists.c
+        Linking C executable cmTC_cecc0
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cecc0.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_cecc0.dir/CheckFunctionExists.c.o -o cmTC_cecc0
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-T87Anj'
         
       exitCode: 0
   -
@@ -738,8 +738,8 @@ events:
     checks:
       - "Looking for remove"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-sy2Rz0"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-sy2Rz0"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-xbGuz6"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-xbGuz6"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -749,17 +749,17 @@ events:
       variable: "CMAKE_HAVE_REMOVE"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-sy2Rz0'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-xbGuz6'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_0aa1d/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_0aa1d.dir/build.make CMakeFiles/cmTC_0aa1d.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-sy2Rz0'
-        Building C object CMakeFiles/cmTC_0aa1d.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove -o CMakeFiles/cmTC_0aa1d.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-sy2Rz0/CheckFunctionExists.c
-        Linking C executable cmTC_0aa1d
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0aa1d.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=remove CMakeFiles/cmTC_0aa1d.dir/CheckFunctionExists.c.o -o cmTC_0aa1d
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-sy2Rz0'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_80628/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_80628.dir/build.make CMakeFiles/cmTC_80628.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-xbGuz6'
+        Building C object CMakeFiles/cmTC_80628.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove -o CMakeFiles/cmTC_80628.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-xbGuz6/CheckFunctionExists.c
+        Linking C executable cmTC_80628
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_80628.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=remove CMakeFiles/cmTC_80628.dir/CheckFunctionExists.c.o -o cmTC_80628
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-xbGuz6'
         
       exitCode: 0
   -
@@ -771,8 +771,8 @@ events:
     checks:
       - "Looking for shmat"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Sr5i5Z"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Sr5i5Z"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-GAONlT"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-GAONlT"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -782,17 +782,17 @@ events:
       variable: "CMAKE_HAVE_SHMAT"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Sr5i5Z'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-GAONlT'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c4ded/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_c4ded.dir/build.make CMakeFiles/cmTC_c4ded.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Sr5i5Z'
-        Building C object CMakeFiles/cmTC_c4ded.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat -o CMakeFiles/cmTC_c4ded.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Sr5i5Z/CheckFunctionExists.c
-        Linking C executable cmTC_c4ded
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c4ded.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=shmat CMakeFiles/cmTC_c4ded.dir/CheckFunctionExists.c.o -o cmTC_c4ded
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Sr5i5Z'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_66657/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_66657.dir/build.make CMakeFiles/cmTC_66657.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-GAONlT'
+        Building C object CMakeFiles/cmTC_66657.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat -o CMakeFiles/cmTC_66657.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-GAONlT/CheckFunctionExists.c
+        Linking C executable cmTC_66657
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66657.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=shmat CMakeFiles/cmTC_66657.dir/CheckFunctionExists.c.o -o cmTC_66657
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-GAONlT'
         
       exitCode: 0
   -
@@ -804,8 +804,8 @@ events:
     checks:
       - "Looking for IceConnectionNumber in ICE"
     directories:
-      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Fa3F5L"
-      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Fa3F5L"
+      source: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-K2Gsr7"
+      binary: "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-K2Gsr7"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -815,17 +815,17 @@ events:
       variable: "CMAKE_LIB_ICE_HAS_ICECONNECTIONNUMBER"
       cached: true
       stdout: |
-        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Fa3F5L'
+        Change Dir: '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-K2Gsr7'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_1e3de/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_1e3de.dir/build.make CMakeFiles/cmTC_1e3de.dir/build
-        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Fa3F5L'
-        Building C object CMakeFiles/cmTC_1e3de.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -o CMakeFiles/cmTC_1e3de.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Fa3F5L/CheckFunctionExists.c
-        Linking C executable cmTC_1e3de
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1e3de.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber CMakeFiles/cmTC_1e3de.dir/CheckFunctionExists.c.o -o cmTC_1e3de  -lICE
-        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-Fa3F5L'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_27241/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_27241.dir/build.make CMakeFiles/cmTC_27241.dir/build
+        gmake[1]: Entering directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-K2Gsr7'
+        Building C object CMakeFiles/cmTC_27241.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -o CMakeFiles/cmTC_27241.dir/CheckFunctionExists.c.o -c /home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-K2Gsr7/CheckFunctionExists.c
+        Linking C executable cmTC_27241
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27241.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber CMakeFiles/cmTC_27241.dir/CheckFunctionExists.c.o -o cmTC_27241  -lICE
+        gmake[1]: Leaving directory '/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/CMakeFiles/CMakeScratch/TryCompile-K2Gsr7'
         
       exitCode: 0
 ...

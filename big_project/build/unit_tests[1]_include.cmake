@@ -1,5 +1,0 @@
-if(EXISTS "/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/unit_tests[1]_tests.cmake")
-  include("/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/build/unit_tests[1]_tests.cmake")
-else()
-  add_test(unit_tests_NOT_BUILT unit_tests_NOT_BUILT)
-endif()

@@ -61,4 +61,5 @@ target_link_libraries(runSecurityTests PRIVATE
   GTest::gtest_main
   pthread
 )
+set_target_properties(runSecurityTests PROPERTIES CXX_STANDARD 20 CXX_STANDARD_REQUIRED ON)
 gtest_discover_tests(runSecurityTests)

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/john/local_repository/cs3021/Intermediate-Programming-and-Data-Structures/big_project/include
 
-CXX_FLAGS = -std=gnu++17 -DGTEST_HAS_PTHREAD=1
+CXX_FLAGS = -std=gnu++20 -DGTEST_HAS_PTHREAD=1
 
