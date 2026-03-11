@@ -5,3 +5,42 @@
 //1:1. 3:1,3. 6:1,2,3,6 10:1,2,5,10. 15:1,3,5,15. 21: 1,3,7,21. 28: 1,2,4,7,14,28. 
 //we can see that 28 is first triangle number to have over five divisors
 //what is the value of the first tri number to have over five hundred divisors?
+
+#include <iostream>
+#include <cmath>  // for sqrt
+
+// Function to count divisors of a number
+int countDivisors(long long num) {
+    int count = 0;
+    long long root = std::sqrt(num);
+    for (long long i = 1; i <= root; ++i) {
+        if (num % i == 0) {
+            count += 2; // i and num/i
+        }
+    }
+    if (root * root == num) {
+        count--; // Correct over-count if num is a perfect square
+    }
+    return count;
+}
+
+// Formula for nth triangle number
+long long getTriangleNumber(long long n) {
+    return n * (n + 1) / 2;
+}
+
+int main() {
+    int n = 1;
+    while (true) {
+        long long triNum = getTriangleNumber(n);
+        int divisors = countDivisors(triNum);
+
+        if (divisors > 500) {
+            std::cout << "First triangle number with over 500 divisors is: "
+                << triNum << std::endl;
+            break;
+        }
+        n++;
+    }
+    return 0;
+}
